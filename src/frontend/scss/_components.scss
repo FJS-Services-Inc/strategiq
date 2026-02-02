@@ -3,6 +3,38 @@
 // Reusable UI components
 // ============================================
 
+// Accessibility
+// ===================================
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: $brand-primary;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  text-decoration: none;
+  font-weight: 600;
+  z-index: 10000;
+  border-radius: 0 0 $radius-md 0;
+  transition: top $transition-fast;
+
+  &:focus {
+    top: 0;
+  }
+}
+
 // Loading Spinner
 // ===================================
 .spinner-wrapper {

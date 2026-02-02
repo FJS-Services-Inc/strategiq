@@ -1,52 +1,78 @@
 {% if result %}
 <section class="section"
-         id="result-container">
+         id="result-container"
+         aria-live="polite"
+         aria-atomic="false"
+         role="region"
+         aria-label="SWOT Analysis Results">
     <div class="container">
-        <h2 class="title is-2 has-text-centered mb-6">Analysis Complete ✨</h2>
-        <div class="swot-grid">
+        <h2 class="title is-2 has-text-centered mb-6"
+            id="results-heading"
+            tabindex="-1">
+            <span aria-label="Analysis Complete">Analysis Complete</span> ✨
+        </h2>
+        <div class="swot-grid"
+             role="list"
+             aria-label="SWOT Analysis Categories">
             {% for cat, val in result.dict().items() %}
             {% if cat != 'summary' %}
             {# Determine card class and icon based on category #}
             {% set card_class = 'strength' if cat == 'strengths' else ('weakness' if cat == 'weaknesses' else ('opportunity' if cat == 'opportunities' else 'threat')) %}
             {% set icon = 'fa-arrow-trend-up' if cat == 'strengths' else ('fa-arrow-trend-down' if cat == 'weaknesses' else ('fa-lightbulb' if cat == 'opportunities' else 'fa-triangle-exclamation')) %}
+            {% set category_label = 'Strengths - positive internal factors' if cat == 'strengths' else ('Weaknesses - negative internal factors' if cat == 'weaknesses' else ('Opportunities - positive external factors' if cat == 'opportunities' else 'Threats - negative external factors')) %}
 
-            <div class="swot-card swot-card--{{ card_class }}">
+            <article class="swot-card swot-card--{{ card_class }}"
+                     role="listitem"
+                     aria-labelledby="card-title-{{ cat }}"
+                     tabindex="0">
                 <div class="swot-card__header">
-                    <div class="swot-card__icon">
+                    <div class="swot-card__icon"
+                         aria-hidden="true">
                         <i class="fas {{ icon }}"></i>
                     </div>
-                    <h3 class="swot-card__title">{{ cat.title() }}</h3>
-                    <span class="swot-card__count">{{ val|length }}</span>
+                    <h3 class="swot-card__title"
+                        id="card-title-{{ cat }}">
+                        {{ cat.title() }}
+                        <span class="sr-only">: {{ category_label }}</span>
+                    </h3>
+                    <span class="swot-card__count"
+                          aria-label="{{ val|length }} items">{{ val|length }}</span>
                 </div>
                 <div class="swot-card__body">
-                    <ul class="swot-list">
+                    <ul class="swot-list"
+                        aria-label="{{ cat.title() }} list">
                         {% for value in val %}
                         <li class="swot-list__item">
-                            <span class="swot-list__bullet"></span>
+                            <span class="swot-list__bullet"
+                                  aria-hidden="true"></span>
                             <span class="swot-list__text">{{ value }}</span>
                         </li>
                         {% endfor %}
                     </ul>
                 </div>
-            </div>
+            </article>
             {% endif %}
             {% endfor %}
         </div>
 
         {# Summary Section #}
         {% if result.summary %}
-        <div class="box mt-6"
-             style="border-radius: 16px; border-left: 4px solid var(--brand-primary); box-shadow: var(--shadow-lg);">
+        <section class="box mt-6"
+                 role="region"
+                 aria-labelledby="summary-heading"
+                 style="border-radius: 16px; border-left: 4px solid var(--brand-primary); box-shadow: var(--shadow-lg);">
             <h3 class="title is-4"
+                id="summary-heading"
                 style="color: var(--brand-primary);">
-                <i class="fas fa-clipboard-list mr-2"></i>
+                <i class="fas fa-clipboard-list mr-2"
+                   aria-hidden="true"></i>
                 Executive Summary
             </h3>
             <div class="content"
                  style="color: var(--neutral-700); line-height: 1.8;">
                 {{ result.summary }}
             </div>
-        </div>
+        </section>
         {% endif %}
     </div>
 </section>

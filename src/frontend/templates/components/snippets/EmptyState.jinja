@@ -4,9 +4,12 @@
     icon: str = "fa-chart-simple"
 #}
 
-<div class="empty-state">
+<div class="empty-state"
+     role="status"
+     aria-live="polite">
     <div class="empty-state__content">
-        <div class="empty-state__icon">
+        <div class="empty-state__icon"
+             aria-hidden="true">
             <i class="fas {{ icon }}"></i>
         </div>
         <h3 class="empty-state__title">{{ title }}</h3>

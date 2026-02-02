@@ -1,15 +1,26 @@
 {% if messages %}
-<section class="section" id="status-container">
-    <div class="container" style="max-width: 800px;">
-        <div class="status-timeline">
+<section class="section"
+         id="status-container"
+         role="region"
+         aria-label="Analysis Progress"
+         aria-live="polite">
+    <div class="container"
+         style="max-width: 800px;">
+        <div class="status-timeline"
+             role="feed"
+             aria-label="Status updates">
             {% for message in messages %}
             {% set is_error = message.startswith('Error:') %}
             {% set is_loading = loop.last and not result %}
             {% set is_tool_message = message.startswith('Using tool') %}
             {% set is_complete = "complete" in message.lower() or "done" in message.lower() %}
+            {% set status_label = 'Error' if is_error else ('Complete' if is_complete else ('In Progress' if is_loading else ('Processing' if is_tool_message else 'Status'))) %}
 
-            <div class="status-item {% if is_error %}status-item--error{% elif is_complete %}status-item--success{% elif is_loading %}status-item--loading{% else %}status-item--info{% endif %}">
-                <div class="status-item__indicator">
+            <article class="status-item {% if is_error %}status-item--error{% elif is_complete %}status-item--success{% elif is_loading %}status-item--loading{% else %}status-item--info{% endif %}"
+                     role="article"
+                     aria-label="{{ status_label }}: {{ message }}">
+                <div class="status-item__indicator"
+                     aria-hidden="true">
                     {% if is_error %}
                     <i class="fas fa-circle-xmark"></i>
                     {% elif is_complete %}
@@ -22,23 +33,13 @@
                 </div>
                 <div class="status-item__content">
                     <div class="status-item__header">
-                        {% if is_error %}
-                        Error
-                        {% elif is_complete %}
-                        Complete
-                        {% elif is_loading %}
-                        In Progress
-                        {% elif is_tool_message %}
-                        Processing
-                        {% else %}
-                        Status
-                        {% endif %}
+                        {{ status_label }}
                     </div>
                     <div class="status-item__message">
                         {{ message }}
                     </div>
                 </div>
-            </div>
+            </article>
             {% endfor %}
         </div>
     </div>

@@ -71,15 +71,47 @@
     }
 
     /**
-     * Smooth scroll to results
+     * Announce to screen readers
+     */
+    function announceToScreenReader(message, priority = 'polite') {
+        const announcement = document.createElement('div');
+        announcement.setAttribute('role', 'status');
+        announcement.setAttribute('aria-live', priority);
+        announcement.setAttribute('aria-atomic', 'true');
+        announcement.className = 'sr-only';
+        announcement.textContent = message;
+
+        document.body.appendChild(announcement);
+
+        // Remove after announcement is made
+        setTimeout(() => {
+            document.body.removeChild(announcement);
+        }, 1000);
+    }
+
+    /**
+     * Smooth scroll to results and manage focus
      */
     function scrollToResults() {
         const resultsSection = document.getElementById('result-container');
+        const resultsHeading = document.getElementById('results-heading');
+
         if (resultsSection) {
+            // Announce completion to screen readers
+            announceToScreenReader('Analysis complete. Results are now available.', 'assertive');
+
+            // Scroll to results
             resultsSection.scrollIntoView({
                 behavior: 'smooth',
                 block: 'start'
             });
+
+            // Move focus to results heading for keyboard users
+            if (resultsHeading) {
+                setTimeout(() => {
+                    resultsHeading.focus();
+                }, 600);
+            }
         }
     }
 
@@ -97,6 +129,44 @@
     }
 
     /**
+     * Initialize keyboard navigation for SWOT cards
+     */
+    function initializeKeyboardNavigation() {
+        const cards = document.querySelectorAll('.swot-card');
+
+        cards.forEach((card, index) => {
+            card.addEventListener('keydown', function(e) {
+                let targetCard = null;
+
+                switch (e.key) {
+                    case 'ArrowRight':
+                    case 'ArrowDown':
+                        e.preventDefault();
+                        targetCard = cards[index + 1] || cards[0];
+                        break;
+                    case 'ArrowLeft':
+                    case 'ArrowUp':
+                        e.preventDefault();
+                        targetCard = cards[index - 1] || cards[cards.length - 1];
+                        break;
+                    case 'Home':
+                        e.preventDefault();
+                        targetCard = cards[0];
+                        break;
+                    case 'End':
+                        e.preventDefault();
+                        targetCard = cards[cards.length - 1];
+                        break;
+                }
+
+                if (targetCard) {
+                    targetCard.focus();
+                }
+            });
+        });
+    }
+
+    /**
      * Initialize form submission handler
      */
     function initializeForm() {
@@ -104,6 +174,9 @@
         if (!form) return;
 
         form.addEventListener('submit', function(e) {
+            // Announce to screen readers
+            announceToScreenReader('Analysis started. Please wait while we process your request.', 'assertive');
+
             // Start loading messages when form is submitted
             startLoadingMessages();
 
@@ -134,6 +207,9 @@
                     if (spinner) {
                         spinner.classList.add('is-hidden');
                     }
+
+                    // Initialize keyboard navigation for SWOT cards
+                    initializeKeyboardNavigation();
 
                     // Scroll to results after a brief delay
                     setTimeout(scrollToResults, 500);
@@ -219,6 +295,7 @@
     window.PygenticAI = {
         startLoadingMessages,
         stopLoadingMessages,
-        scrollToResults
+        scrollToResults,
+        announceToScreenReader
     };
 })();
