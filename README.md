@@ -56,13 +56,39 @@
 
 ## 🌞 Overview
 
+**Pygentic-AI** is an AI-powered SWOT analysis platform that transforms any URL into actionable business intelligence. Using advanced language models (Claude, GPT-4), the system scrapes web content, analyzes it through multiple dimensions, and generates comprehensive SWOT analyses with competitive intelligence from Reddit.
 
+### Key Capabilities
+- 🔍 **Intelligent URL Analysis** - Extracts and analyzes content from any web page
+- 🧠 **AI-Powered SWOT** - Generates structured SWOT analysis using Claude/GPT-4
+- 💬 **Reddit Intelligence** - Gathers competitive insights from relevant subreddits
+- ⚡ **Async Processing** - Celery-based task queue for long-running analysis
+- ♿ **Accessible UI** - WCAG 2.1 AA compliant responsive interface
+- 🎨 **Modern Frontend** - SCSS modular architecture with progressive enhancement
 
 ---
 
 ## 🔥 Features
 
-<code>❯ REPLACE-ME</code>
+### AI Analysis Engine
+- Multi-model support (Anthropic Claude, OpenAI GPT-4o-mini)
+- Tool-augmented generation with Reddit intelligence
+- Structured output validation with Pydantic
+- Async task processing with Celery
+
+### User Interface
+- Component-based templates with Jinjax
+- HTMX for progressive enhancement
+- Modular SCSS architecture (7-1 pattern)
+- Full keyboard navigation and screen reader support
+- Progressive loading with real-time status updates
+
+### Infrastructure
+- Docker containerization with multi-stage builds
+- GitHub Actions CI/CD with Komodo deployment
+- Traefik reverse proxy with Let's Encrypt
+- Health checks and monitoring
+- Environment-based configuration
 
 ---
 
@@ -698,27 +724,56 @@
 
 This project requires the following dependencies:
 
-- **Programming Language:** Python
-- **Package Manager:** Pip, Uv
-- **Container Runtime:** Docker
+- **Programming Language:** Python 3.13+
+- **Package Manager:** [uv](https://docs.astral.sh/uv/) (recommended) or pip
+- **Container Runtime:** Docker & Docker Compose
+- **Task Runner:** [just](https://github.com/casey/just) (command runner)
+- **Node.js:** For frontend asset compilation (npm)
 
 ### ⚡ Installation
 
-Build Pygentic-AI from the source and intsall dependencies:
+#### Install just (Task Runner)
+
+**macOS/Linux:**
+```sh
+# macOS
+brew install just
+
+# Linux
+curl --proto '=https' --tlsv1.2 -sSf https://just.systems/install.sh | bash -s -- --to /usr/local/bin
+```
+
+**Windows:**
+```powershell
+# Using Scoop
+scoop install just
+
+# Using Chocolatey
+choco install just
+```
+
+#### Build Pygentic-AI from Source
 
 1. **Clone the repository:**
 
     ```sh
-    ❯ git clone https://github.com/fsecada01/Pygentic-AI
+    git clone https://github.com/FJS-Services-Inc/Pygentic-AI
     ```
 
 2. **Navigate to the project directory:**
 
     ```sh
-    ❯ cd Pygentic-AI
+    cd Pygentic-AI
     ```
 
-3. **Install the dependencies:**
+3. **Quick setup with justfile (recommended):**
+
+    ```sh
+    # One command setup: creates .env, installs deps, compiles SCSS
+    just setup
+    ```
+
+4. **Manual installation (alternative):**
 
 <!-- SHIELDS BADGE CURRENTLY DISABLED -->
 <!-- [![docker][docker-shield]][docker-link] -->
@@ -763,33 +818,229 @@ If this fails due to platform-specific issues, try this instead:
 
 ### 🔆 Usage
 
-Run the project with:
+#### Development Mode
 
-**Using [docker](https://www.docker.com/):**
+**Quick start (recommended):**
 ```sh
-docker run -it {image_name}
+# Terminal 1: Start FastAPI development server
+just dev
+
+# Terminal 2: Start Celery worker
+just celery
+
+# Terminal 3: Auto-compile SCSS on changes
+just scss-watch
 ```
-**Using [pip](https://pypi.org/project/pip/):**
+
+**Manual start:**
 ```sh
-python {entrypoint}
+# Using uv (recommended)
+uv run python src/app.py              # FastAPI server
+uv run python src/cworker.py          # Celery worker
+
+# Using pip
+python src/app.py
+python src/cworker.py
 ```
-**Using [uv](https://docs.astral.sh/uv/):**
+
+#### Production Mode (Docker)
+
+**With justfile:**
 ```sh
-uv run python {entrypoint}
+# Build and start all services
+just build
+just up-d
+
+# Check status
+just health
+just ps
+
+# View logs
+just logs-f
+```
+
+**Manual Docker commands:**
+```sh
+# Build image
+docker build -t s3docker.francissecada.com/pygentic_ai:latest .
+
+# Start services
+docker-compose up -d
+
+# View logs
+docker-compose logs -f
+```
+
+#### Available Commands
+
+Run `just` to see all available commands:
+```sh
+just                    # List all commands
+just --list             # Same as above
+
+# Common commands
+just setup             # First-time setup
+just dev               # Development server
+just test              # Run tests
+just build [tag]       # Build Docker image
+just deploy [tag]      # Deploy to production
+just health            # Check service health
+just clean             # Clean up containers
 ```
 
 ### 🌠 Testing
 
-Pygentic-ai uses the {__test_framework__} test framework. Run the test suite with:
+**Run all tests:**
+```sh
+just test              # Quick test run
+just test-cov          # With coverage report
+```
 
-**Using [pip](https://pypi.org/project/pip/):**
+**Manual testing:**
 ```sh
-pytest
+# Using uv (recommended)
+uv run pytest tests/ -v
+uv run pytest tests/ --cov=src --cov-report=html
+
+# Using pip
+pytest tests/ -v
 ```
-**Using [uv](https://docs.astral.sh/uv/):**
+
+**Quality checks:**
 ```sh
-uv run pytest tests/
+just lint              # Run linters
+just format            # Format code
+just security          # Security scan
+just check             # All checks (pre-commit)
 ```
+
+---
+
+## 🤖 Claude AI Assistance
+
+This project includes a multi-agent orchestration system for Claude AI to assist with development.
+
+### Setup
+
+The project includes two key files for Claude integration:
+
+- **`.claude/system-prompt.md`** - Multi-agent orchestration instructions (personas, MCP routing, patterns)
+- **`CLAUDE.md`** - Project initialization guide (architecture, workflows, commands)
+
+### Available Personas
+
+Claude activates appropriate personas based on the task:
+
+- 🏗️ **Architect** - System design, architecture decisions, scaling
+- 🎨 **Frontend** - UI/UX, SCSS, accessibility, Jinjax components
+- ⚙️ **Backend** - FastAPI, Celery, database, AI agents
+- 🔒 **Security** - Authentication, secrets, input validation
+- 🚀 **DevOps** - Docker, CI/CD, deployment, monitoring
+
+### Usage
+
+```sh
+# View Claude context files
+just start-claude      # Display orchestration context
+
+# When using Claude
+# Use /init command to load project context from CLAUDE.md
+# Claude will activate appropriate personas for your task
+```
+
+### Example Workflows
+
+**Feature Development:**
+```
+User: "Add user authentication"
+Claude: Activates 🏗️ Architect, 🔒 Security, ⚙️ Backend, 🎨 Frontend
+- Designs auth architecture
+- Implements secure endpoints
+- Creates login UI components
+- Updates deployment configs
+```
+
+**Bug Fixing:**
+```
+User: "Fix SCSS compilation error"
+Claude: Activates 🎨 Frontend persona
+- Identifies SCSS syntax issues
+- Runs just scss to verify fix
+- Updates documentation if needed
+```
+
+---
+
+## 📋 Justfile Command Reference
+
+Quick reference for common `just` commands:
+
+### Development
+```sh
+just setup              # First-time project setup
+just dev                # Start FastAPI dev server
+just celery             # Start Celery worker
+just scss               # Compile SCSS once
+just scss-watch         # Auto-compile SCSS on changes
+just npm-install        # Install frontend dependencies
+```
+
+### Docker Operations
+```sh
+just build [tag]        # Build Docker image
+just up                 # Start services
+just up-d               # Start in detached mode
+just down               # Stop services
+just restart            # Restart services
+just logs-f             # Follow all logs
+just logs-web           # Follow web service logs
+just logs-celery        # Follow celery logs
+just health             # Check service health
+just ps                 # Show container status
+just stats              # Show resource usage
+```
+
+### Testing & Quality
+```sh
+just test               # Run test suite
+just test-cov           # Run with coverage
+just lint               # Run linters
+just format             # Format code
+just security           # Security scan
+just check              # All quality checks
+```
+
+### Deployment
+```sh
+just deploy [tag]       # Deploy with specific tag
+just deploy-dev         # Deploy dev environment
+just deploy-main        # Deploy production
+just pull [tag]         # Pull Docker image
+```
+
+### Database
+```sh
+just migrate            # Run migrations
+just migration [name]   # Create migration
+```
+
+### Cleanup
+```sh
+just clean              # Remove containers
+just clean-images       # Remove images
+just clean-all          # Full cleanup
+just prune              # Remove unused resources
+```
+
+### Utilities
+```sh
+just info               # Show environment info
+just config             # Show Docker Compose config
+just check-env          # Validate environment variables
+just init-env           # Create .env from template
+```
+
+For a complete list: `just --list`
 
 ---
 
