@@ -1,0 +1,64 @@
+/*!
+ * Pygentic AI - Main Stylesheet
+ * Compiled from SCSS partials
+ * Version: 1.0.0
+ */
+
+// Import order matters!
+// 1. Variables first (used by all other partials)
+// 2. Typography (base styles)
+// 3. Animations (keyframes)
+// 4. Components (reusable UI elements)
+// 5. Layout (page structure)
+// 6. States (empty/error states)
+// 7. Responsive (media queries last)
+
+@import 'variables';
+@import 'typography';
+@import 'animations';
+@import 'components';
+@import 'layout';
+@import 'states';
+@import 'responsive';
+
+// ============================================
+// CSS CUSTOM PROPERTIES
+// For runtime theming support
+// ============================================
+
+:root {
+  // Brand Colors
+  --brand-primary: #{$brand-primary};
+  --brand-primary-light: #{$brand-primary-light};
+  --brand-primary-dark: #{$brand-primary-dark};
+
+  // SWOT Colors
+  --swot-strength: #{$swot-strength};
+  --swot-weakness: #{$swot-weakness};
+  --swot-opportunity: #{$swot-opportunity};
+  --swot-threat: #{$swot-threat};
+
+  // Neutrals
+  --neutral-50: #{$neutral-50};
+  --neutral-100: #{$neutral-100};
+  --neutral-200: #{$neutral-200};
+  --neutral-300: #{$neutral-300};
+  --neutral-400: #{$neutral-400};
+  --neutral-500: #{$neutral-500};
+  --neutral-600: #{$neutral-600};
+  --neutral-700: #{$neutral-700};
+  --neutral-800: #{$neutral-800};
+  --neutral-900: #{$neutral-900};
+
+  // Shadows
+  --shadow-sm: #{$shadow-sm};
+  --shadow-md: #{$shadow-md};
+  --shadow-lg: #{$shadow-lg};
+  --shadow-xl: #{$shadow-xl};
+  --shadow-2xl: #{$shadow-2xl};
+
+  // Transitions
+  --transition-fast: #{$transition-fast};
+  --transition-base: #{$transition-base};
+  --transition-slow: #{$transition-slow};
+}

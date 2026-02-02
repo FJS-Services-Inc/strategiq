@@ -29,8 +29,10 @@
               action={{ url_for('analyze_url') }}
               target="status"
               method="post">
-            <div class="search-input-group">
-                <span class="search-icon">
+            <div class="search-input-group"
+                 role="search">
+                <span class="search-icon"
+                      aria-hidden="true">
                     <i class="fas fa-link"></i>
                 </span>
                 <input type="url"
@@ -38,11 +40,14 @@
                        id="url"
                        name="url"
                        placeholder="Enter a URL to analyze (e.g., https://example.com)"
+                       aria-label="Enter URL to analyze"
+                       aria-describedby="search-help"
                        required
                        pattern="https?://.+"
                        autocomplete="url" />
                 <button type="submit"
                         class="search-button"
+                        aria-label="Analyze URL"
                         hx-indicator='#spinner'
                         hx-on:click="
                         const [status, result, spinner] = ['#status', '#result', '#spinner'].map(id => document.querySelector(id));
@@ -51,7 +56,8 @@
                         result.style.display = 'none';
                         ">
                     <span class="button-text">Analyze</span>
-                    <span class="button-icon">
+                    <span class="button-icon"
+                          aria-hidden="true">
                         <i class="fas fa-arrow-right"></i>
                     </span>
                 </button>

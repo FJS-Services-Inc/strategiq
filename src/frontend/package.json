@@ -1,0 +1,23 @@
+{
+  "dependencies": {
+    "@creativebulma/bulma-collapsible": "^1.0.4",
+    "@vizuaalog/bulmajs": "^0.12.2",
+    "bulma": "^1.0.4",
+    "bulma-tagsinput": "^2.0.0",
+    "htmx.org": "^2.0.8",
+    "install": "^0.13.0",
+    "jquery": "^4.0.0",
+    "npm": "^11.8.0"
+  },
+  "description": "Pygentic AI Frontend - SWOT Analysis Interface",
+  "devDependencies": {
+    "sass": "^1.83.0"
+  },
+  "name": "pygentic-ai-frontend",
+  "scripts": {
+    "build:css": "sass scss/styles.scss static/css/pygentic_ai.css --style compressed",
+    "dev": "npm run watch:css",
+    "watch:css": "sass scss/styles.scss static/css/pygentic_ai.css --watch"
+  },
+  "version": "1.0.0"
+}

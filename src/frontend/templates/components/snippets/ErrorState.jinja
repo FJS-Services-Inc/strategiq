@@ -1,0 +1,39 @@
+{# def
+    title: str = "Analysis Failed",
+    description: str = "We couldn't analyze this URL. Please check the URL and try again.",
+    error_details: str = None,
+    show_retry: bool = True
+#}
+
+<div class="error-state">
+    <div class="error-state__content">
+        <div class="error-state__icon">
+            <i class="fas fa-triangle-exclamation"></i>
+        </div>
+        <h3 class="error-state__title">{{ title }}</h3>
+        <p class="error-state__description">{{ description }}</p>
+
+        {% if error_details %}
+        <div class="error-state__details">
+            {{ error_details }}
+        </div>
+        {% endif %}
+
+        <div class="error-state__actions">
+            {% if show_retry %}
+            <button class="error-state__button error-state__button--primary"
+                    onclick="location.reload()">
+                <i class="fas fa-rotate-right"></i>
+                <span>Try Again</span>
+            </button>
+            {% endif %}
+            <a href="/"
+               class="error-state__button error-state__button--secondary">
+                <i class="fas fa-home"></i>
+                <span>Go Home</span>
+            </a>
+        </div>
+
+        {{ content }}
+    </div>
+</div>

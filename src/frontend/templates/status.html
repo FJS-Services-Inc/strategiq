@@ -1,39 +1,46 @@
 {% if messages %}
-<section class="section"
-         id="status-container">
-    <div class="container">
-        {% for message in messages %}
-        {% set is_error = message.startswith('Error:') %}
-        {% set is_loading = loop.last and not result %}
-        {% set is_tool_message = message.startswith('Using tool') %}
-        <div class="box">
-            {% if is_error %}
-            {% set bg_color = 'danger' %}
-            {% set header_content = 'Error' %}
-            {% set content = message %}
-            {% elif is_loading and "analysis complete" not in message.lower() %}
-            {% set bg_color = 'warning' %}
-            {% set content = message %}
-            {% set header_content = 'In Progress' %}
+<section class="section" id="status-container">
+    <div class="container" style="max-width: 800px;">
+        <div class="status-timeline">
+            {% for message in messages %}
+            {% set is_error = message.startswith('Error:') %}
+            {% set is_loading = loop.last and not result %}
+            {% set is_tool_message = message.startswith('Using tool') %}
+            {% set is_complete = "complete" in message.lower() or "done" in message.lower() %}
 
-            {% elif is_tool_message and "analysis complete" not in message.lower() %}
-            {% set bg_color = 'info '%}
-            {% set header_content, content = message.split(' ', 2)[2].split('...', 1) %}
-
-            {% elif "analyzing..." in message.lower() %}
-            {% set bg_color = 'link' %}
-            {% set content = 'message' %}
-            {% set header_content = "Starting"%}
-            {% else %}
-            {% set bg_color = 'success' %}
-            {% set content = message %}
-            {% set header_content = 'Done!' %}
-            {% endif %}
-            <StatusResult div_class={{ bg_color }}
-                          header_content={{ header_content }}>{{ message }}
-            </StatusResult>
+            <div class="status-item {% if is_error %}status-item--error{% elif is_complete %}status-item--success{% elif is_loading %}status-item--loading{% else %}status-item--info{% endif %}">
+                <div class="status-item__indicator">
+                    {% if is_error %}
+                    <i class="fas fa-circle-xmark"></i>
+                    {% elif is_complete %}
+                    <i class="fas fa-circle-check"></i>
+                    {% elif is_loading %}
+                    <i class="fas fa-circle-notch fa-spin"></i>
+                    {% else %}
+                    <i class="fas fa-circle"></i>
+                    {% endif %}
+                </div>
+                <div class="status-item__content">
+                    <div class="status-item__header">
+                        {% if is_error %}
+                        Error
+                        {% elif is_complete %}
+                        Complete
+                        {% elif is_loading %}
+                        In Progress
+                        {% elif is_tool_message %}
+                        Processing
+                        {% else %}
+                        Status
+                        {% endif %}
+                    </div>
+                    <div class="status-item__message">
+                        {{ message }}
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
         </div>
-        {% endfor %}
     </div>
 </section>
 {% endif %}

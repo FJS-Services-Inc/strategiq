@@ -1,0 +1,16 @@
+{# def
+    title: str = "No Analysis Yet",
+    description: str = "Enter a URL above to get started with your first SWOT analysis",
+    icon: str = "fa-chart-simple"
+#}
+
+<div class="empty-state">
+    <div class="empty-state__content">
+        <div class="empty-state__icon">
+            <i class="fas {{ icon }}"></i>
+        </div>
+        <h3 class="empty-state__title">{{ title }}</h3>
+        <p class="empty-state__description">{{ description }}</p>
+        {{ content }}
+    </div>
+</div>
