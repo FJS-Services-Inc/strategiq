@@ -280,7 +280,7 @@ config:
 # ============================================
 
 # Start Claude with full project context and multi-agent orchestration
-start-claude:
+start-claude *args="":
     @echo "🤖 Starting Claude with Pygentic-AI context..."
     @echo "📋 System Prompt: .claude/system-prompt.md (Multi-agent orchestration)"
     @echo "📖 Project Context: CLAUDE.md (Initialization guide)"
@@ -302,9 +302,8 @@ start-claude:
     @echo "  • MCP server routing (Sequential, Context7, Magic, Playwright, Morphllm, Serena)"
     @echo "  • Project architecture and workflows"
     @echo ""
-    @# Note: Actual Claude CLI integration depends on available tooling
-    @# This demonstrates the intended workflow
-    @cat .claude/system-prompt.md CLAUDE.md
+    @echo "🚀 Launching Claude Code CLI..."
+    @echo "   System Prompt: .claude/system-prompt.md"
+    @echo "   Use /init in Claude to load CLAUDE.md context"
     @echo ""
-    @echo "💡 Tip: Use /init command in Claude to load project context"
-    @echo "📝 Available commands: just --list"
+    claude --system-prompt-file .claude/system-prompt.md {{args}}
