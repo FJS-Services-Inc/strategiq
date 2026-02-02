@@ -24,13 +24,17 @@ jobs:
         shell: bash
         run: echo "branch=${GITHUB_HEAD_REF:-${GITHUB_REF#refs/heads/}}" >> $GITHUB_OUTPUT
         id: extract_branch
+      - name: Sanitize branch name for Docker tag
+        shell: bash
+        run: echo "sanitized_branch=$(echo '${{ steps.extract_branch.outputs.branch }}' | sed 's/\//-/g')" >> $GITHUB_OUTPUT
+        id: sanitize_branch
       - name: Set SSH Agent
         uses: webfactory/ssh-agent@v0.9.0
         with:
           ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v3
         with:
@@ -41,6 +45,9 @@ jobs:
           ssh: |
             default=${{ env.SSH_AUTH_SOCK }}
           build-args: |
-            GIT_BRANCH=${{ steps.extract_branch.outputs.branch }}
+            "GIT_BRANCH=${{ steps.extract_branch.outputs.branch }}"
           push: true
-          tags: s3docker.francissecada.com/pygentic_ai:${{ steps.extract_branch.outputs.branch }}.${{ steps.date.outputs.date }}
+          tags: |
+            s3docker.francissecada.com/pygentic_ai:${{ steps.sanitize_branch.outputs.sanitized_branch }}.${{ steps.date.outputs.date }}
+            s3docker.francissecada.com/pygentic_ai:${{ steps.sanitize_branch.outputs.sanitized_branch }}-latest
+          pull: true
