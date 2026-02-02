@@ -43,7 +43,7 @@ async def analyze_competition(
     product_name: str,
     product_description: str,
 ) -> str:
-    """Analyzes the competition for the given product using the Gemini model."""
+    """Analyzes the competition for the given product using the OpenAI model."""
     logger.info(f"Analyzing competition for: {product_name}")
 
     prompt = f"""
