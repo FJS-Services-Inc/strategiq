@@ -13,7 +13,7 @@ RUN echo ${GIT_BRANCH}
 
 RUN mkdir -p -m 0700 ~/.ssh && ssh-keyscan github.com >> ~/.ssh/known_hosts
 ENV WORKDIR="/opt/pygentic_ai"
-RUN --mount=type=ssh git clone -b ${GIT_BRANCH} git@github.com:fsecada01/Pygentic-AI.git ${WORKDIR}
+RUN --mount=type=ssh git clone -b ${GIT_BRANCH} git@github.com:FJS-Services-Inc/Pygentic-AI.git ${WORKDIR}
 #COPY . ${WORKDIR}
 WORKDIR ${WORKDIR}
 
