@@ -2,41 +2,52 @@
 <section class="section"
          id="result-container">
     <div class="container">
-        <h2 class="subtitle is-2">Analysis Complete</h2>
-        <div class="fixed-grid has-1-cols-mobile">
-            <div class="grid">
-                {% for cat, val in result.dict().items() %}
-                {% if not loop.last %}
-                <div class="cell">
-                    {% set panel_class = 'success' if cat == 'strengths' else ('warning' if cat == 'weaknesses' else ('info' if cat == 'opportunities' else 'danger')) %}
-                    {% set i_class = 'fas fa-solid fa-arrow-up' if cat == 'strengths' else ('fas fa-solid fa-arrow-down' if cat == 'weaknesses' else ('fas fa-regular fa-lightbulb' if cat == 'opportunities' else 'fas fa-solid fa-triangle-exclamation')) %}
-                    <div class="panel is-{{ panel_class }}">
-                        <p class="panel-heading">{{ cat.title() }}</p>
-                        <div class="panel-block">
-                            <ul>
-                                {% for value in val %}
-                                <ResultEntry result={{ value }}>
-                                    <i class="{{ i_class }}"></i>
-                                </ResultEntry>
-                                {% endfor %}
-                            </ul>
-                        </div>
+        <h2 class="title is-2 has-text-centered mb-6">Analysis Complete ✨</h2>
+        <div class="swot-grid">
+            {% for cat, val in result.dict().items() %}
+            {% if cat != 'summary' %}
+            {# Determine card class and icon based on category #}
+            {% set card_class = 'strength' if cat == 'strengths' else ('weakness' if cat == 'weaknesses' else ('opportunity' if cat == 'opportunities' else 'threat')) %}
+            {% set icon = 'fa-arrow-trend-up' if cat == 'strengths' else ('fa-arrow-trend-down' if cat == 'weaknesses' else ('fa-lightbulb' if cat == 'opportunities' else 'fa-triangle-exclamation')) %}
+
+            <div class="swot-card swot-card--{{ card_class }}">
+                <div class="swot-card__header">
+                    <div class="swot-card__icon">
+                        <i class="fas {{ icon }}"></i>
                     </div>
+                    <h3 class="swot-card__title">{{ cat.title() }}</h3>
+                    <span class="swot-card__count">{{ val|length }}</span>
                 </div>
-                {% else %}
-                <div class="cell is-col-span-2">
-                    <div class="panel is-primary m-2 p-2">
-                        <p class="panel-heading">{{ cat.title() }}</p>
-                        <div
-                             class="panel-block has-text-justified has-text-weight-light">
-                            {{ val }}
-                        </div>
-                    </div>
+                <div class="swot-card__body">
+                    <ul class="swot-list">
+                        {% for value in val %}
+                        <li class="swot-list__item">
+                            <span class="swot-list__bullet"></span>
+                            <span class="swot-list__text">{{ value }}</span>
+                        </li>
+                        {% endfor %}
+                    </ul>
                 </div>
-                {% endif %}
-                {% endfor %}
+            </div>
+            {% endif %}
+            {% endfor %}
+        </div>
+
+        {# Summary Section #}
+        {% if result.summary %}
+        <div class="box mt-6"
+             style="border-radius: 16px; border-left: 4px solid var(--brand-primary); box-shadow: var(--shadow-lg);">
+            <h3 class="title is-4"
+                style="color: var(--brand-primary);">
+                <i class="fas fa-clipboard-list mr-2"></i>
+                Executive Summary
+            </h3>
+            <div class="content"
+                 style="color: var(--neutral-700); line-height: 1.8;">
+                {{ result.summary }}
             </div>
         </div>
+        {% endif %}
     </div>
 </section>
 {% endif %}

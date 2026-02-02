@@ -1,3 +1,97 @@
+/* ============================================
+   PYGENTIC AI CUSTOM STYLES
+   Brand Colors & Typography System
+   ============================================ */
+
+/* Import Modern Font Stack */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap');
+
+/* ============================================
+   CSS CUSTOM PROPERTIES (CSS Variables)
+   ============================================ */
+
+:root {
+  /* Primary Brand Colors (from purple.svg logo) */
+  --brand-primary: #8B5CF6;
+  --brand-primary-light: #A78BFA;
+  --brand-primary-dark: #7C3AED;
+  --brand-primary-darker: #6D28D9;
+
+  /* Semantic SWOT Colors */
+  --swot-strength: #10B981;
+  --swot-strength-light: #34D399;
+  --swot-weakness: #F59E0B;
+  --swot-weakness-light: #FBBF24;
+  --swot-opportunity: #3B82F6;
+  --swot-opportunity-light: #60A5FA;
+  --swot-threat: #EF4444;
+  --swot-threat-light: #F87171;
+
+  /* Neutral Palette */
+  --neutral-50: #F9FAFB;
+  --neutral-100: #F3F4F6;
+  --neutral-200: #E5E7EB;
+  --neutral-300: #D1D5DB;
+  --neutral-400: #9CA3AF;
+  --neutral-500: #6B7280;
+  --neutral-600: #4B5563;
+  --neutral-700: #374151;
+  --neutral-800: #1F2937;
+  --neutral-900: #111827;
+
+  /* Gradients */
+  --gradient-hero: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  --gradient-hero-alt: linear-gradient(135deg, #8B5CF6 0%, #6D28D9 100%);
+  --gradient-card: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+
+  /* Transitions */
+  --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-base: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 500ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ============================================
+   TYPOGRAPHY
+   ============================================ */
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.title,
+.subtitle,
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Space Grotesk', 'Inter', sans-serif;
+  letter-spacing: -0.02em;
+  font-weight: 600;
+}
+
+/* Hero Title with Gradient */
+.hero-title {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 700;
+  background: var(--gradient-hero-alt);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 1rem;
+  line-height: 1.1;
+}
+
+/* ============================================
+   SPINNER / LOADING STATES
+   ============================================ */
+
 /* Spinner Wrapper with Overlay Effect */
 .spinner-wrapper {
   position: fixed;
@@ -5,36 +99,373 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(255, 255, 255, 0.7); /* Light overlay effect */
+  background-color: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(8px);
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 50;
+  z-index: 9999;
+}
+
+.loading-content {
+  text-align: center;
 }
 
 .loader {
-  border: 4px solid rgba(0, 0, 0, 0.1); /* Light gray */
-  border-top: 4px solid #3273dc; /* Bulma primary color */
+  border: 4px solid rgba(139, 92, 246, 0.1);
+  border-top: 4px solid var(--brand-primary);
   border-radius: 50%;
-  width: 40px;
-  height: 40px;
+  width: 60px;
+  height: 60px;
   animation: spin 0.8s linear infinite;
+  margin: 0 auto;
 }
 
 @keyframes spin {
   from {
     transform: rotate(0deg);
   }
-
   to {
     transform: rotate(360deg);
   }
-
 }
 
-@media (max-width:768px) {
+.loading-text {
+  margin-top: 1.5rem;
+}
+
+.loading-text h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--neutral-900);
+  margin-bottom: 0.5rem;
+}
+
+.loading-text p {
+  font-size: 0.875rem;
+  color: var(--neutral-600);
+}
+
+/* ============================================
+   HERO SECTION ENHANCEMENTS
+   ============================================ */
+
+.gradient-hero {
+  background: var(--gradient-hero) !important;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-icon img {
+  filter: brightness(0) invert(1);
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* ============================================
+   SWOT RESULT CARDS
+   ============================================ */
+
+.swot-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.swot-card {
+  background: white;
+  border-radius: 16px;
+  padding: 1.5rem;
+  box-shadow: var(--shadow-lg);
+  transition: all var(--transition-base);
+  border-top: 4px solid var(--card-color);
+  animation: slideUp 0.5s ease-out backwards;
+}
+
+.swot-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-2xl);
+}
+
+.swot-card--strength {
+  --card-color: var(--swot-strength);
+}
+
+.swot-card--weakness {
+  --card-color: var(--swot-weakness);
+}
+
+.swot-card--opportunity {
+  --card-color: var(--swot-opportunity);
+}
+
+.swot-card--threat {
+  --card-color: var(--swot-threat);
+}
+
+.swot-card__header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--neutral-200);
+}
+
+.swot-card__icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: var(--card-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 1.5rem;
+  flex-shrink: 0;
+}
+
+.swot-card__title {
+  font-weight: 600;
+  font-size: 1.375rem;
+  color: var(--neutral-900);
+  flex-grow: 1;
+  margin: 0;
+}
+
+.swot-card__count {
+  background: var(--neutral-100);
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--neutral-700);
+  flex-shrink: 0;
+}
+
+.swot-card__body {
+  overflow: hidden;
+}
+
+.swot-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.swot-list__item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid var(--neutral-100);
+  animation: fadeIn 0.3s ease-out backwards;
+}
+
+.swot-list__item:last-child {
+  border-bottom: none;
+}
+
+.swot-list__bullet {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--card-color);
+  margin-top: 0.5rem;
+  flex-shrink: 0;
+}
+
+.swot-list__text {
+  flex: 1;
+  color: var(--neutral-700);
+  line-height: 1.6;
+}
+
+/* Stagger animation for list items */
+.swot-list__item:nth-child(1) { animation-delay: 0.1s; }
+.swot-list__item:nth-child(2) { animation-delay: 0.2s; }
+.swot-list__item:nth-child(3) { animation-delay: 0.3s; }
+.swot-list__item:nth-child(4) { animation-delay: 0.4s; }
+.swot-list__item:nth-child(5) { animation-delay: 0.5s; }
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Stagger card animations */
+.swot-card:nth-child(1) { animation-delay: 0.1s; }
+.swot-card:nth-child(2) { animation-delay: 0.2s; }
+.swot-card:nth-child(3) { animation-delay: 0.3s; }
+.swot-card:nth-child(4) { animation-delay: 0.4s; }
+
+/* ============================================
+   SEARCH FORM ENHANCEMENTS
+   ============================================ */
+
+.search-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+.search-form {
+  width: 100%;
+}
+
+.search-input-group {
+  display: flex;
+  align-items: center;
+  background: white;
+  border-radius: 50px;
+  padding: 0.5rem;
+  box-shadow: var(--shadow-xl);
+  transition: all var(--transition-base);
+}
+
+.search-input-group:focus-within {
+  box-shadow: 0 20px 40px rgba(139, 92, 246, 0.2);
+  transform: translateY(-2px);
+}
+
+.search-icon {
+  padding: 0 1rem;
+  color: var(--neutral-400);
+  font-size: 1.25rem;
+}
+
+.search-input {
+  flex: 1;
+  border: none;
+  outline: none;
+  padding: 0.875rem 1rem;
+  font-size: 1rem;
+  background: transparent;
+  color: var(--neutral-900);
+}
+
+.search-input::placeholder {
+  color: var(--neutral-400);
+}
+
+.search-button {
+  background: var(--brand-primary);
+  color: white;
+  border: none;
+  border-radius: 40px;
+  padding: 0.875rem 2rem;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all var(--transition-base);
+  white-space: nowrap;
+}
+
+.search-button:hover {
+  background: var(--brand-primary-dark);
+  transform: translateX(2px);
+  box-shadow: var(--shadow-lg);
+}
+
+.search-button:active {
+  transform: scale(0.98);
+}
+
+.search-help {
+  margin-top: 1rem;
+  text-align: center;
+  color: var(--neutral-600);
+  font-size: 0.875rem;
+}
+
+.search-help i {
+  margin-right: 0.25rem;
+  color: var(--brand-primary);
+}
+
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+
+@media (max-width: 768px) {
   .cell.is-col-span-2 {
     grid-column: span 1;
   }
 
+  .swot-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-title {
+    font-size: 2rem;
+  }
+
+  .search-input-group {
+    flex-direction: column;
+    gap: 0.5rem;
+    border-radius: 20px;
+    padding: 1rem;
+  }
+
+  .search-input {
+    width: 100%;
+    text-align: center;
+  }
+
+  .search-button {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .swot-card__header {
+    flex-wrap: wrap;
+  }
+
+  .swot-card__count {
+    order: -1;
+    margin-left: auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .swot-card {
+    padding: 1rem;
+  }
+
+  .swot-card__icon {
+    width: 40px;
+    height: 40px;
+    font-size: 1.25rem;
+  }
+
+  .swot-card__title {
+    font-size: 1.125rem;
+  }
 }
