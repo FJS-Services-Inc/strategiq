@@ -57,7 +57,6 @@ profile = "black"
 line_length = 80
 
 [tool.uv.sources]
-sqlmodel-crud-utilities = { git = "https://github.com/fsecada01/SQLModel-CRUD-Utilities", rev = "v0.0.1a1" }
 fastapi-debug-toolbar = { git = "https://github.com/fsecada01/fastapi-debug-toolbar.git", rev = "patch-2" }
 #multi_line_output = 3
 #include_trailing_comma = true
