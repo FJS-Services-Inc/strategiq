@@ -1,0 +1,269 @@
+// ============================================
+// LAYOUT
+// Page structure and major sections
+// ============================================
+
+// Hero Section
+// ===================================
+.gradient-hero {
+  background: $gradient-hero !important;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-icon {
+  img {
+    filter: brightness(0) invert(1);
+    animation: float 3s ease-in-out infinite;
+
+    &:hover {
+      animation: float 1s ease-in-out infinite;
+      filter: brightness(0) invert(1) drop-shadow(0 0 20px rgba(255, 255, 255, 0.5));
+    }
+  }
+}
+
+.hero-cta .button {
+  animation: pulse 2s infinite;
+}
+
+// SWOT Cards
+// ===================================
+.swot-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: $spacing-lg;
+  margin-top: $spacing-xl;
+}
+
+.swot-card {
+  background: white;
+  border-radius: $radius-lg;
+  padding: $spacing-lg;
+  box-shadow: $shadow-lg;
+  transition: all $transition-base;
+  border-top: 4px solid var(--card-color);
+  animation: slideUp 0.5s ease-out backwards;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: $shadow-2xl;
+
+    .swot-card__icon {
+      animation: iconPulse 0.5s ease-out;
+    }
+  }
+
+  // Card variants
+  &--strength {
+    --card-color: #{$swot-strength};
+  }
+
+  &--weakness {
+    --card-color: #{$swot-weakness};
+  }
+
+  &--opportunity {
+    --card-color: #{$swot-opportunity};
+  }
+
+  &--threat {
+    --card-color: #{$swot-threat};
+  }
+}
+
+.swot-card__header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid $neutral-200;
+}
+
+.swot-card__icon {
+  width: 48px;
+  height: 48px;
+  border-radius: $radius-md;
+  background: var(--card-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 1.5rem;
+  flex-shrink: 0;
+}
+
+.swot-card__title {
+  font-weight: 600;
+  font-size: 1.375rem;
+  color: $neutral-900;
+  flex-grow: 1;
+  margin: 0;
+}
+
+.swot-card__count {
+  background: $neutral-100;
+  padding: 0.25rem 0.75rem;
+  border-radius: $radius-xl;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: $neutral-700;
+  flex-shrink: 0;
+}
+
+.swot-card__body {
+  overflow: hidden;
+}
+
+.swot-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.swot-list__item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid $neutral-100;
+  animation: fadeIn 0.3s ease-out backwards;
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  // Stagger animation for list items
+  @for $i from 1 through 10 {
+    &:nth-child(#{$i}) {
+      animation-delay: #{$i * 0.1}s;
+    }
+  }
+}
+
+.swot-list__bullet {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--card-color);
+  margin-top: 0.5rem;
+  flex-shrink: 0;
+}
+
+.swot-list__text {
+  flex: 1;
+  color: $neutral-700;
+  line-height: 1.6;
+}
+
+// Stagger card animations
+@for $i from 1 through 4 {
+  .swot-card:nth-child(#{$i}) {
+    animation-delay: #{$i * 0.1}s;
+  }
+}
+
+// Result container entrance
+#result-container.animate-in {
+  animation: containerFadeIn 0.6s ease-out;
+}
+
+// Status Timeline
+// ===================================
+.status-timeline {
+  position: relative;
+  padding-left: 2rem;
+
+  &::before {
+    content: '';
+    position: absolute;
+    left: 14px;
+    top: 24px;
+    bottom: 24px;
+    width: 2px;
+    background: $neutral-200;
+  }
+}
+
+.status-item {
+  position: relative;
+  padding: 1rem 0 1rem 2rem;
+  animation: statusFadeIn 0.3s ease-out;
+
+  // Status variants
+  &--info {
+    .status-item__indicator,
+    .status-item__header {
+      color: $swot-opportunity;
+    }
+  }
+
+  &--loading {
+    .status-item__indicator,
+    .status-item__header {
+      color: $swot-weakness;
+    }
+
+    .status-item__content {
+      animation: statusPulse 2s ease-in-out infinite;
+    }
+  }
+
+  &--success {
+    .status-item__indicator,
+    .status-item__header {
+      color: $swot-strength;
+    }
+  }
+
+  &--error {
+    .status-item__indicator,
+    .status-item__header {
+      color: $swot-threat;
+    }
+  }
+}
+
+.status-item__indicator {
+  position: absolute;
+  left: 0;
+  top: 1.25rem;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  background: white;
+  box-shadow: 0 0 0 4px white;
+  z-index: 1;
+}
+
+.status-item__content {
+  background: white;
+  border-radius: $radius-md;
+  padding: 1rem 1.25rem;
+  box-shadow: $shadow-md;
+  transition: all $transition-base;
+}
+
+.status-item:hover .status-item__content {
+  box-shadow: $shadow-lg;
+  transform: translateX(4px);
+}
+
+.status-item__header {
+  font-weight: 600;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.5rem;
+}
+
+.status-item__message {
+  color: $neutral-700;
+  line-height: 1.6;
+  font-size: 0.9375rem;
+}

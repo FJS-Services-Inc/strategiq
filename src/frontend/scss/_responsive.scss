@@ -1,0 +1,74 @@
+// ============================================
+// RESPONSIVE DESIGN
+// Mobile-first breakpoints
+// ============================================
+
+// Tablet and below (768px)
+@media (max-width: $breakpoint-tablet) {
+  .cell.is-col-span-2 {
+    grid-column: span 1;
+  }
+
+  .swot-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-title {
+    font-size: 2rem;
+  }
+
+  .search-input-group {
+    flex-direction: column;
+    gap: 0.5rem;
+    border-radius: $radius-xl;
+    padding: 1rem;
+  }
+
+  .search-input {
+    width: 100%;
+    text-align: center;
+  }
+
+  .search-button {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .swot-card__header {
+    flex-wrap: wrap;
+  }
+
+  .swot-card__count {
+    order: -1;
+    margin-left: auto;
+  }
+}
+
+// Mobile (480px)
+@media (max-width: $breakpoint-mobile) {
+  .swot-card {
+    padding: 1rem;
+  }
+
+  .swot-card__icon {
+    width: 40px;
+    height: 40px;
+    font-size: 1.25rem;
+  }
+
+  .swot-card__title {
+    font-size: 1.125rem;
+  }
+
+  .hero-title {
+    font-size: 1.75rem;
+  }
+
+  .status-timeline {
+    padding-left: 1.5rem;
+  }
+
+  .status-item {
+    padding-left: 1.5rem;
+  }
+}

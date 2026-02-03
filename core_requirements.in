@@ -24,6 +24,7 @@ python-decouple
 python-slugify
 psycopg
 pydantic-ai[examples]
+pydantic-settings
 pytz
 redis
 simplejson

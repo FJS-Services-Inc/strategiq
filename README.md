@@ -1,83 +1,103 @@
 <div id="top">
 
-<!-- HEADER STYLE: CLASSIC -->
-<div align="center">
-
-<img src="readmeai/assets/logos/purple.svg" width="30%" style="position: relative; top: 0; right: 0;" alt="Project Logo"/>
+<!-- HEADER STYLE: COMPACT -->
+<img src="src/frontend/static//purple.svg" width="30%" align="left" style="margin-right: 15px">
 
 # PYGENTIC-AI
-
-<em>Empowering AI innovation with seamless asynchronous processing.</em>
+<em></em>
 
 <!-- BADGES -->
-<img src="https://img.shields.io/github/license/fsecada01/Pygentic-AI?style=default&logo=opensourceinitiative&logoColor=white&color=0080ff" alt="license">
-<img src="https://img.shields.io/github/last-commit/fsecada01/Pygentic-AI?style=default&logo=git&logoColor=white&color=0080ff" alt="last-commit">
-<img src="https://img.shields.io/github/languages/top/fsecada01/Pygentic-AI?style=default&color=0080ff" alt="repo-top-language">
-<img src="https://img.shields.io/github/languages/count/fsecada01/Pygentic-AI?style=default&color=0080ff" alt="repo-language-count">
+<img src="https://img.shields.io/github/license/fsecada01/Pygentic-AI?style=plastic&logo=opensourceinitiative&logoColor=white&color=blueviolet" alt="license">
+<img src="https://img.shields.io/github/last-commit/fsecada01/Pygentic-AI?style=plastic&logo=git&logoColor=white&color=blueviolet" alt="last-commit">
+<img src="https://img.shields.io/github/languages/top/fsecada01/Pygentic-AI?style=plastic&color=blueviolet" alt="repo-top-language">
+<img src="https://img.shields.io/github/languages/count/fsecada01/Pygentic-AI?style=plastic&color=blueviolet" alt="repo-language-count">
 
-<!-- default option, no dependency badges. -->
+<em>Built with the tools and technologies:</em>
 
-
-<!-- default option, no dependency badges. -->
-
-</div>
+<img src="https://img.shields.io/badge/Anthropic-191919.svg?style=plastic&logo=Anthropic&logoColor=white" alt="Anthropic">
+<img src="https://img.shields.io/badge/Jinja-B41717.svg?style=plastic&logo=Jinja&logoColor=white" alt="Jinja">
+<img src="https://img.shields.io/badge/Redis-FF4438.svg?style=plastic&logo=Redis&logoColor=white" alt="Redis">
+<img src="https://img.shields.io/badge/SQLAlchemy-D71F00.svg?style=plastic&logo=SQLAlchemy&logoColor=white" alt="SQLAlchemy">
+<img src="https://img.shields.io/badge/TOML-9C4121.svg?style=plastic&logo=TOML&logoColor=white" alt="TOML">
+<img src="https://img.shields.io/badge/tqdm-FFC107.svg?style=plastic&logo=tqdm&logoColor=black" alt="tqdm">
+<img src="https://img.shields.io/badge/Rich-FAE742.svg?style=plastic&logo=Rich&logoColor=black" alt="Rich">
+<img src="https://img.shields.io/badge/GNU%20Bash-4EAA25.svg?style=plastic&logo=GNU-Bash&logoColor=white" alt="GNU%20Bash">
+<img src="https://img.shields.io/badge/Celery-37814A.svg?style=plastic&logo=Celery&logoColor=white" alt="Celery">
 <br>
+<img src="https://img.shields.io/badge/FastAPI-009688.svg?style=plastic&logo=FastAPI&logoColor=white" alt="FastAPI">
+<img src="https://img.shields.io/badge/Docker-2496ED.svg?style=plastic&logo=Docker&logoColor=white" alt="Docker">
+<img src="https://img.shields.io/badge/Python-3776AB.svg?style=plastic&logo=Python&logoColor=white" alt="Python">
+<img src="https://img.shields.io/badge/GitHub%20Actions-2088FF.svg?style=plastic&logo=GitHub-Actions&logoColor=white" alt="GitHub%20Actions">
+<img src="https://img.shields.io/badge/OpenAI-412991.svg?style=plastic&logo=OpenAI&logoColor=white" alt="OpenAI">
+<img src="https://img.shields.io/badge/uv-DE5FE9.svg?style=plastic&logo=uv&logoColor=white" alt="uv">
+<img src="https://img.shields.io/badge/Pydantic-E92063.svg?style=plastic&logo=Pydantic&logoColor=white" alt="Pydantic">
+<img src="https://img.shields.io/badge/YAML-CB171E.svg?style=plastic&logo=YAML&logoColor=white" alt="YAML">
+
+<br clear="left"/>
+
+## ☀️ Table of Contents
+
+1. [☀ ️ Table of Contents](#-table-of-contents)
+2. [🌞 Overview](#-overview)
+3. [🔥 Features](#-features)
+4. [🌅 Project Structure](#-project-structure)
+    4.1. [🌄 Project Index](#-project-index)
+5. [🚀 Getting Started](#-getting-started)
+    5.1. [🌟 Prerequisites](#-prerequisites)
+    5.2. [⚡ Installation](#-installation)
+    5.3. [🔆 Usage](#-usage)
+    5.4. [🌠 Testing](#-testing)
+6. [🌻 Roadmap](#-roadmap)
+7. [🤝 Contributing](#-contributing)
+8. [📜 License](#-license)
+9. [✨ Acknowledgments](#-acknowledgments)
 
 ---
 
-## Table of Contents
+## 🌞 Overview
 
-- [Table of Contents](#table-of-contents)
-- [Overview](#overview)
-- [Features](#features)
-- [Project Structure](#project-structure)
-    - [Project Index](#project-index)
-- [Getting Started](#getting-started)
-    - [Prerequisites](#prerequisites)
-    - [Installation](#installation)
-    - [Usage](#usage)
-    - [Testing](#testing)
-- [Roadmap](#roadmap)
-- [Contributing](#contributing)
-- [License](#license)
-- [Acknowledgments](#acknowledgments)
+**Pygentic-AI** is an AI-powered SWOT analysis platform that transforms any URL into actionable business intelligence. Using advanced language models (Claude, GPT-4), the system scrapes web content, analyzes it through multiple dimensions, and generates comprehensive SWOT analyses with competitive intelligence from Reddit.
+
+### Key Capabilities
+- 🔍 **Intelligent URL Analysis** - Extracts and analyzes content from any web page
+- 🧠 **AI-Powered SWOT** - Generates structured SWOT analysis using Claude/GPT-4
+- 💬 **Reddit Intelligence** - Gathers competitive insights from relevant subreddits
+- ⚡ **Async Processing** - Celery-based task queue for long-running analysis
+- ♿ **Accessible UI** - WCAG 2.1 AA compliant responsive interface
+- 🎨 **Modern Frontend** - SCSS modular architecture with progressive enhancement
 
 ---
 
-## Overview
+## 🔥 Features
 
-Pygentic-AI simplifies project setup and backend operations for developers.
+### AI Analysis Engine
+- Multi-model support (Anthropic Claude, OpenAI GPT-4o-mini)
+- Tool-augmented generation with Reddit intelligence
+- Structured output validation with Pydantic
+- Async task processing with Celery
 
-**Why Pygentic-AI?**
+### User Interface
+- Component-based templates with Jinjax
+- HTMX for progressive enhancement
+- Modular SCSS architecture (7-1 pattern)
+- Full keyboard navigation and screen reader support
+- Progressive loading with real-time status updates
 
-This project automates Python environment setup and dependency management, ensuring a smooth development workflow. The custom logger enhances backend logging efficiency, while the RESTful API server streamlines backend operations.
-
-- **🚀 Automated Python Setup:** Simplify environment configuration and dependency management.
-- **💡 Custom Logger:** Efficient logging with customizable features for backend operations.
-- **🌐 RESTful API Server:** Facilitate seamless backend operations with a robust API server.
-
----
-
-## Features
-
-|      | Component       | Details                              |
-| :--- | :-------------- | :----------------------------------- |
-| ⚙️  | **Architecture**  | <ul><li>Follows a modular architecture with clear separation of concerns</li><li>Utilizes FastAPI for building APIs</li><li>Integrates with SQLAlchemy for database operations</li></ul> |
-| 🔩 | **Code Quality**  | <ul><li>Consistent code style following PEP8 guidelines</li><li>Includes type hints for improved code readability and maintainability</li><li>Uses logging extensively for debugging and monitoring</li></ul> |
-| 📄 | **Documentation** | <ul><li>Comprehensive documentation using Sphinx and reStructuredText</li><li>Includes detailed API documentation using Swagger UI</li><li>README.md provides clear setup and usage instructions</li></ul> |
-| 🔌 | **Integrations**  | <ul><li>Integrates with Celery for asynchronous task processing</li><li>Utilizes Pydantic for data validation and parsing</li><li>Includes integration with OpenTelemetry for observability</li></ul> |
-| 🧩 | **Modularity**    | <ul><li>Organized into reusable modules for easy maintenance and extensibility</li><li>Follows the SOLID principles for better code structure</li><li>Uses dependency injection for decoupling components</li></ul> |
-| 🧪 | **Testing**       | <ul><li>Includes unit tests for critical components using pytest</li><li>Utilizes test fixtures for reusable test setup</li><li>Implements continuous integration with GitHub Actions for automated testing</li></ul> |
-| ⚡️  | **Performance**   | <ul><li>Optimizes database queries using SQLAlchemy ORM</li><li>Utilizes async features for improved concurrency</li><li>Includes caching mechanisms for faster data retrieval</li></ul> |
-| 🛡️ | **Security**      | <ul><li>Follows best practices for handling user authentication and authorization</li><li>Implements input validation to prevent common security vulnerabilities</li><li>Includes security headers and encryption for data protection</li></ul> |
-| 📦 | **Dependencies**  | <ul><li>Uses a wide range of dependencies for various functionalities</li><li>Manages dependencies using pip and uv for locking versions</li><li>Includes detailed dependency files for easy reproducibility</li></ul> |
+### Infrastructure
+- Docker containerization with multi-stage builds
+- GitHub Actions CI/CD with Komodo deployment
+- Traefik reverse proxy with Let's Encrypt
+- Health checks and monitoring
+- Environment-based configuration
 
 ---
 
-## Project Structure
+## 🌅 Project Structure
 
 ```sh
 └── Pygentic-AI/
+    ├── .github
+    │   └── workflows
     ├── bin
     │   ├── build.sh
     │   ├── linux_build.sh
@@ -90,18 +110,19 @@ This project automates Python environment setup and dependency management, ensur
     ├── dev_requirements.txt
     ├── docker
     │   ├── celery
-    │   └── ranked_jobs_ms
+    │   └── pygentic_ai
     ├── Dockerfile
     ├── pyproject.toml
     ├── README.md
     ├── src
     │   ├── app.py
     │   ├── backend
-    │   └── cworker.py
+    │   ├── cworker.py
+    │   └── frontend
     └── uv.lock
 ```
 
-### Project Index
+### 🌄 Project Index
 
 <details open>
 	<summary><b><code>PYGENTIC-AI/</code></b></summary>
@@ -120,31 +141,31 @@ This project automates Python environment setup and dependency management, ensur
 			</thead>
 				<tr style='border-bottom: 1px solid #eee;'>
 					<td style='padding: 8px;'><b><a href='https://github.com/fsecada01/Pygentic-AI/blob/master/compose.yaml'>compose.yaml</a></b></td>
-					<td style='padding: 8px;'>- Define services and configurations for web and celery_service containers, including image, resources, ports, environment variables, volumes, labels, health checks, and network settings<br>- Services are deployed with specific memory limits and exposed ports, with web service catering to production and celery_service to staging environments<br>- Traefik is utilized for routing and SSL termination.</td>
+					<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
 				</tr>
 				<tr style='border-bottom: 1px solid #eee;'>
 					<td style='padding: 8px;'><b><a href='https://github.com/fsecada01/Pygentic-AI/blob/master/core_requirements.in'>core_requirements.in</a></b></td>
-					<td style='padding: 8px;'>Define project dependencies and requirements using the core_requirements.in file to ensure seamless integration and functionality across the codebase architecture.</td>
+					<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
 				</tr>
 				<tr style='border-bottom: 1px solid #eee;'>
 					<td style='padding: 8px;'><b><a href='https://github.com/fsecada01/Pygentic-AI/blob/master/core_requirements.txt'>core_requirements.txt</a></b></td>
-					<td style='padding: 8px;'>Generates a compiled list of core requirements for the project, ensuring all necessary dependencies are included for seamless functionality across various modules and components.</td>
+					<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
 				</tr>
 				<tr style='border-bottom: 1px solid #eee;'>
 					<td style='padding: 8px;'><b><a href='https://github.com/fsecada01/Pygentic-AI/blob/master/dev_requirements.in'>dev_requirements.in</a></b></td>
-					<td style='padding: 8px;'>- Enhance development environment by managing dependencies efficiently with dev_requirements.in<br>- This file specifies essential tools like Alembic, Black, and Pre-commit to streamline the development process<br>- Optimize code formatting and debugging with JupyterLab extensions, ensuring a robust and efficient workflow.</td>
+					<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
 				</tr>
 				<tr style='border-bottom: 1px solid #eee;'>
 					<td style='padding: 8px;'><b><a href='https://github.com/fsecada01/Pygentic-AI/blob/master/dev_requirements.txt'>dev_requirements.txt</a></b></td>
-					<td style='padding: 8px;'>- Generate a list of development requirements for the project, outlining dependencies and their versions<br>- The file was auto-generated using uv to compile the dev_requirements.in file<br>- It includes various packages required for development, such as alembic, fastapi, and jupyter-server<br>- Each dependency is specified with its version number for accurate package management.</td>
+					<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
 				</tr>
 				<tr style='border-bottom: 1px solid #eee;'>
 					<td style='padding: 8px;'><b><a href='https://github.com/fsecada01/Pygentic-AI/blob/master/Dockerfile'>Dockerfile</a></b></td>
-					<td style='padding: 8px;'>- Create a Docker image for Pygentic-AI project, setting up necessary environment variables, cloning the project repository, and configuring the workspace<br>- Install dependencies, create user celery, set up directories, and make scripts executable<br>- Finally, build and start the Python application within the designated workspace.</td>
+					<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
 				</tr>
 				<tr style='border-bottom: 1px solid #eee;'>
 					<td style='padding: 8px;'><b><a href='https://github.com/fsecada01/Pygentic-AI/blob/master/pyproject.toml'>pyproject.toml</a></b></td>
-					<td style='padding: 8px;'>- Define linting rules and file exclusions for the project structure in the pyproject.toml file<br>- Ensure code quality by enforcing specific linting standards, excluding unnecessary directories, and setting line length limits<br>- This configuration enhances code readability and maintainability across the codebase.</td>
+					<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
 				</tr>
 			</table>
 		</blockquote>
@@ -164,19 +185,19 @@ This project automates Python environment setup and dependency management, ensur
 			</thead>
 				<tr style='border-bottom: 1px solid #eee;'>
 					<td style='padding: 8px;'><b><a href='https://github.com/fsecada01/Pygentic-AI/blob/master/bin\build.sh'>build.sh</a></b></td>
-					<td style='padding: 8px;'>Update and install project dependencies using the provided build script.</td>
+					<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
 				</tr>
 				<tr style='border-bottom: 1px solid #eee;'>
 					<td style='padding: 8px;'><b><a href='https://github.com/fsecada01/Pygentic-AI/blob/master/bin\linux_build.sh'>linux_build.sh</a></b></td>
-					<td style='padding: 8px;'>- Set up a Linux environment for the project by installing essential dependencies and tools<br>- Ensure a smooth development experience by preparing the system with required packages like build tools, Python 3.13, PostgreSQL, and more<br>- This script streamlines the initial setup process, enabling developers to focus on building the project without worrying about environment configuration.</td>
+					<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
 				</tr>
 				<tr style='border-bottom: 1px solid #eee;'>
 					<td style='padding: 8px;'><b><a href='https://github.com/fsecada01/Pygentic-AI/blob/master/bin\python_build.sh'>python_build.sh</a></b></td>
-					<td style='padding: 8px;'>- Automates Python environment setup and dependency management for the project<br>- Creates a virtual environment, installs necessary packages, and syncs core and development requirements using pip-tools<br>- Facilitates streamlined development workflow by ensuring consistent package versions across environments.</td>
+					<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
 				</tr>
 				<tr style='border-bottom: 1px solid #eee;'>
 					<td style='padding: 8px;'><b><a href='https://github.com/fsecada01/Pygentic-AI/blob/master/bin\start.sh'>start.sh</a></b></td>
-					<td style='padding: 8px;'>- Launches the application using Gunicorn with specified configurations, such as the number of workers, timeout, and port<br>- The script activates the virtual environment and starts the server to handle incoming requests.</td>
+					<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
 				</tr>
 			</table>
 		</blockquote>
@@ -196,11 +217,11 @@ This project automates Python environment setup and dependency management, ensur
 			</thead>
 				<tr style='border-bottom: 1px solid #eee;'>
 					<td style='padding: 8px;'><b><a href='https://github.com/fsecada01/Pygentic-AI/blob/master/src\app.py'>app.py</a></b></td>
-					<td style='padding: 8px;'>- Define exception handlers and mount static files for the FastAPI app using the provided code<br>- Handle validation errors and custom exceptions, logging details and returning appropriate responses<br>- Serve static files from the specified directory for the frontend.</td>
+					<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
 				</tr>
 				<tr style='border-bottom: 1px solid #eee;'>
 					<td style='padding: 8px;'><b><a href='https://github.com/fsecada01/Pygentic-AI/blob/master/src\cworker.py'>cworker.py</a></b></td>
-					<td style='padding: 8px;'>- Improve concurrency by managing worker threads efficiently<br>- This code file in src\cworker.py orchestrates thread creation and execution within the projects architecture.</td>
+					<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
 				</tr>
 			</table>
 			<!-- backend Submodule -->
@@ -218,11 +239,11 @@ This project automates Python environment setup and dependency management, ensur
 					</thead>
 						<tr style='border-bottom: 1px solid #eee;'>
 							<td style='padding: 8px;'><b><a href='https://github.com/fsecada01/Pygentic-AI/blob/master/src\backend\logger.py'>logger.py</a></b></td>
-							<td style='padding: 8px;'>- Implement a custom logger using Loguru for efficient logging in the backend<br>- The logger supports various log levels and customization options, enhancing the logging experience<br>- It includes features like log rotation, retention, and different log formats<br>- The code ensures robust logging functionality for the project.</td>
+							<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
 						</tr>
 						<tr style='border-bottom: 1px solid #eee;'>
 							<td style='padding: 8px;'><b><a href='https://github.com/fsecada01/Pygentic-AI/blob/master/src\backend\utils.py'>utils.py</a></b></td>
-							<td style='padding: 8px;'>- Define utility functions to retrieve database URLs based on environment and fetch values from environment variables or configuration files<br>- The <code>get_db_url</code> function constructs a database URL for different environments, while <code>get_val</code> retrieves values with fallback options<br>- These functions enhance flexibility and maintainability in managing configurations and environment variables.</td>
+							<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
 						</tr>
 					</table>
 					<!-- core Submodule -->
@@ -240,23 +261,23 @@ This project automates Python environment setup and dependency management, ensur
 							</thead>
 								<tr style='border-bottom: 1px solid #eee;'>
 									<td style='padding: 8px;'><b><a href='https://github.com/fsecada01/Pygentic-AI/blob/master/src\backend\core\consts.py'>consts.py</a></b></td>
-									<td style='padding: 8px;'>- Define the AI_MODEL and default_system_prompt for the GPT-4o AI assistant in the consts.py file<br>- The AI_MODEL specifies the model used, while the default_system_prompt outlines the AIs function of generating SWOT analyses.</td>
+									<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
 								</tr>
 								<tr style='border-bottom: 1px solid #eee;'>
 									<td style='padding: 8px;'><b><a href='https://github.com/fsecada01/Pygentic-AI/blob/master/src\backend\core\core.py'>core.py</a></b></td>
-									<td style='padding: 8px;'>- Define a SQLModel and Agent Dependencies for SWOT Analysis, creating a SwotAgent with specified parameters for AI model, system prompt, and retries<br>- This code file in the core module plays a crucial role in structuring and managing SWOT analysis responses within the projects architecture.</td>
+									<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
 								</tr>
 								<tr style='border-bottom: 1px solid #eee;'>
 									<td style='padding: 8px;'><b><a href='https://github.com/fsecada01/Pygentic-AI/blob/master/src\backend\core\main.py'>main.py</a></b></td>
-									<td style='padding: 8px;'>Implement core functionality for backend services in the main.py file.</td>
+									<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
 								</tr>
 								<tr style='border-bottom: 1px solid #eee;'>
 									<td style='padding: 8px;'><b><a href='https://github.com/fsecada01/Pygentic-AI/blob/master/src\backend\core\tools.py'>tools.py</a></b></td>
-									<td style='padding: 8px;'>- Describe how the <code>tools.py</code> file in <code>src\backend\core</code> facilitates fetching website content, analyzing competition using the Gemini model, and obtaining insights from Reddit<br>- The functions within this file leverage various libraries and APIs to perform these tasks efficiently.</td>
+									<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
 								</tr>
 								<tr style='border-bottom: 1px solid #eee;'>
 									<td style='padding: 8px;'><b><a href='https://github.com/fsecada01/Pygentic-AI/blob/master/src\backend\core\utils.py'>utils.py</a></b></td>
-									<td style='padding: 8px;'>- Define a function to report tool usage and results within the projects core architecture<br>- The function checks and updates tool usage history, notifying an update function if available<br>- This contributes to tracking tool usage and ensuring status updates are communicated effectively.</td>
+									<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
 								</tr>
 							</table>
 						</blockquote>
@@ -276,27 +297,27 @@ This project automates Python environment setup and dependency management, ensur
 							</thead>
 								<tr style='border-bottom: 1px solid #eee;'>
 									<td style='padding: 8px;'><b><a href='https://github.com/fsecada01/Pygentic-AI/blob/master/src\backend\db\base.py'>base.py</a></b></td>
-									<td style='padding: 8px;'>- Generate base SQLModel class for project, addressing Pydantic V2.5 issue with <code>__pydantic_extra__</code> attribute<br>- Inherits from SQLModel and sets necessary attributes<br>- Integrated with project metadata and configured for eager defaults.</td>
+									<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
 								</tr>
 								<tr style='border-bottom: 1px solid #eee;'>
 									<td style='padding: 8px;'><b><a href='https://github.com/fsecada01/Pygentic-AI/blob/master/src\backend\db\consts.py'>consts.py</a></b></td>
-									<td style='padding: 8px;'>Define database constants for backend operations in the project structure.</td>
+									<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
 								</tr>
 								<tr style='border-bottom: 1px solid #eee;'>
 									<td style='padding: 8px;'><b><a href='https://github.com/fsecada01/Pygentic-AI/blob/master/src\backend\db\core.py'>core.py</a></b></td>
-									<td style='padding: 8px;'>Manage core database operations for the backend system, ensuring efficient data handling and storage.</td>
+									<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
 								</tr>
 								<tr style='border-bottom: 1px solid #eee;'>
 									<td style='padding: 8px;'><b><a href='https://github.com/fsecada01/Pygentic-AI/blob/master/src\backend\db\db.py'>db.py</a></b></td>
-									<td style='padding: 8px;'>- Create and manage async SQLA sessions, handle database operations, and ensure database schema creation<br>- Includes functions for checking database existence, creating databases, and setting the current schema<br>- Provides utilities for creating database engines and managing database connections<br>- Mainly focuses on database setup and interaction for the project.</td>
+									<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
 								</tr>
 								<tr style='border-bottom: 1px solid #eee;'>
 									<td style='padding: 8px;'><b><a href='https://github.com/fsecada01/Pygentic-AI/blob/master/src\backend\db\main.py'>main.py</a></b></td>
-									<td style='padding: 8px;'>Implement database connection and query functions to manage data persistence for the backend services.</td>
+									<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
 								</tr>
 								<tr style='border-bottom: 1px solid #eee;'>
 									<td style='padding: 8px;'><b><a href='https://github.com/fsecada01/Pygentic-AI/blob/master/src\backend\db\utils.py'>utils.py</a></b></td>
-									<td style='padding: 8px;'>- Enhances database operations by providing utility functions<br>- Facilitates seamless interaction with the database layer.</td>
+									<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
 								</tr>
 							</table>
 						</blockquote>
@@ -316,23 +337,23 @@ This project automates Python environment setup and dependency management, ensur
 							</thead>
 								<tr style='border-bottom: 1px solid #eee;'>
 									<td style='padding: 8px;'><b><a href='https://github.com/fsecada01/Pygentic-AI/blob/master/src\backend\server\consts.py'>consts.py</a></b></td>
-									<td style='padding: 8px;'>Define and store constant values used throughout the backend server architecture.</td>
+									<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
 								</tr>
 								<tr style='border-bottom: 1px solid #eee;'>
 									<td style='padding: 8px;'><b><a href='https://github.com/fsecada01/Pygentic-AI/blob/master/src\backend\server\core.py'>core.py</a></b></td>
-									<td style='padding: 8px;'>Implement core server functionality to handle incoming requests and manage data operations within the backend architecture.</td>
+									<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
 								</tr>
 								<tr style='border-bottom: 1px solid #eee;'>
 									<td style='padding: 8px;'><b><a href='https://github.com/fsecada01/Pygentic-AI/blob/master/src\backend\server\main.py'>main.py</a></b></td>
-									<td style='padding: 8px;'>- Implement a RESTful API server in Python to handle backend operations for the project<br>- The main.py file serves as the entry point for the server, orchestrating requests and responses<br>- It plays a crucial role in managing the communication between the frontend and backend components of the application.</td>
+									<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
 								</tr>
 								<tr style='border-bottom: 1px solid #eee;'>
 									<td style='padding: 8px;'><b><a href='https://github.com/fsecada01/Pygentic-AI/blob/master/src\backend\server\router.py'>router.py</a></b></td>
-									<td style='padding: 8px;'>Define API routes and request handling logic for the backend server.</td>
+									<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
 								</tr>
 								<tr style='border-bottom: 1px solid #eee;'>
 									<td style='padding: 8px;'><b><a href='https://github.com/fsecada01/Pygentic-AI/blob/master/src\backend\server\utils.py'>utils.py</a></b></td>
-									<td style='padding: 8px;'>- Enhances server functionality by providing utility functions<br>- Improves codebase architecture by centralizing common operations<br>- Facilitates streamlined development and maintenance processes<br>- Promotes code reusability and efficiency within the backend server module.</td>
+									<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
 								</tr>
 							</table>
 						</blockquote>
@@ -352,35 +373,35 @@ This project automates Python environment setup and dependency management, ensur
 							</thead>
 								<tr style='border-bottom: 1px solid #eee;'>
 									<td style='padding: 8px;'><b><a href='https://github.com/fsecada01/Pygentic-AI/blob/master/src\backend\settings\backend_options.py'>backend_options.py</a></b></td>
-									<td style='padding: 8px;'>- Generate SQL database connection URLs based on provided configurations for different environments using accepted dialects, including PostgreSQL and SQLite<br>- Import these configurations into the appropriate settings file to integrate with the Django Database settings.</td>
+									<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
 								</tr>
 								<tr style='border-bottom: 1px solid #eee;'>
 									<td style='padding: 8px;'><b><a href='https://github.com/fsecada01/Pygentic-AI/blob/master/src\backend\settings\base.py'>base.py</a></b></td>
-									<td style='padding: 8px;'>Define project settings including backend and frontend directories, database URL, and debug mode in the base settings file.</td>
+									<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
 								</tr>
 								<tr style='border-bottom: 1px solid #eee;'>
 									<td style='padding: 8px;'><b><a href='https://github.com/fsecada01/Pygentic-AI/blob/master/src\backend\settings\consts.py'>consts.py</a></b></td>
-									<td style='padding: 8px;'>Define database dialects and set secret key for project configuration.</td>
+									<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
 								</tr>
 								<tr style='border-bottom: 1px solid #eee;'>
 									<td style='padding: 8px;'><b><a href='https://github.com/fsecada01/Pygentic-AI/blob/master/src\backend\settings\core.py'>core.py</a></b></td>
-									<td style='padding: 8px;'>- Enhances core settings functionality by providing centralized configuration management<br>- Facilitates seamless access and modification of key system parameters<br>- Improves maintainability and scalability of the project by consolidating settings logic.</td>
+									<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
 								</tr>
 								<tr style='border-bottom: 1px solid #eee;'>
 									<td style='padding: 8px;'><b><a href='https://github.com/fsecada01/Pygentic-AI/blob/master/src\backend\settings\dev.py'>dev.py</a></b></td>
-									<td style='padding: 8px;'>Define development settings for backend with local database configuration and debugging enabled.</td>
+									<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
 								</tr>
 								<tr style='border-bottom: 1px solid #eee;'>
 									<td style='padding: 8px;'><b><a href='https://github.com/fsecada01/Pygentic-AI/blob/master/src\backend\settings\main.py'>main.py</a></b></td>
-									<td style='padding: 8px;'>- Enhances backend settings functionality by managing configurations efficiently<br>- Facilitates seamless customization and optimization of settings across the codebase architecture.</td>
+									<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
 								</tr>
 								<tr style='border-bottom: 1px solid #eee;'>
 									<td style='padding: 8px;'><b><a href='https://github.com/fsecada01/Pygentic-AI/blob/master/src\backend\settings\prod.py'>prod.py</a></b></td>
-									<td style='padding: 8px;'>- Define production settings for the backend, including database configuration and debugging options<br>- Extends base settings to inherit common configurations<br>- Centralizes cloud database settings for easy management and maintenance.</td>
+									<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
 								</tr>
 								<tr style='border-bottom: 1px solid #eee;'>
 									<td style='padding: 8px;'><b><a href='https://github.com/fsecada01/Pygentic-AI/blob/master/src\backend\settings\utils.py'>utils.py</a></b></td>
-									<td style='padding: 8px;'>- Enhance backend settings functionality by providing utility functions for the codebase architecture<br>- The <code>utils.py</code> file in the <code>src\backend\settings</code> directory plays a crucial role in enabling streamlined operations and improved performance within the project structure.</td>
+									<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
 								</tr>
 							</table>
 						</blockquote>
@@ -400,27 +421,239 @@ This project automates Python environment setup and dependency management, ensur
 							</thead>
 								<tr style='border-bottom: 1px solid #eee;'>
 									<td style='padding: 8px;'><b><a href='https://github.com/fsecada01/Pygentic-AI/blob/master/src\backend\site\consts.py'>consts.py</a></b></td>
-									<td style='padding: 8px;'>- Define constants and data structures for tracking analysis progress and results in the backend of the site architecture<br>- Includes messages for analysis status, sets for running tasks, and dictionaries for storing status and results.</td>
+									<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
 								</tr>
 								<tr style='border-bottom: 1px solid #eee;'>
 									<td style='padding: 8px;'><b><a href='https://github.com/fsecada01/Pygentic-AI/blob/master/src\backend\site\core.py'>core.py</a></b></td>
-									<td style='padding: 8px;'>Implement core functionality for the site backend, facilitating key operations within the project architecture.</td>
+									<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
 								</tr>
 								<tr style='border-bottom: 1px solid #eee;'>
 									<td style='padding: 8px;'><b><a href='https://github.com/fsecada01/Pygentic-AI/blob/master/src\backend\site\main.py'>main.py</a></b></td>
-									<td style='padding: 8px;'>Improve site performance by caching API responses in the main.py file.</td>
+									<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
 								</tr>
 								<tr style='border-bottom: 1px solid #eee;'>
 									<td style='padding: 8px;'><b><a href='https://github.com/fsecada01/Pygentic-AI/blob/master/src\backend\site\router.py'>router.py</a></b></td>
-									<td style='padding: 8px;'>- Implement a backend API router for a SWOT analysis tool<br>- The router handles URL analysis requests, updates status messages, and provides analysis results<br>- It manages session IDs, progress tracking, and result storage<br>- The code integrates with FastAPI, Starlette, and Jinja2 for web functionality.</td>
+									<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
 								</tr>
 								<tr style='border-bottom: 1px solid #eee;'>
 									<td style='padding: 8px;'><b><a href='https://github.com/fsecada01/Pygentic-AI/blob/master/src\backend\site\utils.py'>utils.py</a></b></td>
-									<td style='padding: 8px;'>- Enhances backend functionality by providing utility functions for the site<br>- This code file in the backend architecture aids in streamlining operations and improving overall performance.</td>
+									<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
 								</tr>
 							</table>
 						</blockquote>
 					</details>
+				</blockquote>
+			</details>
+			<!-- frontend Submodule -->
+			<details>
+				<summary><b>frontend</b></summary>
+				<blockquote>
+					<div class='directory-path' style='padding: 8px 0; color: #666;'>
+						<code><b>⦿ src.frontend</b></code>
+					<!-- templates Submodule -->
+					<details>
+						<summary><b>templates</b></summary>
+						<blockquote>
+							<div class='directory-path' style='padding: 8px 0; color: #666;'>
+								<code><b>⦿ src.frontend.templates</b></code>
+							<table style='width: 100%; border-collapse: collapse;'>
+							<thead>
+								<tr style='background-color: #f8f9fa;'>
+									<th style='width: 30%; text-align: left; padding: 8px;'>File Name</th>
+									<th style='text-align: left; padding: 8px;'>Summary</th>
+								</tr>
+							</thead>
+								<tr style='border-bottom: 1px solid #eee;'>
+									<td style='padding: 8px;'><b><a href='https://github.com/fsecada01/Pygentic-AI/blob/master/src\frontend\templates\home.html'>home.html</a></b></td>
+									<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
+								</tr>
+								<tr style='border-bottom: 1px solid #eee;'>
+									<td style='padding: 8px;'><b><a href='https://github.com/fsecada01/Pygentic-AI/blob/master/src\frontend\templates\result.html'>result.html</a></b></td>
+									<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
+								</tr>
+								<tr style='border-bottom: 1px solid #eee;'>
+									<td style='padding: 8px;'><b><a href='https://github.com/fsecada01/Pygentic-AI/blob/master/src\frontend\templates\status.html'>status.html</a></b></td>
+									<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
+								</tr>
+							</table>
+							<!-- components Submodule -->
+							<details>
+								<summary><b>components</b></summary>
+								<blockquote>
+									<div class='directory-path' style='padding: 8px 0; color: #666;'>
+										<code><b>⦿ src.frontend.templates.components</b></code>
+									<!-- forms Submodule -->
+									<details>
+										<summary><b>forms</b></summary>
+										<blockquote>
+											<div class='directory-path' style='padding: 8px 0; color: #666;'>
+												<code><b>⦿ src.frontend.templates.components.forms</b></code>
+											<table style='width: 100%; border-collapse: collapse;'>
+											<thead>
+												<tr style='background-color: #f8f9fa;'>
+													<th style='width: 30%; text-align: left; padding: 8px;'>File Name</th>
+													<th style='text-align: left; padding: 8px;'>Summary</th>
+												</tr>
+											</thead>
+												<tr style='border-bottom: 1px solid #eee;'>
+													<td style='padding: 8px;'><b><a href='https://github.com/fsecada01/Pygentic-AI/blob/master/src\frontend\templates\components\forms\Form.jinja'>Form.jinja</a></b></td>
+													<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
+												</tr>
+												<tr style='border-bottom: 1px solid #eee;'>
+													<td style='padding: 8px;'><b><a href='https://github.com/fsecada01/Pygentic-AI/blob/master/src\frontend\templates\components\forms\Search.jinja'>Search.jinja</a></b></td>
+													<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
+												</tr>
+											</table>
+										</blockquote>
+									</details>
+									<!-- main Submodule -->
+									<details>
+										<summary><b>main</b></summary>
+										<blockquote>
+											<div class='directory-path' style='padding: 8px 0; color: #666;'>
+												<code><b>⦿ src.frontend.templates.components.main</b></code>
+											<table style='width: 100%; border-collapse: collapse;'>
+											<thead>
+												<tr style='background-color: #f8f9fa;'>
+													<th style='width: 30%; text-align: left; padding: 8px;'>File Name</th>
+													<th style='text-align: left; padding: 8px;'>Summary</th>
+												</tr>
+											</thead>
+												<tr style='border-bottom: 1px solid #eee;'>
+													<td style='padding: 8px;'><b><a href='https://github.com/fsecada01/Pygentic-AI/blob/master/src\frontend\templates\components\main\base.html'>base.html</a></b></td>
+													<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
+												</tr>
+												<tr style='border-bottom: 1px solid #eee;'>
+													<td style='padding: 8px;'><b><a href='https://github.com/fsecada01/Pygentic-AI/blob/master/src\frontend\templates\components\main\Base.jinja'>Base.jinja</a></b></td>
+													<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
+												</tr>
+												<tr style='border-bottom: 1px solid #eee;'>
+													<td style='padding: 8px;'><b><a href='https://github.com/fsecada01/Pygentic-AI/blob/master/src\frontend\templates\components\main\footer.html'>footer.html</a></b></td>
+													<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
+												</tr>
+												<tr style='border-bottom: 1px solid #eee;'>
+													<td style='padding: 8px;'><b><a href='https://github.com/fsecada01/Pygentic-AI/blob/master/src\frontend\templates\components\main\Footer.jinja'>Footer.jinja</a></b></td>
+													<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
+												</tr>
+												<tr style='border-bottom: 1px solid #eee;'>
+													<td style='padding: 8px;'><b><a href='https://github.com/fsecada01/Pygentic-AI/blob/master/src\frontend\templates\components\main\header.html'>header.html</a></b></td>
+													<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
+												</tr>
+												<tr style='border-bottom: 1px solid #eee;'>
+													<td style='padding: 8px;'><b><a href='https://github.com/fsecada01/Pygentic-AI/blob/master/src\frontend\templates\components\main\Header.jinja'>Header.jinja</a></b></td>
+													<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
+												</tr>
+												<tr style='border-bottom: 1px solid #eee;'>
+													<td style='padding: 8px;'><b><a href='https://github.com/fsecada01/Pygentic-AI/blob/master/src\frontend\templates\components\main\nav.html'>nav.html</a></b></td>
+													<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
+												</tr>
+												<tr style='border-bottom: 1px solid #eee;'>
+													<td style='padding: 8px;'><b><a href='https://github.com/fsecada01/Pygentic-AI/blob/master/src\frontend\templates\components\main\Nav.jinja'>Nav.jinja</a></b></td>
+													<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
+												</tr>
+												<tr style='border-bottom: 1px solid #eee;'>
+													<td style='padding: 8px;'><b><a href='https://github.com/fsecada01/Pygentic-AI/blob/master/src\frontend\templates\components\main\Scripts.jinja'>Scripts.jinja</a></b></td>
+													<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
+												</tr>
+												<tr style='border-bottom: 1px solid #eee;'>
+													<td style='padding: 8px;'><b><a href='https://github.com/fsecada01/Pygentic-AI/blob/master/src\frontend\templates\components\main\Stylesheets.jinja'>Stylesheets.jinja</a></b></td>
+													<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
+												</tr>
+												<tr style='border-bottom: 1px solid #eee;'>
+													<td style='padding: 8px;'><b><a href='https://github.com/fsecada01/Pygentic-AI/blob/master/src\frontend\templates\components\main\style_sheets.html'>style_sheets.html</a></b></td>
+													<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
+												</tr>
+											</table>
+										</blockquote>
+									</details>
+									<!-- snippets Submodule -->
+									<details>
+										<summary><b>snippets</b></summary>
+										<blockquote>
+											<div class='directory-path' style='padding: 8px 0; color: #666;'>
+												<code><b>⦿ src.frontend.templates.components.snippets</b></code>
+											<table style='width: 100%; border-collapse: collapse;'>
+											<thead>
+												<tr style='background-color: #f8f9fa;'>
+													<th style='width: 30%; text-align: left; padding: 8px;'>File Name</th>
+													<th style='text-align: left; padding: 8px;'>Summary</th>
+												</tr>
+											</thead>
+												<tr style='border-bottom: 1px solid #eee;'>
+													<td style='padding: 8px;'><b><a href='https://github.com/fsecada01/Pygentic-AI/blob/master/src\frontend\templates\components\snippets\Css.jinja'>Css.jinja</a></b></td>
+													<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
+												</tr>
+												<tr style='border-bottom: 1px solid #eee;'>
+													<td style='padding: 8px;'><b><a href='https://github.com/fsecada01/Pygentic-AI/blob/master/src\frontend\templates\components\snippets\js.html'>js.html</a></b></td>
+													<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
+												</tr>
+												<tr style='border-bottom: 1px solid #eee;'>
+													<td style='padding: 8px;'><b><a href='https://github.com/fsecada01/Pygentic-AI/blob/master/src\frontend\templates\components\snippets\Js.jinja'>Js.jinja</a></b></td>
+													<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
+												</tr>
+												<tr style='border-bottom: 1px solid #eee;'>
+													<td style='padding: 8px;'><b><a href='https://github.com/fsecada01/Pygentic-AI/blob/master/src\frontend\templates\components\snippets\NavbarBrand.jinja'>NavbarBrand.jinja</a></b></td>
+													<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
+												</tr>
+												<tr style='border-bottom: 1px solid #eee;'>
+													<td style='padding: 8px;'><b><a href='https://github.com/fsecada01/Pygentic-AI/blob/master/src\frontend\templates\components\snippets\NavbarMenu.jinja'>NavbarMenu.jinja</a></b></td>
+													<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
+												</tr>
+												<tr style='border-bottom: 1px solid #eee;'>
+													<td style='padding: 8px;'><b><a href='https://github.com/fsecada01/Pygentic-AI/blob/master/src\frontend\templates\components\snippets\Result.jinja'>Result.jinja</a></b></td>
+													<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
+												</tr>
+												<tr style='border-bottom: 1px solid #eee;'>
+													<td style='padding: 8px;'><b><a href='https://github.com/fsecada01/Pygentic-AI/blob/master/src\frontend\templates\components\snippets\ResultEntry.jinja'>ResultEntry.jinja</a></b></td>
+													<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
+												</tr>
+												<tr style='border-bottom: 1px solid #eee;'>
+													<td style='padding: 8px;'><b><a href='https://github.com/fsecada01/Pygentic-AI/blob/master/src\frontend\templates\components\snippets\Spinner.jinja'>Spinner.jinja</a></b></td>
+													<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
+												</tr>
+												<tr style='border-bottom: 1px solid #eee;'>
+													<td style='padding: 8px;'><b><a href='https://github.com/fsecada01/Pygentic-AI/blob/master/src\frontend\templates\components\snippets\StatusResult.jinja'>StatusResult.jinja</a></b></td>
+													<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
+												</tr>
+											</table>
+										</blockquote>
+									</details>
+								</blockquote>
+							</details>
+						</blockquote>
+					</details>
+				</blockquote>
+			</details>
+		</blockquote>
+	</details>
+	<!-- .github Submodule -->
+	<details>
+		<summary><b>.github</b></summary>
+		<blockquote>
+			<div class='directory-path' style='padding: 8px 0; color: #666;'>
+				<code><b>⦿ .github</b></code>
+			<!-- workflows Submodule -->
+			<details>
+				<summary><b>workflows</b></summary>
+				<blockquote>
+					<div class='directory-path' style='padding: 8px 0; color: #666;'>
+						<code><b>⦿ .github.workflows</b></code>
+					<table style='width: 100%; border-collapse: collapse;'>
+					<thead>
+						<tr style='background-color: #f8f9fa;'>
+							<th style='width: 30%; text-align: left; padding: 8px;'>File Name</th>
+							<th style='text-align: left; padding: 8px;'>Summary</th>
+						</tr>
+					</thead>
+						<tr style='border-bottom: 1px solid #eee;'>
+							<td style='padding: 8px;'><b><a href='https://github.com/fsecada01/Pygentic-AI/blob/master/.github\workflows\bandit.yml'>bandit.yml</a></b></td>
+							<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
+						</tr>
+						<tr style='border-bottom: 1px solid #eee;'>
+							<td style='padding: 8px;'><b><a href='https://github.com/fsecada01/Pygentic-AI/blob/master/.github\workflows\docker-image.yml'>docker-image.yml</a></b></td>
+							<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
+						</tr>
+					</table>
 				</blockquote>
 			</details>
 		</blockquote>
@@ -446,17 +679,17 @@ This project automates Python environment setup and dependency management, ensur
 					</thead>
 						<tr style='border-bottom: 1px solid #eee;'>
 							<td style='padding: 8px;'><b><a href='https://github.com/fsecada01/Pygentic-AI/blob/master/docker\celery\start.sh'>start.sh</a></b></td>
-							<td style='padding: 8px;'>- Initiates and manages Celery workers, beat scheduler, and Flower for the projects asynchronous task processing<br>- Handles worker availability checks and starts necessary services within the specified project directory.</td>
+							<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
 						</tr>
 					</table>
 				</blockquote>
 			</details>
-			<!-- ranked_jobs_ms Submodule -->
+			<!-- pygentic_ai Submodule -->
 			<details>
-				<summary><b>ranked_jobs_ms</b></summary>
+				<summary><b>pygentic_ai</b></summary>
 				<blockquote>
 					<div class='directory-path' style='padding: 8px 0; color: #666;'>
-						<code><b>⦿ docker.ranked_jobs_ms</b></code>
+						<code><b>⦿ docker.pygentic_ai</b></code>
 					<table style='width: 100%; border-collapse: collapse;'>
 					<thead>
 						<tr style='background-color: #f8f9fa;'>
@@ -465,16 +698,16 @@ This project automates Python environment setup and dependency management, ensur
 						</tr>
 					</thead>
 						<tr style='border-bottom: 1px solid #eee;'>
-							<td style='padding: 8px;'><b><a href='https://github.com/fsecada01/Pygentic-AI/blob/master/docker\ranked_jobs_ms\build.sh'>build.sh</a></b></td>
-							<td style='padding: 8px;'>- Install necessary dependencies for the ranked jobs microservice in the Docker container<br>- The script sets up essential tools like Python, PostgreSQL, and Git, ensuring a robust environment for the microservice to run smoothly.</td>
+							<td style='padding: 8px;'><b><a href='https://github.com/fsecada01/Pygentic-AI/blob/master/docker\pygentic_ai\build.sh'>build.sh</a></b></td>
+							<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
 						</tr>
 						<tr style='border-bottom: 1px solid #eee;'>
-							<td style='padding: 8px;'><b><a href='https://github.com/fsecada01/Pygentic-AI/blob/master/docker\ranked_jobs_ms\python_build.sh'>python_build.sh</a></b></td>
-							<td style='padding: 8px;'>- Automates Python environment setup and dependency management for the ranked jobs microservice in the Docker architecture<br>- Sets up virtual environment, compiles requirements, and syncs dependencies for smooth execution.</td>
+							<td style='padding: 8px;'><b><a href='https://github.com/fsecada01/Pygentic-AI/blob/master/docker\pygentic_ai\python_build.sh'>python_build.sh</a></b></td>
+							<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
 						</tr>
 						<tr style='border-bottom: 1px solid #eee;'>
-							<td style='padding: 8px;'><b><a href='https://github.com/fsecada01/Pygentic-AI/blob/master/docker\ranked_jobs_ms\python_start.sh'>python_start.sh</a></b></td>
-							<td style='padding: 8px;'>- Launches the Python application using Gunicorn with specified configurations like the number of workers, timeout, and port<br>- The script activates the virtual environment and starts the server to handle incoming requests.</td>
+							<td style='padding: 8px;'><b><a href='https://github.com/fsecada01/Pygentic-AI/blob/master/docker\pygentic_ai\python_start.sh'>python_start.sh</a></b></td>
+							<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
 						</tr>
 					</table>
 				</blockquote>
@@ -485,109 +718,341 @@ This project automates Python environment setup and dependency management, ensur
 
 ---
 
-## Getting Started
+## 🚀 Getting Started
 
-### Prerequisites
+### 🌟 Prerequisites
 
 This project requires the following dependencies:
 
-- **Programming Language:** Python
-- **Package Manager:** Pip, Uv
-- **Container Runtime:** Docker
+- **Programming Language:** Python 3.13+
+- **Package Manager:** [uv](https://docs.astral.sh/uv/) (recommended) or pip
+- **Container Runtime:** Docker & Docker Compose
+- **Task Runner:** [just](https://github.com/casey/just) (command runner)
+- **Node.js:** For frontend asset compilation (npm)
 
-### Installation
+### ⚡ Installation
 
-Build Pygentic-AI from the source and intsall dependencies:
+#### Install just (Task Runner)
+
+**macOS/Linux:**
+```sh
+# macOS
+brew install just
+
+# Linux
+curl --proto '=https' --tlsv1.2 -sSf https://just.systems/install.sh | bash -s -- --to /usr/local/bin
+```
+
+**Windows:**
+```powershell
+# Using Scoop
+scoop install just
+
+# Using Chocolatey
+choco install just
+```
+
+#### Build Pygentic-AI from Source
 
 1. **Clone the repository:**
 
     ```sh
-    ❯ git clone https://github.com/fsecada01/Pygentic-AI
+    git clone https://github.com/FJS-Services-Inc/Pygentic-AI
     ```
 
 2. **Navigate to the project directory:**
 
     ```sh
-    ❯ cd Pygentic-AI
+    cd Pygentic-AI
     ```
 
-3. **Install the dependencies:**
+3. **Quick setup with justfile (recommended):**
+
+    ```sh
+    # One command setup: creates .env, installs deps, compiles SCSS
+    just setup
+    ```
+
+4. **Manual installation (alternative):**
 
 <!-- SHIELDS BADGE CURRENTLY DISABLED -->
-	<!-- [![docker][docker-shield]][docker-link] -->
-	<!-- REFERENCE LINKS -->
-	<!-- [docker-shield]: https://img.shields.io/badge/Docker-2CA5E0.svg?style={badge_style}&logo=docker&logoColor=white -->
-	<!-- [docker-link]: https://www.docker.com/ -->
+<!-- [![docker][docker-shield]][docker-link] -->
+<!-- REFERENCE LINKS -->
+<!-- [docker-shield]: https://img.shields.io/badge/Docker-2CA5E0.svg?style={badge_style}&logo=docker&logoColor=white -->
+<!-- [docker-link]: https://www.docker.com/ -->
 
-	**Using [docker](https://www.docker.com/):**
+**Using [docker](https://www.docker.com/):**
 
 	```sh
 	❯ docker build -t fsecada01/Pygentic-AI .
 	```
-<!-- SHIELDS BADGE CURRENTLY DISABLED -->
-	<!-- [![pip][pip-shield]][pip-link] -->
-	<!-- REFERENCE LINKS -->
-	<!-- [pip-shield]: https://img.shields.io/badge/Pip-3776AB.svg?style={badge_style}&logo=pypi&logoColor=white -->
-	<!-- [pip-link]: https://pypi.org/project/pip/ -->
 
-	**Using [pip](https://pypi.org/project/pip/):**
+<!-- SHIELDS BADGE CURRENTLY DISABLED -->
+<!-- [![pip][pip-shield]][pip-link] -->
+<!-- REFERENCE LINKS -->
+<!-- [pip-shield]: https://img.shields.io/badge/Pip-3776AB.svg?style={badge_style}&logo=pypi&logoColor=white -->
+<!-- [pip-link]: https://pypi.org/project/pip/ -->
+
+**Using [pip](https://pypi.org/project/pip/):**
 
 	```sh
-	❯ pip install -r core_requirements.in, core_requirements.txt, dev_requirements.in, dev_requirements.txt
+	❯ pip install -r core_requirements.txt, dev_requirements.txt
 	```
-<!-- SHIELDS BADGE CURRENTLY DISABLED -->
-	<!-- [![uv][uv-shield]][uv-link] -->
-	<!-- REFERENCE LINKS -->
-	<!-- [uv-shield]: https://img.shields.io/badge/uv-DE5FE9.svg?style=for-the-badge&logo=uv&logoColor=white -->
-	<!-- [uv-link]: https://docs.astral.sh/uv/ -->
+If this fails due to platform-specific issues, try this instead:
 
-	**Using [uv](https://docs.astral.sh/uv/):**
+    ```sh
+    ❯ pip install -r core_requirements.in, dev_requirements.in
+    ```
+
+<!-- SHIELDS BADGE CURRENTLY DISABLED -->
+<!-- [![uv][uv-shield]][uv-link] -->
+<!-- REFERENCE LINKS -->
+<!-- [uv-shield]: https://img.shields.io/badge/uv-DE5FE9.svg?style=for-the-badge&logo=uv&logoColor=white -->
+<!-- [uv-link]: https://docs.astral.sh/uv/ -->
+
+**Using [uv](https://docs.astral.sh/uv/):**
 
 	```sh
 	❯ uv sync --all-extras --dev
 	```
 
+### 🔆 Usage
+
+#### Development Mode
+
+**Quick start (recommended):**
+```sh
+# Terminal 1: Start FastAPI development server
+just dev
+
+# Terminal 2: Start Celery worker
+just celery
+
+# Terminal 3: Auto-compile SCSS on changes
+just scss-watch
+```
+
+**Manual start:**
+```sh
+# Using uv (recommended)
+uv run python src/app.py              # FastAPI server
+uv run python src/cworker.py          # Celery worker
+
+# Using pip
+python src/app.py
+python src/cworker.py
+```
+
+#### Production Mode (Docker)
+
+**With justfile:**
+```sh
+# Build and start all services
+just build
+just up-d
+
+# Check status
+just health
+just ps
+
+# View logs
+just logs-f
+```
+
+**Manual Docker commands:**
+```sh
+# Build image
+docker build -t s3docker.francissecada.com/pygentic_ai:latest .
+
+# Start services
+docker-compose up -d
+
+# View logs
+docker-compose logs -f
+```
+
+#### Available Commands
+
+Run `just` to see all available commands:
+```sh
+just                    # List all commands
+just --list             # Same as above
+
+# Common commands
+just setup             # First-time setup
+just dev               # Development server
+just test              # Run tests
+just build [tag]       # Build Docker image
+just deploy [tag]      # Deploy to production
+just health            # Check service health
+just clean             # Clean up containers
+```
+
+### 🌠 Testing
+
+**Run all tests:**
+```sh
+just test              # Quick test run
+just test-cov          # With coverage report
+```
+
+**Manual testing:**
+```sh
+# Using uv (recommended)
+uv run pytest tests/ -v
+uv run pytest tests/ --cov=src --cov-report=html
+
+# Using pip
+pytest tests/ -v
+```
+
+**Quality checks:**
+```sh
+just lint              # Run linters
+just format            # Format code
+just security          # Security scan
+just check             # All checks (pre-commit)
+```
+
+---
+
+## 🤖 Claude AI Assistance
+
+This project includes a multi-agent orchestration system for Claude AI to assist with development.
+
+### Setup
+
+The project includes two key files for Claude integration:
+
+- **`.claude/system-prompt.md`** - Multi-agent orchestration instructions (personas, MCP routing, patterns)
+- **`CLAUDE.md`** - Project initialization guide (architecture, workflows, commands)
+
+### Available Personas
+
+Claude activates appropriate personas based on the task:
+
+- 🏗️ **Architect** - System design, architecture decisions, scaling
+- 🎨 **Frontend** - UI/UX, SCSS, accessibility, Jinjax components
+- ⚙️ **Backend** - FastAPI, Celery, database, AI agents
+- 🔒 **Security** - Authentication, secrets, input validation
+- 🚀 **DevOps** - Docker, CI/CD, deployment, monitoring
+
 ### Usage
 
-Run the project with:
+```sh
+# View Claude context files
+just start-claude      # Display orchestration context
 
-**Using [docker](https://www.docker.com/):**
-```sh
-docker run -it {image_name}
-```
-**Using [pip](https://pypi.org/project/pip/):**
-```sh
-python {entrypoint}
-```
-**Using [uv](https://docs.astral.sh/uv/):**
-```sh
-uv run python {entrypoint}
+# When using Claude
+# Use /init command to load project context from CLAUDE.md
+# Claude will activate appropriate personas for your task
 ```
 
-### Testing
+### Example Workflows
 
-Pygentic-ai uses the {__test_framework__} test framework. Run the test suite with:
-
-**Using [pip](https://pypi.org/project/pip/):**
-```sh
-pytest
+**Feature Development:**
 ```
-**Using [uv](https://docs.astral.sh/uv/):**
-```sh
-uv run pytest tests/
+User: "Add user authentication"
+Claude: Activates 🏗️ Architect, 🔒 Security, ⚙️ Backend, 🎨 Frontend
+- Designs auth architecture
+- Implements secure endpoints
+- Creates login UI components
+- Updates deployment configs
+```
+
+**Bug Fixing:**
+```
+User: "Fix SCSS compilation error"
+Claude: Activates 🎨 Frontend persona
+- Identifies SCSS syntax issues
+- Runs just scss to verify fix
+- Updates documentation if needed
 ```
 
 ---
 
-## Roadmap
+## 📋 Justfile Command Reference
 
-- [X] **`Task 1`**: <strike>Implement feature one.</strike>
-- [ ] **`Task 2`**: Implement feature two.
-- [ ] **`Task 3`**: Implement feature three.
+Quick reference for common `just` commands:
+
+### Development
+```sh
+just setup              # First-time project setup
+just dev                # Start FastAPI dev server
+just celery             # Start Celery worker
+just scss               # Compile SCSS once
+just scss-watch         # Auto-compile SCSS on changes
+just npm-install        # Install frontend dependencies
+```
+
+### Docker Operations
+```sh
+just build [tag]        # Build Docker image
+just up                 # Start services
+just up-d               # Start in detached mode
+just down               # Stop services
+just restart            # Restart services
+just logs-f             # Follow all logs
+just logs-web           # Follow web service logs
+just logs-celery        # Follow celery logs
+just health             # Check service health
+just ps                 # Show container status
+just stats              # Show resource usage
+```
+
+### Testing & Quality
+```sh
+just test               # Run test suite
+just test-cov           # Run with coverage
+just lint               # Run linters
+just format             # Format code
+just security           # Security scan
+just check              # All quality checks
+```
+
+### Deployment
+```sh
+just deploy [tag]       # Deploy with specific tag
+just deploy-dev         # Deploy dev environment
+just deploy-main        # Deploy production
+just pull [tag]         # Pull Docker image
+```
+
+### Database
+```sh
+just migrate            # Run migrations
+just migration [name]   # Create migration
+```
+
+### Cleanup
+```sh
+just clean              # Remove containers
+just clean-images       # Remove images
+just clean-all          # Full cleanup
+just prune              # Remove unused resources
+```
+
+### Utilities
+```sh
+just info               # Show environment info
+just config             # Show Docker Compose config
+just check-env          # Validate environment variables
+just init-env           # Create .env from template
+```
+
+For a complete list: `just --list`
 
 ---
 
-## Contributing
+## 🌻 Roadmap
+
+- [X] **`Task 1`**: Bootstrap a minimal application build
+- [ ] **`Task 2`**: Implement DB Backend with PostgreSQL
+- [ ] **`Task 3`**: Integrate user auth and group controls
+
+---
+
+## 🤝 Contributing
 
 - **💬 [Join the Discussions](https://github.com/fsecada01/Pygentic-AI/discussions)**: Share your insights, provide feedback, or ask questions.
 - **🐛 [Report Issues](https://github.com/fsecada01/Pygentic-AI/issues)**: Submit bugs found or log feature requests for the `Pygentic-AI` project.
@@ -630,13 +1095,13 @@ uv run pytest tests/
 
 ---
 
-## License
+## 📜 License
 
 Pygentic-ai is protected under the [LICENSE](https://choosealicense.com/licenses) License. For more details, refer to the [LICENSE](https://choosealicense.com/licenses/) file.
 
 ---
 
-## Acknowledgments
+## ✨ Acknowledgments
 
 - Credit `contributors`, `inspiration`, `references`, etc.
 

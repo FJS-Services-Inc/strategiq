@@ -1,32 +1,47 @@
 {% if messages %}
 <section class="section"
-         id="status-container">
-    <div class="container">
-        {% for message in messages %}
-        {% set is_error = message.startswith('Error:') %}
-        {% set is_loading = loop.last and not result %}
-        {% set is_tool_message = message.startswith('Using tool') %}
-        <div class="box">
-            {% if is_error %}
-            {% set bg_color = 'danger' %}
-            {% set header_content, content = message.split('body:', 1) %}
-            {% elif is_loading %}
-            {% set bg_color = 'success' %}
-            {% set content = message %}
-            {% set header_content = 'Complete' %}
-            {% elif is_tool_message %}
-            {% set bg_color = 'dark'%}
-            {% set header_content, content = message.split(' ', 2)[2].split('...', 1) %}
-            {% else %}
-            {% set bg_color = 'info' %}
-            {% set content = message %}
-            {% set header_content = 'In Progress' %}
-            {% endif %}
-            <StatusResult div_class={{ bg_color }}
-                          header_content={{ header_content }}>{{ message }}
-            </StatusResult>
+         id="status-container"
+         role="region"
+         aria-label="Analysis Progress"
+         aria-live="polite">
+    <div class="container"
+         style="max-width: 800px;">
+        <div class="status-timeline"
+             role="feed"
+             aria-label="Status updates">
+            {% for message in messages %}
+            {% set is_error = message.startswith('Error:') %}
+            {% set is_loading = loop.last and not result %}
+            {% set is_tool_message = message.startswith('Using tool') %}
+            {% set is_complete = "complete" in message.lower() or "done" in message.lower() %}
+            {% set status_label = 'Error' if is_error else ('Complete' if is_complete else ('In Progress' if is_loading else ('Processing' if is_tool_message else 'Status'))) %}
+
+            <article class="status-item {% if is_error %}status-item--error{% elif is_complete %}status-item--success{% elif is_loading %}status-item--loading{% else %}status-item--info{% endif %}"
+                     role="article"
+                     aria-label="{{ status_label }}: {{ message }}">
+                <div class="status-item__indicator"
+                     aria-hidden="true">
+                    {% if is_error %}
+                    <i class="fas fa-circle-xmark"></i>
+                    {% elif is_complete %}
+                    <i class="fas fa-circle-check"></i>
+                    {% elif is_loading %}
+                    <i class="fas fa-circle-notch fa-spin"></i>
+                    {% else %}
+                    <i class="fas fa-circle"></i>
+                    {% endif %}
+                </div>
+                <div class="status-item__content">
+                    <div class="status-item__header">
+                        {{ status_label }}
+                    </div>
+                    <div class="status-item__message">
+                        {{ message }}
+                    </div>
+                </div>
+            </article>
+            {% endfor %}
         </div>
-        {% endfor %}
     </div>
 </section>
 {% endif %}

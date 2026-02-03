@@ -1,0 +1,30 @@
+// ============================================
+// TYPOGRAPHY
+// ============================================
+
+body {
+  font-family: $font-body;
+  font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.title,
+.subtitle,
+h1, h2, h3, h4, h5, h6 {
+  font-family: $font-heading;
+  letter-spacing: -0.02em;
+  font-weight: 600;
+}
+
+// Hero Title with Gradient
+.hero-title {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 700;
+  background: $gradient-hero-alt;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 1rem;
+  line-height: 1.1;
+}
