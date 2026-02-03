@@ -76,7 +76,7 @@ swot_agent = Agent(
         provider=OpenAIProvider(api_key=get_val("OPENAI_API_KEY")),
     ),
     deps_type=SwotAgentDeps,
-    result_type=SwotAnalysis,
+    output_type=SwotAnalysis,
     system_prompt=default_system_prompt,
     retries=5,
 )

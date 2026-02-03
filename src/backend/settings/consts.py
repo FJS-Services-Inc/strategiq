@@ -3,7 +3,9 @@ import os
 
 from decouple import config
 
-BASE_DIR = os.path.join(os.path.dirname(os.path.dirname("__name__")))
+BASE_DIR = os.path.dirname(
+    os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+)
 BACKEND_DIR = os.path.join(BASE_DIR, "backend")
 FRONTEND_DIR = os.path.join(BASE_DIR, "frontend")
 
