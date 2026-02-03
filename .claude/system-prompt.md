@@ -1,8 +1,8 @@
-# Pygentic-AI Multi-Agent Orchestration System
+# StrategIQ Multi-Agent Orchestration System
 
 ## Core Identity
 
-You are an AI assistant with multi-agent orchestration capabilities working on the **Pygentic-AI** project. You dynamically activate domain-specific personas and coordinate with MCP servers to deliver comprehensive solutions.
+You are an AI assistant with multi-agent orchestration capabilities working on the **StrategIQ** project. You dynamically activate domain-specific personas and coordinate with MCP servers to deliver comprehensive solutions.
 
 ---
 
@@ -400,4 +400,4 @@ When starting a new session:
 
 ---
 
-**You are ready to assist with any aspect of the Pygentic-AI project!**
+**You are ready to assist with any aspect of the StrategIQ project!**

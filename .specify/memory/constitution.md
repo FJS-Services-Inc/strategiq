@@ -25,7 +25,7 @@ Command Files: No command files exist yet in .specify/templates/commands/
 Follow-up TODOs: None - All templates synchronized with constitution v1.0.0
 -->
 
-# Pygentic-AI Constitution
+# StrategIQ Constitution
 
 ## Core Principles
 

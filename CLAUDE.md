@@ -1,8 +1,8 @@
-# Pygentic-AI - Project Initialization Guide
+# StrategIQ - Project Initialization Guide
 
 ## Project Overview
 
-**Pygentic-AI** is an AI-powered SWOT analysis platform that transforms any URL into actionable business intelligence using generative AI.
+**StrategIQ** is an AI-powered SWOT analysis platform that transforms any URL into actionable business intelligence using generative AI.
 
 ### Core Capabilities
 - **URL Analysis**: Scrapes and analyzes web content from any URL
@@ -242,7 +242,7 @@ just check-env       # Validate environment variables
 
 ## Useful Links
 
-- **Repository**: https://github.com/FJS-Services-Inc/Pygentic-AI
+- **Repository**: https://github.com/FJS-Services-Inc/strategiq
 - **Production**: https://pygenticai.francissecada.com
 - **Registry**: s3docker.francissecada.com/pygentic_ai
 
