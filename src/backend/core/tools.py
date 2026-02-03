@@ -166,7 +166,7 @@ async def get_reddit_insights(
     return "\n".join(insights)
 
 
-@swot_agent.result_validator
+@swot_agent.output_validator
 def validate_result(
     _ctx: RunContext[SwotAgentDeps], value: SwotAnalysis
 ) -> SwotAnalysis:
