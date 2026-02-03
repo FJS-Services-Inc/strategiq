@@ -6,6 +6,7 @@ import openai
 import praw
 from pydantic_ai import Agent
 from pydantic_ai.models.openai import OpenAIModel
+from pydantic_ai.providers.openai import OpenAIProvider
 
 from backend.core.consts import AI_MODEL, default_system_prompt
 from backend.db.base import Base
@@ -70,7 +71,10 @@ class SwotAgentDeps:
 
 
 swot_agent = Agent(
-    OpenAIModel(model_name=AI_MODEL, api_key=get_val("OPENAI_API_KEY")),
+    OpenAIModel(
+        model_name=AI_MODEL,
+        provider=OpenAIProvider(api_key=get_val("OPENAI_API_KEY")),
+    ),
     deps_type=SwotAgentDeps,
     result_type=SwotAnalysis,
     system_prompt=default_system_prompt,
