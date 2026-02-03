@@ -1,13 +1,11 @@
 import enum
-import os
+from pathlib import Path
 
 from decouple import config
 
-BASE_DIR = os.path.dirname(
-    os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-)
-BACKEND_DIR = os.path.join(BASE_DIR, "backend")
-FRONTEND_DIR = os.path.join(BASE_DIR, "frontend")
+BASE_DIR = Path(__file__).resolve().parent.parent.parent
+BACKEND_DIR = BASE_DIR / "backend"
+FRONTEND_DIR = BASE_DIR / "frontend"
 
 
 pg_dialects = [
