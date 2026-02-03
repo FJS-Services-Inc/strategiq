@@ -1,4 +1,4 @@
-# Pygentic-AI Justfile
+# StrategIQ Justfile
 # Task automation for Docker, development, and deployment workflows
 
 # Default recipe - show available commands
@@ -168,13 +168,13 @@ db-reset:
 clean:
     docker-compose -f {{COMPOSE_FILE}} down -v
 
-# Remove all Pygentic-AI Docker images
+# Remove all StrategIQ Docker images
 clean-images:
     docker images {{IMAGE_NAME}} -q | xargs -r docker rmi -f
 
 # Full cleanup - containers, images, volumes
 clean-all: clean clean-images
-    @echo "Cleaned up all Pygentic-AI Docker resources"
+    @echo "Cleaned up all StrategIQ Docker resources"
 
 # Remove unused Docker resources
 prune:
@@ -258,7 +258,7 @@ check: lint test
 
 # Show environment information
 info:
-    @echo "Project: Pygentic-AI"
+    @echo "Project: StrategIQ"
     @echo "Image: {{IMAGE_NAME}}"
     @echo "Compose: {{COMPOSE_FILE}}"
     @echo ""
@@ -281,7 +281,7 @@ config:
 
 # Start Claude with full project context and multi-agent orchestration
 start-claude *args="":
-    @echo "🤖 Starting Claude with Pygentic-AI context..."
+    @echo "🤖 Starting Claude with StrategIQ context..."
     @echo "📋 System Prompt: .claude/system-prompt.md (Multi-agent orchestration)"
     @echo "📖 Project Context: CLAUDE.md (Initialization guide)"
     @echo ""

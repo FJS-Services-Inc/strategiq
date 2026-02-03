@@ -3,14 +3,14 @@
 <!-- HEADER STYLE: COMPACT -->
 <img src="src/frontend/static//purple.svg" width="30%" align="left" style="margin-right: 15px">
 
-# PYGENTIC-AI
+# StrategIQ
 <em></em>
 
 <!-- BADGES -->
-<img src="https://img.shields.io/github/license/fsecada01/Pygentic-AI?style=plastic&logo=opensourceinitiative&logoColor=white&color=blueviolet" alt="license">
-<img src="https://img.shields.io/github/last-commit/fsecada01/Pygentic-AI?style=plastic&logo=git&logoColor=white&color=blueviolet" alt="last-commit">
-<img src="https://img.shields.io/github/languages/top/fsecada01/Pygentic-AI?style=plastic&color=blueviolet" alt="repo-top-language">
-<img src="https://img.shields.io/github/languages/count/fsecada01/Pygentic-AI?style=plastic&color=blueviolet" alt="repo-language-count">
+<img src="https://img.shields.io/github/license/FJS-Services-Inc/strategiq?style=plastic&logo=opensourceinitiative&logoColor=white&color=blueviolet" alt="license">
+<img src="https://img.shields.io/github/last-commit/FJS-Services-Inc/strategiq?style=plastic&logo=git&logoColor=white&color=blueviolet" alt="last-commit">
+<img src="https://img.shields.io/github/languages/top/FJS-Services-Inc/strategiq?style=plastic&color=blueviolet" alt="repo-top-language">
+<img src="https://img.shields.io/github/languages/count/FJS-Services-Inc/strategiq?style=plastic&color=blueviolet" alt="repo-language-count">
 
 <em>Built with the tools and technologies:</em>
 
@@ -56,7 +56,7 @@
 
 ## 🌞 Overview
 
-**Pygentic-AI** is an AI-powered SWOT analysis platform that transforms any URL into actionable business intelligence. Using advanced language models (Claude, GPT-4), the system scrapes web content, analyzes it through multiple dimensions, and generates comprehensive SWOT analyses with competitive intelligence from Reddit.
+**StrategIQ** is an AI-powered SWOT analysis platform that transforms any entity — company, URL, or product — into actionable business intelligence. Using advanced language models (Claude, GPT-4) and web-search grounding via Tavily, the system researches, compares, and generates comprehensive SWOT analyses with competitive intelligence from Reddit and the open web.
 
 ### Key Capabilities
 - 🔍 **Intelligent URL Analysis** - Extracts and analyzes content from any web page
@@ -95,7 +95,7 @@
 ## 🌅 Project Structure
 
 ```sh
-└── Pygentic-AI/
+└── strategiq/
     ├── .github
     │   └── workflows
     ├── bin
@@ -125,7 +125,7 @@
 ### 🌄 Project Index
 
 <details open>
-	<summary><b><code>PYGENTIC-AI/</code></b></summary>
+	<summary><b><code>strategiq/</code></b></summary>
 	<!-- __root__ Submodule -->
 	<details>
 		<summary><b>__root__</b></summary>
@@ -140,31 +140,31 @@
 				</tr>
 			</thead>
 				<tr style='border-bottom: 1px solid #eee;'>
-					<td style='padding: 8px;'><b><a href='https://github.com/fsecada01/Pygentic-AI/blob/master/compose.yaml'>compose.yaml</a></b></td>
+					<td style='padding: 8px;'><b><a href='https://github.com/FJS-Services-Inc/strategiq/blob/main/compose.yaml'>compose.yaml</a></b></td>
 					<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
 				</tr>
 				<tr style='border-bottom: 1px solid #eee;'>
-					<td style='padding: 8px;'><b><a href='https://github.com/fsecada01/Pygentic-AI/blob/master/core_requirements.in'>core_requirements.in</a></b></td>
+					<td style='padding: 8px;'><b><a href='https://github.com/FJS-Services-Inc/strategiq/blob/main/core_requirements.in'>core_requirements.in</a></b></td>
 					<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
 				</tr>
 				<tr style='border-bottom: 1px solid #eee;'>
-					<td style='padding: 8px;'><b><a href='https://github.com/fsecada01/Pygentic-AI/blob/master/core_requirements.txt'>core_requirements.txt</a></b></td>
+					<td style='padding: 8px;'><b><a href='https://github.com/FJS-Services-Inc/strategiq/blob/main/core_requirements.txt'>core_requirements.txt</a></b></td>
 					<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
 				</tr>
 				<tr style='border-bottom: 1px solid #eee;'>
-					<td style='padding: 8px;'><b><a href='https://github.com/fsecada01/Pygentic-AI/blob/master/dev_requirements.in'>dev_requirements.in</a></b></td>
+					<td style='padding: 8px;'><b><a href='https://github.com/FJS-Services-Inc/strategiq/blob/main/dev_requirements.in'>dev_requirements.in</a></b></td>
 					<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
 				</tr>
 				<tr style='border-bottom: 1px solid #eee;'>
-					<td style='padding: 8px;'><b><a href='https://github.com/fsecada01/Pygentic-AI/blob/master/dev_requirements.txt'>dev_requirements.txt</a></b></td>
+					<td style='padding: 8px;'><b><a href='https://github.com/FJS-Services-Inc/strategiq/blob/main/dev_requirements.txt'>dev_requirements.txt</a></b></td>
 					<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
 				</tr>
 				<tr style='border-bottom: 1px solid #eee;'>
-					<td style='padding: 8px;'><b><a href='https://github.com/fsecada01/Pygentic-AI/blob/master/Dockerfile'>Dockerfile</a></b></td>
+					<td style='padding: 8px;'><b><a href='https://github.com/FJS-Services-Inc/strategiq/blob/main/Dockerfile'>Dockerfile</a></b></td>
 					<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
 				</tr>
 				<tr style='border-bottom: 1px solid #eee;'>
-					<td style='padding: 8px;'><b><a href='https://github.com/fsecada01/Pygentic-AI/blob/master/pyproject.toml'>pyproject.toml</a></b></td>
+					<td style='padding: 8px;'><b><a href='https://github.com/FJS-Services-Inc/strategiq/blob/main/pyproject.toml'>pyproject.toml</a></b></td>
 					<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
 				</tr>
 			</table>
@@ -184,19 +184,19 @@
 				</tr>
 			</thead>
 				<tr style='border-bottom: 1px solid #eee;'>
-					<td style='padding: 8px;'><b><a href='https://github.com/fsecada01/Pygentic-AI/blob/master/bin\build.sh'>build.sh</a></b></td>
+					<td style='padding: 8px;'><b><a href='https://github.com/FJS-Services-Inc/strategiq/blob/main/bin\build.sh'>build.sh</a></b></td>
 					<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
 				</tr>
 				<tr style='border-bottom: 1px solid #eee;'>
-					<td style='padding: 8px;'><b><a href='https://github.com/fsecada01/Pygentic-AI/blob/master/bin\linux_build.sh'>linux_build.sh</a></b></td>
+					<td style='padding: 8px;'><b><a href='https://github.com/FJS-Services-Inc/strategiq/blob/main/bin\linux_build.sh'>linux_build.sh</a></b></td>
 					<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
 				</tr>
 				<tr style='border-bottom: 1px solid #eee;'>
-					<td style='padding: 8px;'><b><a href='https://github.com/fsecada01/Pygentic-AI/blob/master/bin\python_build.sh'>python_build.sh</a></b></td>
+					<td style='padding: 8px;'><b><a href='https://github.com/FJS-Services-Inc/strategiq/blob/main/bin\python_build.sh'>python_build.sh</a></b></td>
 					<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
 				</tr>
 				<tr style='border-bottom: 1px solid #eee;'>
-					<td style='padding: 8px;'><b><a href='https://github.com/fsecada01/Pygentic-AI/blob/master/bin\start.sh'>start.sh</a></b></td>
+					<td style='padding: 8px;'><b><a href='https://github.com/FJS-Services-Inc/strategiq/blob/main/bin\start.sh'>start.sh</a></b></td>
 					<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
 				</tr>
 			</table>
@@ -216,11 +216,11 @@
 				</tr>
 			</thead>
 				<tr style='border-bottom: 1px solid #eee;'>
-					<td style='padding: 8px;'><b><a href='https://github.com/fsecada01/Pygentic-AI/blob/master/src\app.py'>app.py</a></b></td>
+					<td style='padding: 8px;'><b><a href='https://github.com/FJS-Services-Inc/strategiq/blob/main/src\app.py'>app.py</a></b></td>
 					<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
 				</tr>
 				<tr style='border-bottom: 1px solid #eee;'>
-					<td style='padding: 8px;'><b><a href='https://github.com/fsecada01/Pygentic-AI/blob/master/src\cworker.py'>cworker.py</a></b></td>
+					<td style='padding: 8px;'><b><a href='https://github.com/FJS-Services-Inc/strategiq/blob/main/src\cworker.py'>cworker.py</a></b></td>
 					<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
 				</tr>
 			</table>
@@ -238,11 +238,11 @@
 						</tr>
 					</thead>
 						<tr style='border-bottom: 1px solid #eee;'>
-							<td style='padding: 8px;'><b><a href='https://github.com/fsecada01/Pygentic-AI/blob/master/src\backend\logger.py'>logger.py</a></b></td>
+							<td style='padding: 8px;'><b><a href='https://github.com/FJS-Services-Inc/strategiq/blob/main/src\backend\logger.py'>logger.py</a></b></td>
 							<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
 						</tr>
 						<tr style='border-bottom: 1px solid #eee;'>
-							<td style='padding: 8px;'><b><a href='https://github.com/fsecada01/Pygentic-AI/blob/master/src\backend\utils.py'>utils.py</a></b></td>
+							<td style='padding: 8px;'><b><a href='https://github.com/FJS-Services-Inc/strategiq/blob/main/src\backend\utils.py'>utils.py</a></b></td>
 							<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
 						</tr>
 					</table>
@@ -260,23 +260,23 @@
 								</tr>
 							</thead>
 								<tr style='border-bottom: 1px solid #eee;'>
-									<td style='padding: 8px;'><b><a href='https://github.com/fsecada01/Pygentic-AI/blob/master/src\backend\core\consts.py'>consts.py</a></b></td>
+									<td style='padding: 8px;'><b><a href='https://github.com/FJS-Services-Inc/strategiq/blob/main/src\backend\core\consts.py'>consts.py</a></b></td>
 									<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
 								</tr>
 								<tr style='border-bottom: 1px solid #eee;'>
-									<td style='padding: 8px;'><b><a href='https://github.com/fsecada01/Pygentic-AI/blob/master/src\backend\core\core.py'>core.py</a></b></td>
+									<td style='padding: 8px;'><b><a href='https://github.com/FJS-Services-Inc/strategiq/blob/main/src\backend\core\core.py'>core.py</a></b></td>
 									<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
 								</tr>
 								<tr style='border-bottom: 1px solid #eee;'>
-									<td style='padding: 8px;'><b><a href='https://github.com/fsecada01/Pygentic-AI/blob/master/src\backend\core\main.py'>main.py</a></b></td>
+									<td style='padding: 8px;'><b><a href='https://github.com/FJS-Services-Inc/strategiq/blob/main/src\backend\core\main.py'>main.py</a></b></td>
 									<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
 								</tr>
 								<tr style='border-bottom: 1px solid #eee;'>
-									<td style='padding: 8px;'><b><a href='https://github.com/fsecada01/Pygentic-AI/blob/master/src\backend\core\tools.py'>tools.py</a></b></td>
+									<td style='padding: 8px;'><b><a href='https://github.com/FJS-Services-Inc/strategiq/blob/main/src\backend\core\tools.py'>tools.py</a></b></td>
 									<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
 								</tr>
 								<tr style='border-bottom: 1px solid #eee;'>
-									<td style='padding: 8px;'><b><a href='https://github.com/fsecada01/Pygentic-AI/blob/master/src\backend\core\utils.py'>utils.py</a></b></td>
+									<td style='padding: 8px;'><b><a href='https://github.com/FJS-Services-Inc/strategiq/blob/main/src\backend\core\utils.py'>utils.py</a></b></td>
 									<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
 								</tr>
 							</table>
@@ -296,27 +296,27 @@
 								</tr>
 							</thead>
 								<tr style='border-bottom: 1px solid #eee;'>
-									<td style='padding: 8px;'><b><a href='https://github.com/fsecada01/Pygentic-AI/blob/master/src\backend\db\base.py'>base.py</a></b></td>
+									<td style='padding: 8px;'><b><a href='https://github.com/FJS-Services-Inc/strategiq/blob/main/src\backend\db\base.py'>base.py</a></b></td>
 									<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
 								</tr>
 								<tr style='border-bottom: 1px solid #eee;'>
-									<td style='padding: 8px;'><b><a href='https://github.com/fsecada01/Pygentic-AI/blob/master/src\backend\db\consts.py'>consts.py</a></b></td>
+									<td style='padding: 8px;'><b><a href='https://github.com/FJS-Services-Inc/strategiq/blob/main/src\backend\db\consts.py'>consts.py</a></b></td>
 									<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
 								</tr>
 								<tr style='border-bottom: 1px solid #eee;'>
-									<td style='padding: 8px;'><b><a href='https://github.com/fsecada01/Pygentic-AI/blob/master/src\backend\db\core.py'>core.py</a></b></td>
+									<td style='padding: 8px;'><b><a href='https://github.com/FJS-Services-Inc/strategiq/blob/main/src\backend\db\core.py'>core.py</a></b></td>
 									<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
 								</tr>
 								<tr style='border-bottom: 1px solid #eee;'>
-									<td style='padding: 8px;'><b><a href='https://github.com/fsecada01/Pygentic-AI/blob/master/src\backend\db\db.py'>db.py</a></b></td>
+									<td style='padding: 8px;'><b><a href='https://github.com/FJS-Services-Inc/strategiq/blob/main/src\backend\db\db.py'>db.py</a></b></td>
 									<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
 								</tr>
 								<tr style='border-bottom: 1px solid #eee;'>
-									<td style='padding: 8px;'><b><a href='https://github.com/fsecada01/Pygentic-AI/blob/master/src\backend\db\main.py'>main.py</a></b></td>
+									<td style='padding: 8px;'><b><a href='https://github.com/FJS-Services-Inc/strategiq/blob/main/src\backend\db\main.py'>main.py</a></b></td>
 									<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
 								</tr>
 								<tr style='border-bottom: 1px solid #eee;'>
-									<td style='padding: 8px;'><b><a href='https://github.com/fsecada01/Pygentic-AI/blob/master/src\backend\db\utils.py'>utils.py</a></b></td>
+									<td style='padding: 8px;'><b><a href='https://github.com/FJS-Services-Inc/strategiq/blob/main/src\backend\db\utils.py'>utils.py</a></b></td>
 									<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
 								</tr>
 							</table>
@@ -336,23 +336,23 @@
 								</tr>
 							</thead>
 								<tr style='border-bottom: 1px solid #eee;'>
-									<td style='padding: 8px;'><b><a href='https://github.com/fsecada01/Pygentic-AI/blob/master/src\backend\server\consts.py'>consts.py</a></b></td>
+									<td style='padding: 8px;'><b><a href='https://github.com/FJS-Services-Inc/strategiq/blob/main/src\backend\server\consts.py'>consts.py</a></b></td>
 									<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
 								</tr>
 								<tr style='border-bottom: 1px solid #eee;'>
-									<td style='padding: 8px;'><b><a href='https://github.com/fsecada01/Pygentic-AI/blob/master/src\backend\server\core.py'>core.py</a></b></td>
+									<td style='padding: 8px;'><b><a href='https://github.com/FJS-Services-Inc/strategiq/blob/main/src\backend\server\core.py'>core.py</a></b></td>
 									<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
 								</tr>
 								<tr style='border-bottom: 1px solid #eee;'>
-									<td style='padding: 8px;'><b><a href='https://github.com/fsecada01/Pygentic-AI/blob/master/src\backend\server\main.py'>main.py</a></b></td>
+									<td style='padding: 8px;'><b><a href='https://github.com/FJS-Services-Inc/strategiq/blob/main/src\backend\server\main.py'>main.py</a></b></td>
 									<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
 								</tr>
 								<tr style='border-bottom: 1px solid #eee;'>
-									<td style='padding: 8px;'><b><a href='https://github.com/fsecada01/Pygentic-AI/blob/master/src\backend\server\router.py'>router.py</a></b></td>
+									<td style='padding: 8px;'><b><a href='https://github.com/FJS-Services-Inc/strategiq/blob/main/src\backend\server\router.py'>router.py</a></b></td>
 									<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
 								</tr>
 								<tr style='border-bottom: 1px solid #eee;'>
-									<td style='padding: 8px;'><b><a href='https://github.com/fsecada01/Pygentic-AI/blob/master/src\backend\server\utils.py'>utils.py</a></b></td>
+									<td style='padding: 8px;'><b><a href='https://github.com/FJS-Services-Inc/strategiq/blob/main/src\backend\server\utils.py'>utils.py</a></b></td>
 									<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
 								</tr>
 							</table>
@@ -372,35 +372,35 @@
 								</tr>
 							</thead>
 								<tr style='border-bottom: 1px solid #eee;'>
-									<td style='padding: 8px;'><b><a href='https://github.com/fsecada01/Pygentic-AI/blob/master/src\backend\settings\backend_options.py'>backend_options.py</a></b></td>
+									<td style='padding: 8px;'><b><a href='https://github.com/FJS-Services-Inc/strategiq/blob/main/src\backend\settings\backend_options.py'>backend_options.py</a></b></td>
 									<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
 								</tr>
 								<tr style='border-bottom: 1px solid #eee;'>
-									<td style='padding: 8px;'><b><a href='https://github.com/fsecada01/Pygentic-AI/blob/master/src\backend\settings\base.py'>base.py</a></b></td>
+									<td style='padding: 8px;'><b><a href='https://github.com/FJS-Services-Inc/strategiq/blob/main/src\backend\settings\base.py'>base.py</a></b></td>
 									<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
 								</tr>
 								<tr style='border-bottom: 1px solid #eee;'>
-									<td style='padding: 8px;'><b><a href='https://github.com/fsecada01/Pygentic-AI/blob/master/src\backend\settings\consts.py'>consts.py</a></b></td>
+									<td style='padding: 8px;'><b><a href='https://github.com/FJS-Services-Inc/strategiq/blob/main/src\backend\settings\consts.py'>consts.py</a></b></td>
 									<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
 								</tr>
 								<tr style='border-bottom: 1px solid #eee;'>
-									<td style='padding: 8px;'><b><a href='https://github.com/fsecada01/Pygentic-AI/blob/master/src\backend\settings\core.py'>core.py</a></b></td>
+									<td style='padding: 8px;'><b><a href='https://github.com/FJS-Services-Inc/strategiq/blob/main/src\backend\settings\core.py'>core.py</a></b></td>
 									<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
 								</tr>
 								<tr style='border-bottom: 1px solid #eee;'>
-									<td style='padding: 8px;'><b><a href='https://github.com/fsecada01/Pygentic-AI/blob/master/src\backend\settings\dev.py'>dev.py</a></b></td>
+									<td style='padding: 8px;'><b><a href='https://github.com/FJS-Services-Inc/strategiq/blob/main/src\backend\settings\dev.py'>dev.py</a></b></td>
 									<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
 								</tr>
 								<tr style='border-bottom: 1px solid #eee;'>
-									<td style='padding: 8px;'><b><a href='https://github.com/fsecada01/Pygentic-AI/blob/master/src\backend\settings\main.py'>main.py</a></b></td>
+									<td style='padding: 8px;'><b><a href='https://github.com/FJS-Services-Inc/strategiq/blob/main/src\backend\settings\main.py'>main.py</a></b></td>
 									<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
 								</tr>
 								<tr style='border-bottom: 1px solid #eee;'>
-									<td style='padding: 8px;'><b><a href='https://github.com/fsecada01/Pygentic-AI/blob/master/src\backend\settings\prod.py'>prod.py</a></b></td>
+									<td style='padding: 8px;'><b><a href='https://github.com/FJS-Services-Inc/strategiq/blob/main/src\backend\settings\prod.py'>prod.py</a></b></td>
 									<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
 								</tr>
 								<tr style='border-bottom: 1px solid #eee;'>
-									<td style='padding: 8px;'><b><a href='https://github.com/fsecada01/Pygentic-AI/blob/master/src\backend\settings\utils.py'>utils.py</a></b></td>
+									<td style='padding: 8px;'><b><a href='https://github.com/FJS-Services-Inc/strategiq/blob/main/src\backend\settings\utils.py'>utils.py</a></b></td>
 									<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
 								</tr>
 							</table>
@@ -420,23 +420,23 @@
 								</tr>
 							</thead>
 								<tr style='border-bottom: 1px solid #eee;'>
-									<td style='padding: 8px;'><b><a href='https://github.com/fsecada01/Pygentic-AI/blob/master/src\backend\site\consts.py'>consts.py</a></b></td>
+									<td style='padding: 8px;'><b><a href='https://github.com/FJS-Services-Inc/strategiq/blob/main/src\backend\site\consts.py'>consts.py</a></b></td>
 									<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
 								</tr>
 								<tr style='border-bottom: 1px solid #eee;'>
-									<td style='padding: 8px;'><b><a href='https://github.com/fsecada01/Pygentic-AI/blob/master/src\backend\site\core.py'>core.py</a></b></td>
+									<td style='padding: 8px;'><b><a href='https://github.com/FJS-Services-Inc/strategiq/blob/main/src\backend\site\core.py'>core.py</a></b></td>
 									<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
 								</tr>
 								<tr style='border-bottom: 1px solid #eee;'>
-									<td style='padding: 8px;'><b><a href='https://github.com/fsecada01/Pygentic-AI/blob/master/src\backend\site\main.py'>main.py</a></b></td>
+									<td style='padding: 8px;'><b><a href='https://github.com/FJS-Services-Inc/strategiq/blob/main/src\backend\site\main.py'>main.py</a></b></td>
 									<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
 								</tr>
 								<tr style='border-bottom: 1px solid #eee;'>
-									<td style='padding: 8px;'><b><a href='https://github.com/fsecada01/Pygentic-AI/blob/master/src\backend\site\router.py'>router.py</a></b></td>
+									<td style='padding: 8px;'><b><a href='https://github.com/FJS-Services-Inc/strategiq/blob/main/src\backend\site\router.py'>router.py</a></b></td>
 									<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
 								</tr>
 								<tr style='border-bottom: 1px solid #eee;'>
-									<td style='padding: 8px;'><b><a href='https://github.com/fsecada01/Pygentic-AI/blob/master/src\backend\site\utils.py'>utils.py</a></b></td>
+									<td style='padding: 8px;'><b><a href='https://github.com/FJS-Services-Inc/strategiq/blob/main/src\backend\site\utils.py'>utils.py</a></b></td>
 									<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
 								</tr>
 							</table>
@@ -464,15 +464,15 @@
 								</tr>
 							</thead>
 								<tr style='border-bottom: 1px solid #eee;'>
-									<td style='padding: 8px;'><b><a href='https://github.com/fsecada01/Pygentic-AI/blob/master/src\frontend\templates\home.html'>home.html</a></b></td>
+									<td style='padding: 8px;'><b><a href='https://github.com/FJS-Services-Inc/strategiq/blob/main/src\frontend\templates\home.html'>home.html</a></b></td>
 									<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
 								</tr>
 								<tr style='border-bottom: 1px solid #eee;'>
-									<td style='padding: 8px;'><b><a href='https://github.com/fsecada01/Pygentic-AI/blob/master/src\frontend\templates\result.html'>result.html</a></b></td>
+									<td style='padding: 8px;'><b><a href='https://github.com/FJS-Services-Inc/strategiq/blob/main/src\frontend\templates\result.html'>result.html</a></b></td>
 									<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
 								</tr>
 								<tr style='border-bottom: 1px solid #eee;'>
-									<td style='padding: 8px;'><b><a href='https://github.com/fsecada01/Pygentic-AI/blob/master/src\frontend\templates\status.html'>status.html</a></b></td>
+									<td style='padding: 8px;'><b><a href='https://github.com/FJS-Services-Inc/strategiq/blob/main/src\frontend\templates\status.html'>status.html</a></b></td>
 									<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
 								</tr>
 							</table>
@@ -496,11 +496,11 @@
 												</tr>
 											</thead>
 												<tr style='border-bottom: 1px solid #eee;'>
-													<td style='padding: 8px;'><b><a href='https://github.com/fsecada01/Pygentic-AI/blob/master/src\frontend\templates\components\forms\Form.jinja'>Form.jinja</a></b></td>
+													<td style='padding: 8px;'><b><a href='https://github.com/FJS-Services-Inc/strategiq/blob/main/src\frontend\templates\components\forms\Form.jinja'>Form.jinja</a></b></td>
 													<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
 												</tr>
 												<tr style='border-bottom: 1px solid #eee;'>
-													<td style='padding: 8px;'><b><a href='https://github.com/fsecada01/Pygentic-AI/blob/master/src\frontend\templates\components\forms\Search.jinja'>Search.jinja</a></b></td>
+													<td style='padding: 8px;'><b><a href='https://github.com/FJS-Services-Inc/strategiq/blob/main/src\frontend\templates\components\forms\Search.jinja'>Search.jinja</a></b></td>
 													<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
 												</tr>
 											</table>
@@ -520,47 +520,47 @@
 												</tr>
 											</thead>
 												<tr style='border-bottom: 1px solid #eee;'>
-													<td style='padding: 8px;'><b><a href='https://github.com/fsecada01/Pygentic-AI/blob/master/src\frontend\templates\components\main\base.html'>base.html</a></b></td>
+													<td style='padding: 8px;'><b><a href='https://github.com/FJS-Services-Inc/strategiq/blob/main/src\frontend\templates\components\main\base.html'>base.html</a></b></td>
 													<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
 												</tr>
 												<tr style='border-bottom: 1px solid #eee;'>
-													<td style='padding: 8px;'><b><a href='https://github.com/fsecada01/Pygentic-AI/blob/master/src\frontend\templates\components\main\Base.jinja'>Base.jinja</a></b></td>
+													<td style='padding: 8px;'><b><a href='https://github.com/FJS-Services-Inc/strategiq/blob/main/src\frontend\templates\components\main\Base.jinja'>Base.jinja</a></b></td>
 													<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
 												</tr>
 												<tr style='border-bottom: 1px solid #eee;'>
-													<td style='padding: 8px;'><b><a href='https://github.com/fsecada01/Pygentic-AI/blob/master/src\frontend\templates\components\main\footer.html'>footer.html</a></b></td>
+													<td style='padding: 8px;'><b><a href='https://github.com/FJS-Services-Inc/strategiq/blob/main/src\frontend\templates\components\main\footer.html'>footer.html</a></b></td>
 													<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
 												</tr>
 												<tr style='border-bottom: 1px solid #eee;'>
-													<td style='padding: 8px;'><b><a href='https://github.com/fsecada01/Pygentic-AI/blob/master/src\frontend\templates\components\main\Footer.jinja'>Footer.jinja</a></b></td>
+													<td style='padding: 8px;'><b><a href='https://github.com/FJS-Services-Inc/strategiq/blob/main/src\frontend\templates\components\main\Footer.jinja'>Footer.jinja</a></b></td>
 													<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
 												</tr>
 												<tr style='border-bottom: 1px solid #eee;'>
-													<td style='padding: 8px;'><b><a href='https://github.com/fsecada01/Pygentic-AI/blob/master/src\frontend\templates\components\main\header.html'>header.html</a></b></td>
+													<td style='padding: 8px;'><b><a href='https://github.com/FJS-Services-Inc/strategiq/blob/main/src\frontend\templates\components\main\header.html'>header.html</a></b></td>
 													<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
 												</tr>
 												<tr style='border-bottom: 1px solid #eee;'>
-													<td style='padding: 8px;'><b><a href='https://github.com/fsecada01/Pygentic-AI/blob/master/src\frontend\templates\components\main\Header.jinja'>Header.jinja</a></b></td>
+													<td style='padding: 8px;'><b><a href='https://github.com/FJS-Services-Inc/strategiq/blob/main/src\frontend\templates\components\main\Header.jinja'>Header.jinja</a></b></td>
 													<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
 												</tr>
 												<tr style='border-bottom: 1px solid #eee;'>
-													<td style='padding: 8px;'><b><a href='https://github.com/fsecada01/Pygentic-AI/blob/master/src\frontend\templates\components\main\nav.html'>nav.html</a></b></td>
+													<td style='padding: 8px;'><b><a href='https://github.com/FJS-Services-Inc/strategiq/blob/main/src\frontend\templates\components\main\nav.html'>nav.html</a></b></td>
 													<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
 												</tr>
 												<tr style='border-bottom: 1px solid #eee;'>
-													<td style='padding: 8px;'><b><a href='https://github.com/fsecada01/Pygentic-AI/blob/master/src\frontend\templates\components\main\Nav.jinja'>Nav.jinja</a></b></td>
+													<td style='padding: 8px;'><b><a href='https://github.com/FJS-Services-Inc/strategiq/blob/main/src\frontend\templates\components\main\Nav.jinja'>Nav.jinja</a></b></td>
 													<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
 												</tr>
 												<tr style='border-bottom: 1px solid #eee;'>
-													<td style='padding: 8px;'><b><a href='https://github.com/fsecada01/Pygentic-AI/blob/master/src\frontend\templates\components\main\Scripts.jinja'>Scripts.jinja</a></b></td>
+													<td style='padding: 8px;'><b><a href='https://github.com/FJS-Services-Inc/strategiq/blob/main/src\frontend\templates\components\main\Scripts.jinja'>Scripts.jinja</a></b></td>
 													<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
 												</tr>
 												<tr style='border-bottom: 1px solid #eee;'>
-													<td style='padding: 8px;'><b><a href='https://github.com/fsecada01/Pygentic-AI/blob/master/src\frontend\templates\components\main\Stylesheets.jinja'>Stylesheets.jinja</a></b></td>
+													<td style='padding: 8px;'><b><a href='https://github.com/FJS-Services-Inc/strategiq/blob/main/src\frontend\templates\components\main\Stylesheets.jinja'>Stylesheets.jinja</a></b></td>
 													<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
 												</tr>
 												<tr style='border-bottom: 1px solid #eee;'>
-													<td style='padding: 8px;'><b><a href='https://github.com/fsecada01/Pygentic-AI/blob/master/src\frontend\templates\components\main\style_sheets.html'>style_sheets.html</a></b></td>
+													<td style='padding: 8px;'><b><a href='https://github.com/FJS-Services-Inc/strategiq/blob/main/src\frontend\templates\components\main\style_sheets.html'>style_sheets.html</a></b></td>
 													<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
 												</tr>
 											</table>
@@ -580,39 +580,39 @@
 												</tr>
 											</thead>
 												<tr style='border-bottom: 1px solid #eee;'>
-													<td style='padding: 8px;'><b><a href='https://github.com/fsecada01/Pygentic-AI/blob/master/src\frontend\templates\components\snippets\Css.jinja'>Css.jinja</a></b></td>
+													<td style='padding: 8px;'><b><a href='https://github.com/FJS-Services-Inc/strategiq/blob/main/src\frontend\templates\components\snippets\Css.jinja'>Css.jinja</a></b></td>
 													<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
 												</tr>
 												<tr style='border-bottom: 1px solid #eee;'>
-													<td style='padding: 8px;'><b><a href='https://github.com/fsecada01/Pygentic-AI/blob/master/src\frontend\templates\components\snippets\js.html'>js.html</a></b></td>
+													<td style='padding: 8px;'><b><a href='https://github.com/FJS-Services-Inc/strategiq/blob/main/src\frontend\templates\components\snippets\js.html'>js.html</a></b></td>
 													<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
 												</tr>
 												<tr style='border-bottom: 1px solid #eee;'>
-													<td style='padding: 8px;'><b><a href='https://github.com/fsecada01/Pygentic-AI/blob/master/src\frontend\templates\components\snippets\Js.jinja'>Js.jinja</a></b></td>
+													<td style='padding: 8px;'><b><a href='https://github.com/FJS-Services-Inc/strategiq/blob/main/src\frontend\templates\components\snippets\Js.jinja'>Js.jinja</a></b></td>
 													<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
 												</tr>
 												<tr style='border-bottom: 1px solid #eee;'>
-													<td style='padding: 8px;'><b><a href='https://github.com/fsecada01/Pygentic-AI/blob/master/src\frontend\templates\components\snippets\NavbarBrand.jinja'>NavbarBrand.jinja</a></b></td>
+													<td style='padding: 8px;'><b><a href='https://github.com/FJS-Services-Inc/strategiq/blob/main/src\frontend\templates\components\snippets\NavbarBrand.jinja'>NavbarBrand.jinja</a></b></td>
 													<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
 												</tr>
 												<tr style='border-bottom: 1px solid #eee;'>
-													<td style='padding: 8px;'><b><a href='https://github.com/fsecada01/Pygentic-AI/blob/master/src\frontend\templates\components\snippets\NavbarMenu.jinja'>NavbarMenu.jinja</a></b></td>
+													<td style='padding: 8px;'><b><a href='https://github.com/FJS-Services-Inc/strategiq/blob/main/src\frontend\templates\components\snippets\NavbarMenu.jinja'>NavbarMenu.jinja</a></b></td>
 													<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
 												</tr>
 												<tr style='border-bottom: 1px solid #eee;'>
-													<td style='padding: 8px;'><b><a href='https://github.com/fsecada01/Pygentic-AI/blob/master/src\frontend\templates\components\snippets\Result.jinja'>Result.jinja</a></b></td>
+													<td style='padding: 8px;'><b><a href='https://github.com/FJS-Services-Inc/strategiq/blob/main/src\frontend\templates\components\snippets\Result.jinja'>Result.jinja</a></b></td>
 													<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
 												</tr>
 												<tr style='border-bottom: 1px solid #eee;'>
-													<td style='padding: 8px;'><b><a href='https://github.com/fsecada01/Pygentic-AI/blob/master/src\frontend\templates\components\snippets\ResultEntry.jinja'>ResultEntry.jinja</a></b></td>
+													<td style='padding: 8px;'><b><a href='https://github.com/FJS-Services-Inc/strategiq/blob/main/src\frontend\templates\components\snippets\ResultEntry.jinja'>ResultEntry.jinja</a></b></td>
 													<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
 												</tr>
 												<tr style='border-bottom: 1px solid #eee;'>
-													<td style='padding: 8px;'><b><a href='https://github.com/fsecada01/Pygentic-AI/blob/master/src\frontend\templates\components\snippets\Spinner.jinja'>Spinner.jinja</a></b></td>
+													<td style='padding: 8px;'><b><a href='https://github.com/FJS-Services-Inc/strategiq/blob/main/src\frontend\templates\components\snippets\Spinner.jinja'>Spinner.jinja</a></b></td>
 													<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
 												</tr>
 												<tr style='border-bottom: 1px solid #eee;'>
-													<td style='padding: 8px;'><b><a href='https://github.com/fsecada01/Pygentic-AI/blob/master/src\frontend\templates\components\snippets\StatusResult.jinja'>StatusResult.jinja</a></b></td>
+													<td style='padding: 8px;'><b><a href='https://github.com/FJS-Services-Inc/strategiq/blob/main/src\frontend\templates\components\snippets\StatusResult.jinja'>StatusResult.jinja</a></b></td>
 													<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
 												</tr>
 											</table>
@@ -646,11 +646,11 @@
 						</tr>
 					</thead>
 						<tr style='border-bottom: 1px solid #eee;'>
-							<td style='padding: 8px;'><b><a href='https://github.com/fsecada01/Pygentic-AI/blob/master/.github\workflows\bandit.yml'>bandit.yml</a></b></td>
+							<td style='padding: 8px;'><b><a href='https://github.com/FJS-Services-Inc/strategiq/blob/main/.github\workflows\bandit.yml'>bandit.yml</a></b></td>
 							<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
 						</tr>
 						<tr style='border-bottom: 1px solid #eee;'>
-							<td style='padding: 8px;'><b><a href='https://github.com/fsecada01/Pygentic-AI/blob/master/.github\workflows\docker-image.yml'>docker-image.yml</a></b></td>
+							<td style='padding: 8px;'><b><a href='https://github.com/FJS-Services-Inc/strategiq/blob/main/.github\workflows\docker-image.yml'>docker-image.yml</a></b></td>
 							<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
 						</tr>
 					</table>
@@ -678,7 +678,7 @@
 						</tr>
 					</thead>
 						<tr style='border-bottom: 1px solid #eee;'>
-							<td style='padding: 8px;'><b><a href='https://github.com/fsecada01/Pygentic-AI/blob/master/docker\celery\start.sh'>start.sh</a></b></td>
+							<td style='padding: 8px;'><b><a href='https://github.com/FJS-Services-Inc/strategiq/blob/main/docker\celery\start.sh'>start.sh</a></b></td>
 							<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
 						</tr>
 					</table>
@@ -698,15 +698,15 @@
 						</tr>
 					</thead>
 						<tr style='border-bottom: 1px solid #eee;'>
-							<td style='padding: 8px;'><b><a href='https://github.com/fsecada01/Pygentic-AI/blob/master/docker\pygentic_ai\build.sh'>build.sh</a></b></td>
+							<td style='padding: 8px;'><b><a href='https://github.com/FJS-Services-Inc/strategiq/blob/main/docker\pygentic_ai\build.sh'>build.sh</a></b></td>
 							<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
 						</tr>
 						<tr style='border-bottom: 1px solid #eee;'>
-							<td style='padding: 8px;'><b><a href='https://github.com/fsecada01/Pygentic-AI/blob/master/docker\pygentic_ai\python_build.sh'>python_build.sh</a></b></td>
+							<td style='padding: 8px;'><b><a href='https://github.com/FJS-Services-Inc/strategiq/blob/main/docker\pygentic_ai\python_build.sh'>python_build.sh</a></b></td>
 							<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
 						</tr>
 						<tr style='border-bottom: 1px solid #eee;'>
-							<td style='padding: 8px;'><b><a href='https://github.com/fsecada01/Pygentic-AI/blob/master/docker\pygentic_ai\python_start.sh'>python_start.sh</a></b></td>
+							<td style='padding: 8px;'><b><a href='https://github.com/FJS-Services-Inc/strategiq/blob/main/docker\pygentic_ai\python_start.sh'>python_start.sh</a></b></td>
 							<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
 						</tr>
 					</table>
@@ -752,18 +752,18 @@ scoop install just
 choco install just
 ```
 
-#### Build Pygentic-AI from Source
+#### Build StrategIQ from Source
 
 1. **Clone the repository:**
 
     ```sh
-    git clone https://github.com/FJS-Services-Inc/Pygentic-AI
+    git clone https://github.com/FJS-Services-Inc/strategiq
     ```
 
 2. **Navigate to the project directory:**
 
     ```sh
-    cd Pygentic-AI
+    cd strategiq
     ```
 
 3. **Quick setup with justfile (recommended):**
@@ -784,7 +784,7 @@ choco install just
 **Using [docker](https://www.docker.com/):**
 
 	```sh
-	❯ docker build -t fsecada01/Pygentic-AI .
+	❯ docker build -t s3docker.francissecada.com/pygentic_ai .
 	```
 
 <!-- SHIELDS BADGE CURRENTLY DISABLED -->
@@ -1054,9 +1054,9 @@ For a complete list: `just --list`
 
 ## 🤝 Contributing
 
-- **💬 [Join the Discussions](https://github.com/fsecada01/Pygentic-AI/discussions)**: Share your insights, provide feedback, or ask questions.
-- **🐛 [Report Issues](https://github.com/fsecada01/Pygentic-AI/issues)**: Submit bugs found or log feature requests for the `Pygentic-AI` project.
-- **💡 [Submit Pull Requests](https://github.com/fsecada01/Pygentic-AI/blob/main/CONTRIBUTING.md)**: Review open PRs, and submit your own PRs.
+- **💬 [Join the Discussions](https://github.com/FJS-Services-Inc/strategiq/discussions)**: Share your insights, provide feedback, or ask questions.
+- **🐛 [Report Issues](https://github.com/FJS-Services-Inc/strategiq/issues)**: Submit bugs found or log feature requests for the `StrategIQ` project.
+- **💡 [Submit Pull Requests](https://github.com/FJS-Services-Inc/strategiq/blob/main/CONTRIBUTING.md)**: Review open PRs, and submit your own PRs.
 
 <details closed>
 <summary>Contributing Guidelines</summary>
@@ -1064,7 +1064,7 @@ For a complete list: `just --list`
 1. **Fork the Repository**: Start by forking the project repository to your github account.
 2. **Clone Locally**: Clone the forked repository to your local machine using a git client.
    ```sh
-   git clone https://github.com/fsecada01/Pygentic-AI
+   git clone https://github.com/FJS-Services-Inc/strategiq
    ```
 3. **Create a New Branch**: Always work on a new branch, giving it a descriptive name.
    ```sh
@@ -1087,8 +1087,8 @@ For a complete list: `just --list`
 <summary>Contributor Graph</summary>
 <br>
 <p align="left">
-   <a href="https://github.com{/fsecada01/Pygentic-AI/}graphs/contributors">
-      <img src="https://contrib.rocks/image?repo=fsecada01/Pygentic-AI">
+   <a href="https://github.com/FJS-Services-Inc/strategiq/graphs/contributors">
+      <img src="https://contrib.rocks/image?repo=FJS-Services-Inc/strategiq">
    </a>
 </p>
 </details>
@@ -1097,7 +1097,7 @@ For a complete list: `just --list`
 
 ## 📜 License
 
-Pygentic-ai is protected under the [LICENSE](https://choosealicense.com/licenses) License. For more details, refer to the [LICENSE](https://choosealicense.com/licenses/) file.
+StrategIQ is protected under the [LICENSE](https://choosealicense.com/licenses) License. For more details, refer to the [LICENSE](https://choosealicense.com/licenses/) file.
 
 ---
 
