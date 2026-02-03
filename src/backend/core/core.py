@@ -16,6 +16,8 @@ from backend.utils import get_val
 class SwotAnalysis(Base):
     """SQLModel for SWOT Analysis Response Object"""
 
+    primary_entity: str
+    comparison_entities: list[str] = []
     strengths: list[str]
     weaknesses: list[str]
     opportunities: list[str]
