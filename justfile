@@ -16,17 +16,17 @@ COMPOSE_FILE := "compose.yaml"
 # Build Docker image with optional tag (default: dev-latest)
 build tag="dev-latest":
     @echo "Building Docker image: {{IMAGE_NAME}}:{{tag}}"
-    docker build --ssh default -t {{IMAGE_NAME}}:{{tag}} .
+    docker build -t {{IMAGE_NAME}}:{{tag}} .
 
-# Build image with custom branch
+# Build image with custom branch tag
 build-branch branch="dev_deploy":
-    @echo "Building from branch: {{branch}}"
-    docker build --ssh default --build-arg GIT_BRANCH={{branch}} -t {{IMAGE_NAME}}:{{branch}}-latest .
+    @echo "Building image with branch tag: {{branch}}"
+    docker build -t {{IMAGE_NAME}}:{{branch}}-latest .
 
 # Build and push image
 build-push tag="dev-latest":
     @echo "Building and pushing: {{IMAGE_NAME}}:{{tag}}"
-    docker build --ssh default -t {{IMAGE_NAME}}:{{tag}} --push .
+    docker build -t {{IMAGE_NAME}}:{{tag}} --push .
 
 # ============================================
 # Docker Compose Commands
