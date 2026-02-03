@@ -12,7 +12,7 @@ services:
     ports:
       - "0.0.0.0:${PORT:-5051}:${INTERNAL_PORT:-5051}"
     env_file:
-      - ./stack.env
+      - ./.env
     environment:
       - PORT=${INTERNAL_PORT:-5051}
       - SERVER_ENV=${SERVER_ENV:-prod}
