@@ -1,38 +1,75 @@
 {% extends "components/main/base.html" %}
 {% block content %}
-<section class="hero is-medium is-info">
+<section class="hero is-large gradient-hero">
     <div class="hero-body">
-        <p class="title">SWOT ANALYZER</p>
-        <p class="subtitle">Strengths, Weaknesses, Opportunities and Threats
-            breakdown, courtesy of Generative AI-driven insights.</p>
-        <p>Try it out now!</p>
+        <div class="container has-text-centered">
+            <div class="hero-icon mb-4">
+                <img src="{{ url_for('static', filename='purple.svg') }}"
+                     alt="Pygentic AI"
+                     style="width: 80px; height: 80px;">
+            </div>
+            <h1 class="hero-title has-text-white">
+                AI-Powered SWOT Analysis
+            </h1>
+            <p class="subtitle has-text-white-bis is-4 mb-5">
+                Uncover strategic insights with generative AI.
+                <br>
+                Transform any URL into actionable business intelligence.
+            </p>
+        </div>
     </div>
 </section>
-<section class="section">
+
+<section class="section"
+         id="search">
     <Spinner></Spinner>
-    <div class="container">
-        <h1 class="title">Search Here</h1>
+    <div class="search-container">
+        <h2 class="title is-3 has-text-centered mb-5">Get Started</h2>
         <Form form_id="swotSearch"
               action={{ url_for('analyze_url') }}
               target="status"
               method="post">
-            <div class="field has-addons">
-                <Search input_type='url'>
-                    <div class="control">
-                        <button type="submit"
-                                class="button is-success"
-                                hx-indicator='#spinner'
-                                hx-on:click="
-                        const [status, result] = ['#status', '#result'].map(id => document.querySelector(id));
+            <div class="search-input-group"
+                 role="search">
+                <span class="search-icon"
+                      aria-hidden="true">
+                    <i class="fas fa-link"></i>
+                </span>
+                <input type="url"
+                       class="search-input"
+                       id="url"
+                       name="url"
+                       placeholder="Enter a URL to analyze (e.g., https://example.com)"
+                       aria-label="Enter URL to analyze"
+                       aria-describedby="search-help"
+                       required
+                       pattern="https?://.+"
+                       autocomplete="url" />
+                <button type="submit"
+                        class="search-button"
+                        aria-label="Analyze URL"
+                        hx-indicator='#spinner'
+                        hx-on:click="
+                        const [status, result, spinner] = ['#status', '#result', '#spinner'].map(id => document.querySelector(id));
+                        spinner.classList.remove('is-hidden');
                         status.style.display = 'block';
                         result.style.display = 'none';
-                        ">Analyze</button>
-                    </div>
-                </Search>
+                        ">
+                    <span class="button-text">Analyze</span>
+                    <span class="button-icon"
+                          aria-hidden="true">
+                        <i class="fas fa-arrow-right"></i>
+                    </span>
+                </button>
+            </div>
         </Form>
-    </div>
+        <div class="search-help">
+            <i class="fas fa-info-circle"></i>
+            We'll analyze the page content and provide strategic insights
+        </div>
     </div>
 </section>
+
 <section class="section"
          id="analysis-content">
     <div class="box"
@@ -50,8 +87,9 @@
          hx-on:after-request="
             if(this.innerHTML.trim().length > 0) {
             console.log('Going to turn off the status element and load the result element.')
-            const statusDiv = document.querySelector('#status');
+            const [statusDiv, spinner] = ['#status', '#spinner'].map(id => document.querySelector(id));
             if (statusDiv) statusDiv.style.display = 'none';
+            if (spinner) spinner.classList.add('is-hidden');
             this.style.display = 'block'
             }
             ">
