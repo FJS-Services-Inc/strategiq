@@ -62,13 +62,16 @@ async def update_status(session_id: str, message: Any) -> None:
     )
 
 
-async def run_agent_with_progress(session_id, url):
+async def run_agent_with_progress(
+    session_id, primary_entity, comparison_entities=None
+):
     """
     This provides ongoing progress updates for a running agent. A custom deps
     object is used to store the session_id value and then triggers the
     `run_agent` function
     :param session_id: str
-    :param url: str
+    :param primary_entity: str
+    :param comparison_entities: list[str] | None
     :return: None
     """
     try:
@@ -80,10 +83,14 @@ async def run_agent_with_progress(session_id, url):
             ),
         )
 
-        result = await run_agent(url=url, deps=deps)
+        result = await run_agent(
+            primary_entity=primary_entity,
+            comparison_entities=comparison_entities,
+            deps=deps,
+        )
 
         if not isinstance(result, Exception):
-            logger.info(f"Successfully analyzed URL: {url}")
+            logger.info(f"Successfully analyzed: {primary_entity}")
             logger.debug(pformat(f"Result object: {result}"))
             result_store[session_id] = result
     except Exception as e:
