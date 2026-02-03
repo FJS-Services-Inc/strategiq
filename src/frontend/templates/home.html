@@ -14,7 +14,7 @@
             <p class="subtitle has-text-white-bis is-4 mb-5">
                 Uncover strategic insights with generative AI.
                 <br>
-                Transform any URL into actionable business intelligence.
+                Compare entities and generate actionable business intelligence.
             </p>
         </div>
     </div>
@@ -33,21 +33,20 @@
                  role="search">
                 <span class="search-icon"
                       aria-hidden="true">
-                    <i class="fas fa-link"></i>
+                    <i class="fas fa-search"></i>
                 </span>
-                <input type="url"
+                <input type="text"
                        class="search-input"
-                       id="url"
-                       name="url"
-                       placeholder="Enter a URL to analyze (e.g., https://example.com)"
-                       aria-label="Enter URL to analyze"
+                       id="primary_entity"
+                       name="primary_entity"
+                       placeholder="Primary entity (e.g., Google or https://google.com)"
+                       aria-label="Enter primary entity — a company name or URL"
                        aria-describedby="search-help"
                        required
-                       pattern="https?://.+"
-                       autocomplete="url" />
+                       autocomplete="off" />
                 <button type="submit"
                         class="search-button"
-                        aria-label="Analyze URL"
+                        aria-label="Run SWOT analysis"
                         hx-indicator='#spinner'
                         hx-on:click="
                         const [status, result, spinner] = ['#status', '#result', '#spinner'].map(id => document.querySelector(id));
@@ -62,10 +61,23 @@
                     </span>
                 </button>
             </div>
+            <div class="comparison-input-group">
+                <span class="comparison-icon"
+                      aria-hidden="true">
+                    <i class="fas fa-code-compare"></i>
+                </span>
+                <input type="text"
+                       class="comparison-input"
+                       id="comparison_entities"
+                       name="comparison_entities"
+                       placeholder="Compare with (optional) — e.g., Yahoo, Bing"
+                       aria-label="Entities to compare against, comma-separated (optional)"
+                       autocomplete="off" />
+            </div>
         </Form>
         <div class="search-help">
             <i class="fas fa-info-circle"></i>
-            We'll analyze the page content and provide strategic insights
+            Enter a company name or URL. Add competitors for a comparative SWOT.
         </div>
     </div>
 </section>

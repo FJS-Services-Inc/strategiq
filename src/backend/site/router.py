@@ -41,11 +41,16 @@ user_frontend.mount(
 
 
 @user_frontend.post("/analyze", response_class=HTMLResponse)
-async def analyze_url(request: Request, url: str = Form(...)) -> HTMLResponse:
+async def analyze_url(
+    request: Request,
+    primary_entity: str = Form(...),
+    comparison_entities: str = Form(""),
+) -> HTMLResponse:
     """
-    Analyze a given URL using SWOT analysis agent
+    Kick off a SWOT analysis for one or more entities.
     :param request:
-    :param url:
+    :param primary_entity: main subject (URL or company name)
+    :param comparison_entities: comma-separated competitors (optional)
     :return:
     """
     session_id = str(id(request))
@@ -58,9 +63,18 @@ async def analyze_url(request: Request, url: str = Form(...)) -> HTMLResponse:
 
     status_store[session_id].append(ANALYZING_MESSAGE)
 
-    logger.info(f"Starting new analysis with session ID: {session_id}")
+    comp_entities = [
+        e.strip() for e in comparison_entities.split(",") if e.strip()
+    ]
 
-    task = asyncio.create_task(run_agent_with_progress(session_id, url))
+    logger.info(
+        f"Starting analysis — session: {session_id}, "
+        f"primary: {primary_entity}, comparing: {comp_entities}"
+    )
+
+    task = asyncio.create_task(
+        run_agent_with_progress(session_id, primary_entity, comp_entities)
+    )
     running_tasks.add(task)
     task.add_done_callback(running_tasks.discard)
 

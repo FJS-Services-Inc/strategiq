@@ -3,6 +3,7 @@ import asyncio
 import httpx
 from bs4 import BeautifulSoup as soup
 from pydantic_ai import ModelRetry, RunContext
+from tavily import TavilyClient
 
 from backend.core.consts import AI_MODEL
 from backend.core.core import SwotAgentDeps, SwotAnalysis, swot_agent
@@ -35,6 +36,43 @@ async def fetch_website_content(
         except httpx.HTTPError as e:
             logger.info(f"Request failed: {e}")
             raise
+
+
+@swot_agent.tool(prepare=report_tool_usage)
+async def search_web(
+    _ctx: RunContext[SwotAgentDeps],
+    query: str,
+) -> str:
+    """
+    Searches the web using Tavily and returns a formatted summary of results.
+    Use this to research companies, products, market trends, or any topic.
+
+    :param _ctx: RunContext[SwotAgentDeps]
+    :param query: str - the search query
+    :return: str - formatted search results with answer and top snippets
+    """
+    logger.info(f"Tavily web search: {query}")
+    client = TavilyClient(api_key=get_val("TAVILY_API_KEY"))
+
+    response = await asyncio.to_thread(
+        client.search,
+        query,
+        include_answer=True,
+        max_results=5,
+    )
+
+    parts = []
+    if response.get("answer"):
+        parts.append(f"Summary: {response['answer']}")
+
+    for r in response.get("results", []):
+        parts.append(
+            f"Title: {r['title']}\n"
+            f"URL: {r['url']}\n"
+            f"Content: {r.get('content', '')}"
+        )
+
+    return "\n\n".join(parts) if parts else "No results found."
 
 
 @swot_agent.tool(prepare=report_tool_usage)
@@ -168,23 +206,46 @@ def validate_result(
 
 
 async def run_agent(
-    url: str,
+    primary_entity: str,
+    comparison_entities: list[str] | None = None,
     deps: SwotAgentDeps = SwotAgentDeps(),
 ) -> SwotAnalysis | Exception:
     """
-    Runs the SWOT Analysis Agent
+    Runs the SWOT Analysis Agent.  When comparison_entities is provided the
+    agent produces a comparative SWOT focused on primary_entity.
 
-    :param url: str
+    :param primary_entity: str - main subject (URL or company name)
+    :param comparison_entities: list[str] | None - entities to compare against
     :param deps: SwotAgentDeps
     :return: SwotAnalysis | Exception
     """
     try:
         deps.tool_history = []
-        result = await swot_agent.run(
-            f"Perform a comprehensive SWOT analysis for this product: {url}",
-            deps=deps,
-        )
-        # logger.debug(f"Agent Result: {pformat(result.data.model_dump())}")
+
+        if comparison_entities:
+            comp_str = ", ".join(comparison_entities)
+            prompt = (
+                f"Perform a comparative SWOT analysis.\n"
+                f"Primary entity: {primary_entity}\n"
+                f"Compare against: {comp_str}\n\n"
+                f"Research every entity with search_web. If any entity "
+                f"looks like a URL, also call fetch_website_content on it.\n"
+                f"The SWOT must centre on {primary_entity} but explicitly "
+                f"contrast it with {comp_str} in each category.\n"
+                f'Set primary_entity to "{primary_entity}" and '
+                f"comparison_entities to {comparison_entities} in your output."
+            )
+        else:
+            prompt = (
+                f"Perform a comprehensive SWOT analysis for: "
+                f"{primary_entity}\n"
+                f"Use search_web to research this entity. If it is a URL, "
+                f"also use fetch_website_content to gather details.\n"
+                f'Set primary_entity to "{primary_entity}" and '
+                f"comparison_entities to an empty list in your output."
+            )
+
+        result = await swot_agent.run(prompt, deps=deps)
 
         if deps.update_status_func:
             await deps.update_status_func(deps.request, "Analysis Complete")
