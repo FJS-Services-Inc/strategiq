@@ -102,13 +102,13 @@
 
     <section class="section"
              id="analysis-content">
-        <!-- Status Updates -->
+        <!-- Status Updates (OOB Swap Target) -->
         <div x-show="analyzing && !hasResults"
              x-transition
              id="status"
              hx-get={{ url_for('get_status') }}
              hx-trigger="every 1s[!document.querySelector('#result-container')]"
-             hx-swap="innerHTML settle:200ms"
+             hx-swap="innerHTML"
              @htmx:after-request="
                const response = $event.detail.xhr.response.trim();
                if (response && response.length > 0) {
