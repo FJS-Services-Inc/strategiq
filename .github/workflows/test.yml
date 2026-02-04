@@ -28,15 +28,13 @@ jobs:
 
       - name: Install dependencies
         run: |
-          uv venv
-          source .venv/bin/activate
-          uv pip install -r core_requirements.txt
-          uv pip install pytest pytest-cov pytest-asyncio httpx
+          uv sync --group test
 
       - name: Run tests
         run: |
-          source .venv/bin/activate
-          pytest --cov=src --cov-report=xml --cov-report=term
+          uv run pytest --cov=src --cov-report=xml --cov-report=term
+        env:
+          PYTHONPATH: src
 
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v4

@@ -63,7 +63,7 @@ fastapi-debug-toolbar = { git = "https://github.com/fsecada01/fastapi-debug-tool
 #force_grid_wrap = 0
 
 [project]
-name = "agentic_ai_service"
+name = "strategiq"
 authors = [
     { name = "Francis Secada", email = "francis.secada@gmail.com" }
 ]
@@ -76,42 +76,80 @@ classifiers = [
 version = "1.0.0b0"
 requires-python = ">=3.13"
 dependencies = [
+    # Core async I/O
     "aiofiles>=24.1.0",
-    "aiomysql>=0.2.0",
-    "celery>=5.4.0",
-    "fastapi>=0.115.7",
+    "aiomysql>=0.3.2",
+
+    # Web framework
+    "fastapi>=0.128.1",
     "fastapi-restful>=0.6.0",
-    "fastcrud>=0.15.5",
-    "flower>=2.0.1",
-    "greenlet>=3.1.1",
+    "fastcrud>=0.21.0",
+    "uvicorn>=0.40.0",
+
+    # WSGI/ASGI servers (platform-specific)
     "gunicorn>=25.0.1 ; sys_platform != 'win32'",
-    "html5lib>=1.1",
-    "httpx-html>=0.11.0.dev0",
-    "httpx[socks]>=0.28.1",
-    "hypercorn>=0.17.3 ; sys_platform == 'win32'",
-    "itsdangerous>=2.2.0",
-    "jinjax>=0.48",
-    "loguru>=0.7.3",
-    "lxml[html-clean]>=5.3.0",
-    "openai>=1.60.0",
-    "praw>=7.8.1",
-    "tavily-python>=0.7.0",
-    "psycopg>=3.2.4",
-    "pydantic-ai[examples]>=0.0.18",
-    "pydantic-settings>=2.7.1",
-    "python-dateutil>=2.9.0.post0",
-    "python-decouple>=3.8",
-    "python-slugify>=8.0.4",
-    "pytz>=2024.2",
-    "redis>=5.2.1",
-    "simplejson>=3.19.3",
+    "hypercorn>=0.18.0 ; sys_platform == 'win32'",
+
+    # Task queue
+    "celery>=5.6.2",
+    "flower>=2.0.1",
+    "redis>=7.1.0",
+
+    # Database
+    "psycopg>=3.3.2",
+    "sqlalchemy>=2.0.37",
     "sqlalchemy-mixins>=2.0.5",
     "sqlmodel>=0.0.22",
     "sqlmodel-crud-utilities",
+    "greenlet>=3.1.1",
+
+    # HTTP clients
+    "httpx[socks]>=0.28.1",
+    "httpx-html>=0.11.0.dev0",
+
+    # HTML/XML parsing
+    "html5lib>=1.1",
+    "lxml[html-clean]>=6.0.2",
+    "beautifulsoup4>=4.14.3",
+
+    # Templating
+    "jinjax>=0.63",
+    "jinja2>=3.1.6",
+
+    # AI/LLM
+    "openai>=2.16.0",
+    "pydantic-ai[examples]>=0.4.3",
+    "anthropic>=0.77.1",
+    "tavily-python>=0.7.21",
+
+    # Reddit API
+    "praw>=7.8.1",
+
+    # PDF generation
+    "reportlab>=4.4.9",
+
+    # Configuration
+    "pydantic>=2.10.5",
+    "pydantic-settings>=2.12.0",
+    "python-decouple>=3.8",
+    "python-dotenv>=1.0.1",
+
+    # Utilities
+    "loguru>=0.7.3",
+    "python-dateutil>=2.9.0.post0",
+    "python-slugify>=8.0.4",
+    "pytz>=2025.2",
+    "itsdangerous>=2.2.0",
     "typing-inspect>=0.9.0",
-    "uvicorn>=0.34.0",
+
+    # Serialization
+    "simplejson>=3.20.2",
     "xmljson>=0.2.1",
-    "xmltodict>=0.14.2",
+    "xmltodict>=1.0.2",
+
+    # Windows-specific dependencies (mark as platform-specific)
+    "pywin32>=311 ; sys_platform == 'win32'",
+    "win32-setctime>=1.2.0 ; sys_platform == 'win32'",
 ]
 
 [dependency-groups]
@@ -124,4 +162,11 @@ dev = [
     "jupyterlab-code-formatter>=3.0.2",
     "pre-commit>=4.5.1",
     "ruff>=0.14.14",
+]
+
+test = [
+    "pytest>=9.0.2",
+    "pytest-asyncio>=1.3.0",
+    "pytest-cov>=7.0.0",
+    "httpx>=0.28.1",  # For TestClient
 ]
