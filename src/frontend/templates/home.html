@@ -105,10 +105,9 @@
         <!-- Status Updates -->
         <div x-show="analyzing && !hasResults"
              x-transition
-             class="box"
              id="status"
              hx-get={{ url_for('get_status') }}
-             hx-trigger="every 1s"
+             hx-trigger="every 1s[!document.querySelector('#result-container')]"
              hx-swap="innerHTML"
              @htmx:after-request="
                const response = $event.detail.xhr.response.trim();
@@ -121,10 +120,9 @@
         <!-- Results -->
         <div x-show="hasResults"
              x-transition
-             class="box"
              id="result"
              hx-get={{ url_for('get_result') }}
-             hx-trigger="every 1s"
+             hx-trigger="every 1s[!document.querySelector('#result-container')]"
              hx-swap="innerHTML"
              @htmx:after-request="
                const response = $event.detail.xhr.response.trim();
