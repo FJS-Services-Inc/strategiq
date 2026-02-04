@@ -35,26 +35,35 @@ jobs:
           uv run pytest --cov=src --cov-report=xml --cov-report=term
         env:
           PYTHONPATH: src
-          # Test environment variables
           TESTING: "true"
-          DEBUG: "false"
-          SECRET_KEY: "test-secret-key-for-ci-only"
-          # Database (not used in tests, but required for imports)
-          SQL_DIALECT: "sqlite"
-          LOCAL_DB_UN: "test"
-          LOCAL_DB_PW: "test"
-          LOCAL_DB_DB: "test"
-          LOCAL_DB_HOST: "localhost"
-          LOCAL_DB_PORT: "5432"
-          # API keys (not used in tests, but required for imports)
-          OPENAI_API_KEY: "sk-test-fake-key"
-          ANTHROPIC_API_KEY: "sk-ant-test-fake-key"
-          TAVILY_API_KEY: "test-key"
-          # Reddit (not used in tests)
-          REDDIT_CLIENT_ID: "test"
-          REDDIT_CLIENT_SECRET: "test"
-          REDDIT_USER_AGENT: "test"
-          REDDIT_SUBREDDIT: "test"
+          # Security
+          SECRET_KEY: ${{ secrets.SECRET_KEY }}
+          DEBUG: ${{ secrets.DEBUG }}
+          HTTPS_ONLY: ${{ secrets.HTTPS_ONLY }}
+          SERVER_ENV: ${{ secrets.SERVER_ENV }}
+          # Database
+          SQL_DIALECT: ${{ secrets.SQL_DIALECT }}
+          LOCAL_DB_UN: ${{ secrets.LOCAL_DB_UN }}
+          LOCAL_DB_PW: ${{ secrets.LOCAL_DB_PW }}
+          LOCAL_DB_DB: ${{ secrets.LOCAL_DB_DB }}
+          LOCAL_DB_HOST: ${{ secrets.LOCAL_DB_HOST }}
+          LOCAL_DB_PORT: ${{ secrets.LOCAL_DB_PORT }}
+          CLOUD_DB_UN: ${{ secrets.CLOUD_DB_UN }}
+          CLOUD_DB_PW: ${{ secrets.CLOUD_DB_PW }}
+          CLOUD_DB_DB: ${{ secrets.CLOUD_DB_DB }}
+          CLOUD_DB_HOST: ${{ secrets.CLOUD_DB_HOST }}
+          CLOUD_DB_PORT: ${{ secrets.CLOUD_DB_PORT }}
+          # API Keys
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          OPENAI_MODEL: ${{ secrets.OPENAI_MODEL }}
+          TAVILY_API_KEY: ${{ secrets.TAVILY_API_KEY }}
+          # Reddit
+          REDDIT_CLIENT_ID: ${{ secrets.REDDIT_CLIENT_ID }}
+          REDDIT_CLIENT_SECRET: ${{ secrets.REDDIT_CLIENT_SECRET }}
+          REDDIT_USER_AGENT: ${{ secrets.REDDIT_USER_AGENT }}
+          REDDIT_SUBREDDIT: ${{ secrets.REDDIT_SUBREDDIT }}
+          REDDIT_MAX_INSIGHTS: ${{ secrets.REDDIT_MAX_INSIGHTS }}
+          REDDIT_MAX_INSIGHT_LENGTH: ${{ secrets.REDDIT_MAX_INSIGHT_LENGTH }}
 
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v4
