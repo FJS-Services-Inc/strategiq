@@ -35,6 +35,26 @@ jobs:
           uv run pytest --cov=src --cov-report=xml --cov-report=term
         env:
           PYTHONPATH: src
+          # Test environment variables
+          TESTING: "true"
+          DEBUG: "false"
+          SECRET_KEY: "test-secret-key-for-ci-only"
+          # Database (not used in tests, but required for imports)
+          SQL_DIALECT: "sqlite"
+          LOCAL_DB_UN: "test"
+          LOCAL_DB_PW: "test"
+          LOCAL_DB_DB: "test"
+          LOCAL_DB_HOST: "localhost"
+          LOCAL_DB_PORT: "5432"
+          # API keys (not used in tests, but required for imports)
+          OPENAI_API_KEY: "sk-test-fake-key"
+          ANTHROPIC_API_KEY: "sk-ant-test-fake-key"
+          TAVILY_API_KEY: "test-key"
+          # Reddit (not used in tests)
+          REDDIT_CLIENT_ID: "test"
+          REDDIT_CLIENT_SECRET: "test"
+          REDDIT_USER_AGENT: "test"
+          REDDIT_SUBREDDIT: "test"
 
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v4
