@@ -103,14 +103,19 @@
     <section class="section"
              id="analysis-content">
         <!-- Status Updates -->
-        <div x-show="analyzing && hasStatus && !hasResults"
+        <div x-show="analyzing && !hasResults"
              x-transition
              class="box"
              id="status"
              hx-get={{ url_for('get_status') }}
-             hx-trigger="load, every 1s[analyzing]"
+             hx-trigger="every 1s"
              hx-swap="innerHTML"
-             @htmx:after-request="if($event.detail.xhr.response.trim()) hasStatus = true">
+             @htmx:after-request="
+               const response = $event.detail.xhr.response.trim();
+               if (response && response.length > 0) {
+                 hasStatus = true;
+               }
+             ">
         </div>
 
         <!-- Results -->
@@ -119,9 +124,15 @@
              class="box"
              id="result"
              hx-get={{ url_for('get_result') }}
-             hx-trigger="load, every 1s[analyzing && !hasResults]"
+             hx-trigger="every 1s"
              hx-swap="innerHTML"
-             @htmx:after-request="if($event.detail.xhr.response.trim() && $event.detail.xhr.response.includes('result-container')) { hasResults = true; analyzing = false; }">
+             @htmx:after-request="
+               const response = $event.detail.xhr.response.trim();
+               if (response && response.includes('result-container')) {
+                 hasResults = true;
+                 analyzing = false;
+               }
+             ">
         </div>
     </section>
 </div>
