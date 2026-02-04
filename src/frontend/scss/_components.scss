@@ -17,6 +17,11 @@
   border-width: 0;
 }
 
+// Alpine.js x-cloak (hide elements until Alpine initializes)
+[x-cloak] {
+  display: none !important;
+}
+
 .skip-link {
   position: absolute;
   top: -40px;
