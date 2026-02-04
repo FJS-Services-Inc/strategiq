@@ -1,4 +1,11 @@
-<div class="spinner-wrapper is-overlay is-hidden"
+{#
+Alpine.js-compatible Spinner Component
+Note: Requires parent element with x-data containing 'analyzing' and 'hasResults' state
+Usage: <Spinner></Spinner> within an Alpine.js context
+#}
+<div x-show="analyzing && !hasResults"
+     x-transition
+     class="spinner-wrapper"
      id="spinner"
      role="dialog"
      aria-modal="true"

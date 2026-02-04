@@ -1,6 +1,7 @@
 /**
- * Pygentic AI - Frontend Application
+ * StrategIQ - Frontend Application
  * Progressive loading and enhanced UX interactions
+ * State management powered by Alpine.js
  */
 
 (function() {
@@ -179,17 +180,12 @@
 
             // Start loading messages when form is submitted
             startLoadingMessages();
-
-            // Show spinner
-            const spinner = document.getElementById('spinner');
-            if (spinner) {
-                spinner.classList.remove('is-hidden');
-            }
         });
     }
 
     /**
      * Monitor for analysis completion
+     * Alpine.js handles visibility; we manage progressive UX features
      */
     function monitorAnalysisCompletion() {
         const resultBox = document.getElementById('result');
@@ -201,12 +197,6 @@
                 if (mutation.type === 'childList' && resultBox.innerHTML.trim().length > 0) {
                     // Analysis complete
                     stopLoadingMessages();
-
-                    // Hide spinner
-                    const spinner = document.getElementById('spinner');
-                    if (spinner) {
-                        spinner.classList.add('is-hidden');
-                    }
 
                     // Initialize keyboard navigation for SWOT cards
                     initializeKeyboardNavigation();

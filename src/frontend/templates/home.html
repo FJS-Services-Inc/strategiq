@@ -20,91 +20,108 @@
     </div>
 </section>
 
-<section class="section"
-         id="search">
-    <Spinner></Spinner>
-    <div class="search-container">
-        <h2 class="title is-3 has-text-centered mb-5">Get Started</h2>
-        <Form form_id="swotSearch"
-              action={{ url_for('analyze_url') }}
-              target="status"
-              method="post">
-            <div class="search-input-group"
-                 role="search">
-                <span class="search-icon"
-                      aria-hidden="true">
-                    <i class="fas fa-search"></i>
-                </span>
-                <input type="text"
-                       class="search-input"
-                       id="primary_entity"
-                       name="primary_entity"
-                       placeholder="Primary entity (e.g., Google or https://google.com)"
-                       aria-label="Enter primary entity — a company name or URL"
-                       aria-describedby="search-help"
-                       required
-                       autocomplete="off" />
-                <button type="submit"
-                        class="search-button"
-                        aria-label="Run SWOT analysis"
-                        hx-indicator='#spinner'
-                        hx-on:click="
-                        const [status, result, spinner] = ['#status', '#result', '#spinner'].map(id => document.querySelector(id));
-                        spinner.classList.remove('is-hidden');
-                        status.style.display = 'block';
-                        result.style.display = 'none';
-                        ">
-                    <span class="button-text">Analyze</span>
-                    <span class="button-icon"
-                          aria-hidden="true">
-                        <i class="fas fa-arrow-right"></i>
-                    </span>
-                </button>
+<div x-data="{ analyzing: false, hasStatus: false, hasResults: false }">
+    <section class="section"
+             id="search">
+        <!-- Alpine-controlled Spinner -->
+        <div x-show="analyzing && !hasResults"
+             x-transition
+             class="spinner-wrapper"
+             id="spinner"
+             role="dialog"
+             aria-modal="true"
+             aria-labelledby="spinner-title"
+             aria-describedby="loading-status">
+            <div class="loading-content">
+                <div class="loader"
+                     role="progressbar"
+                     aria-label="Loading in progress"
+                     aria-busy="true"></div>
+                <div class="loading-text">
+                    <h3 id="spinner-title">Analyzing...</h3>
+                    <p id="loading-status"
+                       aria-live="polite"
+                       aria-atomic="true">Fetching URL content</p>
+                </div>
             </div>
-            <div class="comparison-input-group">
-                <span class="comparison-icon"
-                      aria-hidden="true">
-                    <i class="fas fa-code-compare"></i>
-                </span>
-                <input type="text"
-                       class="comparison-input"
-                       id="comparison_entities"
-                       name="comparison_entities"
-                       placeholder="Compare with (optional) — e.g., Yahoo, Bing"
-                       aria-label="Entities to compare against, comma-separated (optional)"
-                       autocomplete="off" />
-            </div>
-        </Form>
-        <div class="search-help">
-            <i class="fas fa-info-circle"></i>
-            Enter a company name or URL. Add competitors for a comparative SWOT.
         </div>
-    </div>
-</section>
+        <div class="search-container">
+            <h2 class="title is-3 has-text-centered mb-5">Get Started</h2>
+            <Form form_id="swotSearch"
+                  action={{ url_for('analyze_url') }}
+                  target="status"
+                  method="post">
+                <div class="search-input-group"
+                     role="search">
+                    <span class="search-icon"
+                          aria-hidden="true">
+                        <i class="fas fa-search"></i>
+                    </span>
+                    <input type="text"
+                           class="search-input"
+                           id="primary_entity"
+                           name="primary_entity"
+                           placeholder="Primary entity (e.g., Google or https://google.com)"
+                           aria-label="Enter primary entity — a company name or URL"
+                           aria-describedby="search-help"
+                           required
+                           autocomplete="off" />
+                    <button type="submit"
+                            class="search-button"
+                            aria-label="Run SWOT analysis"
+                            @click="analyzing = true; hasStatus = false; hasResults = false">
+                        <span class="button-text">Analyze</span>
+                        <span class="button-icon"
+                              aria-hidden="true">
+                            <i class="fas fa-arrow-right"></i>
+                        </span>
+                    </button>
+                </div>
+                <div class="comparison-input-group">
+                    <span class="comparison-icon"
+                          aria-hidden="true">
+                        <i class="fas fa-code-compare"></i>
+                    </span>
+                    <input type="text"
+                           class="comparison-input"
+                           id="comparison_entities"
+                           name="comparison_entities"
+                           placeholder="Compare with (optional) — e.g., Yahoo, Bing"
+                           aria-label="Entities to compare against, comma-separated (optional)"
+                           autocomplete="off" />
+                </div>
+            </Form>
+            <div class="search-help">
+                <i class="fas fa-info-circle"></i>
+                Enter a company name or URL. Add competitors for a comparative
+                SWOT.
+            </div>
+        </div>
+    </section>
 
-<section class="section"
-         id="analysis-content">
-    <div class="box"
-         id="status"
-         hx-get={{ url_for('get_status') }}
-         hx-trigger="load, every 1s"
-         hx-swap="innerHTML"
-         style="display: none">
-    </div>
-    <div class="box"
-         id="result"
-         hx-get={{ url_for('get_result') }}
-         hx-trigger="load, every 1s[!this.querySelector('#result-container') || this.style.display === 'none']"
-         hx-swap="innerHTML"
-         hx-on:after-request="
-            if(this.innerHTML.trim().length > 0) {
-            console.log('Going to turn off the status element and load the result element.')
-            const [statusDiv, spinner] = ['#status', '#spinner'].map(id => document.querySelector(id));
-            if (statusDiv) statusDiv.style.display = 'none';
-            if (spinner) spinner.classList.add('is-hidden');
-            this.style.display = 'block'
-            }
-            ">
-    </div>
-</section>
+    <section class="section"
+             id="analysis-content">
+        <!-- Status Updates -->
+        <div x-show="analyzing && hasStatus && !hasResults"
+             x-transition
+             class="box"
+             id="status"
+             hx-get={{ url_for('get_status') }}
+             hx-trigger="load, every 1s[analyzing]"
+             hx-swap="innerHTML"
+             @htmx:after-request="if($event.detail.xhr.response.trim()) hasStatus = true">
+        </div>
+
+        <!-- Results -->
+        <div x-show="hasResults"
+             x-transition
+             class="box"
+             id="result"
+             hx-get={{ url_for('get_result') }}
+             hx-trigger="load, every 1s[analyzing && !hasResults]"
+             hx-swap="innerHTML"
+             @htmx:after-request="if($event.detail.xhr.response.trim() && $event.detail.xhr.response.includes('result-container')) { hasResults = true; analyzing = false; }">
+        </div>
+    </section>
+</div>
 {% endblock content %}
