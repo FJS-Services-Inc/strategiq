@@ -5,7 +5,7 @@ from fastapi import APIRouter, Form, Request
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from jinjax import Catalog, JinjaX
-from starlette.responses import HTMLResponse, StreamingResponse
+from starlette.responses import HTMLResponse, Response, StreamingResponse
 
 from backend.core.pdf_cache import pdf_cache
 from backend.core.pdf_service import generate_swot_pdf
@@ -186,7 +186,7 @@ async def download_pdf(request: Request) -> StreamingResponse:
 
     if not session_id:
         logger.warning("PDF download attempted without session ID")
-        return StreamingResponse(
+        return Response(
             content=b"No analysis found. Please run an analysis first.",
             media_type="text/plain",
             status_code=404,
@@ -198,7 +198,7 @@ async def download_pdf(request: Request) -> StreamingResponse:
         logger.warning(
             f"PDF download attempted but result is None for session: {session_id}"
         )
-        return StreamingResponse(
+        return Response(
             content=b"Analysis not complete. Please wait for analysis to finish.",
             media_type="text/plain",
             status_code=404,
