@@ -17,14 +17,12 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 600;
 }
 
-// Hero Title with Gradient
+// Hero Title with Solid White (better contrast on purple background)
 .hero-title {
   font-size: clamp(2.5rem, 5vw, 4rem);
   font-weight: 700;
-  background: $gradient-hero-alt;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: #FFFFFF !important;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   margin-bottom: 1rem;
   line-height: 1.1;
 }
