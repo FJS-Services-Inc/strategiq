@@ -30,16 +30,36 @@ jobs:
         run: |
           uv sync --group test
 
-      - name: Setup test environment
-        uses: ./.github/actions/setup-env
-        with:
-          secrets: ${{ toJSON(secrets) }}
-
       - name: Run tests
         run: |
           uv run pytest --cov=src --cov-report=xml --cov-report=term
         env:
           PYTHONPATH: src
+          TESTING: "true"
+          SECRET_KEY: ${{ secrets.SECRET_KEY }}
+          DEBUG: ${{ secrets.DEBUG }}
+          HTTPS_ONLY: ${{ secrets.HTTPS_ONLY }}
+          SERVER_ENV: ${{ secrets.SERVER_ENV }}
+          SQL_DIALECT: ${{ secrets.SQL_DIALECT }}
+          LOCAL_DB_UN: ${{ secrets.LOCAL_DB_UN }}
+          LOCAL_DB_PW: ${{ secrets.LOCAL_DB_PW }}
+          LOCAL_DB_DB: ${{ secrets.LOCAL_DB_DB }}
+          LOCAL_DB_HOST: ${{ secrets.LOCAL_DB_HOST }}
+          LOCAL_DB_PORT: ${{ secrets.LOCAL_DB_PORT }}
+          CLOUD_DB_UN: ${{ secrets.CLOUD_DB_UN }}
+          CLOUD_DB_PW: ${{ secrets.CLOUD_DB_PW }}
+          CLOUD_DB_DB: ${{ secrets.CLOUD_DB_DB }}
+          CLOUD_DB_HOST: ${{ secrets.CLOUD_DB_HOST }}
+          CLOUD_DB_PORT: ${{ secrets.CLOUD_DB_PORT }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          OPENAI_MODEL: ${{ secrets.OPENAI_MODEL }}
+          TAVILY_API_KEY: ${{ secrets.TAVILY_API_KEY }}
+          REDDIT_CLIENT_ID: ${{ secrets.REDDIT_CLIENT_ID }}
+          REDDIT_CLIENT_SECRET: ${{ secrets.REDDIT_CLIENT_SECRET }}
+          REDDIT_USER_AGENT: ${{ secrets.REDDIT_USER_AGENT }}
+          REDDIT_SUBREDDIT: ${{ secrets.REDDIT_SUBREDDIT }}
+          REDDIT_MAX_INSIGHTS: ${{ secrets.REDDIT_MAX_INSIGHTS }}
+          REDDIT_MAX_INSIGHT_LENGTH: ${{ secrets.REDDIT_MAX_INSIGHT_LENGTH }}
 
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v4
