@@ -5,8 +5,10 @@ from fastapi import APIRouter, Form, Request
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from jinjax import Catalog, JinjaX
-from starlette.responses import HTMLResponse
+from starlette.responses import HTMLResponse, StreamingResponse
 
+from backend.core.pdf_cache import pdf_cache
+from backend.core.pdf_service import generate_swot_pdf
 from backend.logger import logger
 from backend.settings import app_settings
 from backend.site.consts import (
@@ -157,4 +159,63 @@ async def get_result(request: Request) -> HTMLResponse:
     return templates.TemplateResponse(
         "result.html",
         {"request": request, "result": result},
+    )
+
+
+@user_frontend.get("/download-pdf")
+async def download_pdf(request: Request) -> StreamingResponse:
+    """
+    Generate and download SWOT analysis as PDF report.
+    Uses composite caching (session_id + content_hash) with 5-minute TTL.
+
+    :param request: Request
+    :return: StreamingResponse with PDF file
+    """
+    session_id = request.session.get("analysis_id")
+
+    if not session_id:
+        logger.warning("PDF download attempted without session ID")
+        return StreamingResponse(
+            content=b"No analysis found. Please run an analysis first.",
+            media_type="text/plain",
+            status_code=404,
+        )
+
+    result = result_store.get(session_id)
+
+    if not result:
+        logger.warning(
+            f"PDF download attempted but result is None for session: {session_id}"
+        )
+        return StreamingResponse(
+            content=b"Analysis not complete. Please wait for analysis to finish.",
+            media_type="text/plain",
+            status_code=404,
+        )
+
+    # Check cache first
+    cached_pdf = pdf_cache.get(session_id, result)
+
+    if cached_pdf:
+        logger.info(f"Serving cached PDF for session: {session_id}")
+        pdf_buffer = cached_pdf
+    else:
+        # Generate new PDF
+        logger.info(f"Generating new PDF for session: {session_id}")
+        pdf_buffer = generate_swot_pdf(result)
+
+        # Cache the generated PDF
+        pdf_cache.set(session_id, result, pdf_buffer)
+
+    # Prepare filename
+    filename = f"swot-analysis-{session_id[:8]}.pdf"
+
+    # Return as streaming response
+    return StreamingResponse(
+        content=pdf_buffer,
+        media_type="application/pdf",
+        headers={
+            "Content-Disposition": f"attachment; filename={filename}",
+            "Cache-Control": "no-cache",
+        },
     )

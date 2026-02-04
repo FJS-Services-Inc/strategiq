@@ -27,6 +27,7 @@ pydantic-ai[examples]
 pydantic-settings
 pytz
 redis
+reportlab
 simplejson
 sqlalchemy_mixins
 sqlmodel
