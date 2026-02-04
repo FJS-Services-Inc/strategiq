@@ -7,15 +7,12 @@ cd /opt/pygentic_ai || exit
 # Verify Python version
 python3 --version
 
-# Create venv with Python 3.13
-uv venv .venv --python python3.13
+# Install dependencies from pyproject.toml
+# Creates venv automatically if it doesn't exist
+uv sync --no-dev
+
+# Activate venv
 source .venv/bin/activate
 
 # Verify venv Python version
 python --version
-
-for FILE in core_requirements dev_requirements
-do
-	uv pip compile --upgrade $FILE.in -o $FILE.txt
-done
-uv pip sync core_requirements.txt
