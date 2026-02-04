@@ -14,8 +14,12 @@ runs:
       run: |
         echo "TESTING=true" > .env
 
-        # Parse JSON secrets and write to .env
-        echo '${{ inputs.secrets }}' | jq -r 'to_entries[] | "\(.key)=\(.value)"' >> .env
+        # Use printf to safely handle JSON with special characters
+        printf '%s' '${{ inputs.secrets }}' | jq -r '
+          to_entries[] |
+          select(.key != "github_token") |
+          "\(.key)=\(.value)"
+        ' >> .env
 
         echo "✅ Generated .env with $(wc -l < .env) environment variables"
 
