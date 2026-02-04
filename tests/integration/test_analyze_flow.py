@@ -77,30 +77,40 @@ class TestStatusPolling:
         assert response.status_code == 200
         assert response.text.strip() == ""
 
-    def test_status_endpoint_returns_oob_container_on_first_poll(
-        self, test_client: TestClient, mock_session_id: str
+    @pytest.mark.asyncio
+    async def test_status_endpoint_returns_oob_container_on_first_poll(
+        self, mock_session_id: str
     ):
         """
         First poll should return StatusTimeline container + initial items via OOB.
 
         This tests the Jinjax component rendering.
+
+        Regression: Empty HTML response due to TestClient cookies not working with SessionMiddleware.
+        Fix: Call endpoint directly with mocked request.session
         """
+        from unittest.mock import MagicMock
+
+        from backend.site.router import get_status
+
         # Manually set up session state to simulate analyze_url
         status_store[mock_session_id] = [ANALYZING_MESSAGE]
 
-        # Create session and make request
-        with test_client:
-            # Set session cookie
-            test_client.cookies.set("analysis_id", mock_session_id)
+        # Create mock request with session
+        mock_request = MagicMock()
+        mock_session = MagicMock()
+        mock_session.get = MagicMock(return_value=mock_session_id)
+        mock_request.session = mock_session
 
-            response = test_client.get("/status")
+        # Call endpoint directly
+        response = await get_status(mock_request)
 
-            assert response.status_code == 200
-            assert "status-container" in response.text
-            assert "status-timeline" in response.text
-            assert ANALYZING_MESSAGE in response.text
-            # Should have OOB swap attribute
-            assert "hx-swap-oob" in response.text
+        assert response.status_code == 200
+        assert "status-container" in response.body.decode()
+        assert "status-timeline" in response.body.decode()
+        assert ANALYZING_MESSAGE in response.body.decode()
+        # Should have OOB swap attribute
+        assert "hx-swap-oob" in response.body.decode()
 
     def test_status_endpoint_returns_empty_when_no_new_messages(
         self, test_client: TestClient, mock_session_id: str
@@ -120,11 +130,20 @@ class TestStatusPolling:
             assert response.status_code == 200
             assert response.text.strip() == ""
 
-    def test_status_endpoint_returns_only_new_messages(
-        self, test_client: TestClient, mock_session_id: str
+    @pytest.mark.asyncio
+    async def test_status_endpoint_returns_only_new_messages(
+        self, mock_session_id: str
     ):
-        """Subsequent polls return only new messages via OOB"""
+        """
+        Subsequent polls return only new messages via OOB.
+
+        Regression: Empty HTML response due to TestClient cookies not working with SessionMiddleware.
+        Fix: Call endpoint directly with mocked request.session
+        """
+        from unittest.mock import MagicMock
+
         from backend.site.consts import last_message_index
+        from backend.site.router import get_status
 
         # Set up state: first poll done, new messages added
         status_store[mock_session_id] = [
@@ -134,20 +153,25 @@ class TestStatusPolling:
         ]
         last_message_index[mock_session_id] = 1
 
-        with test_client:
-            test_client.cookies.set("analysis_id", mock_session_id)
+        # Create mock request with session
+        mock_request = MagicMock()
+        mock_session = MagicMock()
+        mock_session.get = MagicMock(return_value=mock_session_id)
+        mock_request.session = mock_session
 
-            response = test_client.get("/status")
+        # Call endpoint directly
+        response = await get_status(mock_request)
 
-            assert response.status_code == 200
-            # Should NOT contain first message
-            assert ANALYZING_MESSAGE not in response.text
-            # Should contain new messages
-            assert "Reddit Intelligence" in response.text
-            assert "Generating SWOT" in response.text
-            # Should have OOB swap for appending
-            assert "hx-swap-oob" in response.text
-            assert "status-timeline" in response.text
+        assert response.status_code == 200
+        response_text = response.body.decode()
+        # Should NOT contain first message
+        assert ANALYZING_MESSAGE not in response_text
+        # Should contain new messages
+        assert "Reddit Intelligence" in response_text
+        assert "Generating SWOT" in response_text
+        # Should have OOB swap for appending
+        assert "hx-swap-oob" in response_text
+        assert "status-timeline" in response_text
 
 
 @pytest.mark.integration
@@ -163,23 +187,38 @@ class TestResultEndpoint:
         # Should render result.html with no result
         assert "result" not in response.text.lower() or response.text.strip() == ""
 
-    def test_result_endpoint_with_result(
-        self, test_client: TestClient, mock_session_id: str, sample_swot_analysis
+    @pytest.mark.asyncio
+    async def test_result_endpoint_with_result(
+        self, mock_session_id: str, sample_swot_analysis
     ):
-        """Result endpoint returns SWOT analysis when available"""
+        """
+        Result endpoint returns SWOT analysis when available.
+
+        Regression: Empty HTML response due to TestClient cookies not working with SessionMiddleware.
+        Fix: Call endpoint directly with mocked request.session
+        """
+        from unittest.mock import MagicMock
+
+        from backend.site.router import get_result
+
         # Set up result in store
         result_store[mock_session_id] = sample_swot_analysis
 
-        with test_client:
-            test_client.cookies.set("analysis_id", mock_session_id)
+        # Create mock request with session
+        mock_request = MagicMock()
+        mock_session = MagicMock()
+        mock_session.get = MagicMock(return_value=mock_session_id)
+        mock_request.session = mock_session
 
-            response = test_client.get("/result")
+        # Call endpoint directly
+        response = await get_result(mock_request)
 
-            assert response.status_code == 200
-            # Should contain SWOT data
-            assert "Google" in response.text
-            assert "Strengths" in response.text
-            assert "Weaknesses" in response.text
-            assert "Opportunities" in response.text
-            assert "Threats" in response.text
-            assert "Executive Summary" in response.text
+        assert response.status_code == 200
+        response_text = response.body.decode()
+        # Should contain SWOT data
+        assert "Google" in response_text
+        assert "Strengths" in response_text
+        assert "Weaknesses" in response_text
+        assert "Opportunities" in response_text
+        assert "Threats" in response_text
+        assert "Executive Summary" in response_text
