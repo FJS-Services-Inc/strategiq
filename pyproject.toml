@@ -74,7 +74,7 @@ classifiers = [
     "Operating System :: OS Independent",
 ]
 version = "1.0.0b0"
-requires-python = ">=3.12"
+requires-python = ">=3.13"
 dependencies = [
     "aiofiles>=24.1.0",
     "aiomysql>=0.2.0",

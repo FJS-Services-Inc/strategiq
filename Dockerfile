@@ -27,5 +27,6 @@ RUN mkdir -p /tmp/log/celery && \
     chown celery:celery celerybeat-schedule
 RUN find . -name "*.sh" -exec chmod +x {} \;
 RUN echo $WORKDIR
+RUN /bin/bash -c 'source $WORKDIR/docker/pygentic_ai/build.sh'
 RUN /bin/bash -c 'source $WORKDIR/docker/pygentic_ai/python_build.sh'
 CMD /bin/bash -c 'source $WORKDIR/docker/pygentic_ai/python_start.sh'
