@@ -1,14 +1,24 @@
-{# Single status item template for HTMX OOB swaps #}
+{# def
+    message: str,
+    is_last: bool = False,
+    result: bool = False,
+    use_oob: bool = True
+#}
+
+{# Determine status type and styling #}
 {% set is_error = message.startswith('Error:') %}
 {% set is_loading = is_last and not result %}
 {% set is_tool_message = message.startswith('Using tool') %}
 {% set is_complete = "complete" in message.lower() or "done" in message.lower() %}
 {% set status_label = 'Error' if is_error else ('Complete' if is_complete else ('In Progress' if is_loading else ('Processing' if is_tool_message else 'Status'))) %}
+{% set status_class = 'status-item--error' if is_error else ('status-item--success' if is_complete else ('status-item--loading' if is_loading else 'status-item--info')) %}
 
-<article class="status-item {% if is_error %}status-item--error{% elif is_complete %}status-item--success{% elif is_loading %}status-item--loading{% else %}status-item--info{% endif %}"
+{# Render status item with optional OOB swap #}
+<article class="status-item {{ status_class }}"
          role="article"
          aria-label="{{ status_label }}: {{ message }}"
-         hx-swap-oob="beforeend:#status-timeline">
+         {% if use_oob %}hx-swap-oob="beforeend:#status-timeline"
+         {% endif %}>
     <div class="status-item__indicator"
          aria-hidden="true">
         {% if is_error %}

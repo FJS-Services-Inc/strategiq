@@ -1,0 +1,22 @@
+{# def
+    use_oob: bool = True
+#}
+
+{# Status timeline container - can be rendered with or without OOB swap #}
+<section class="section"
+         id="status-container"
+         role="region"
+         aria-label="Analysis Progress"
+         aria-live="polite"
+         {% if use_oob %}hx-swap-oob="beforeend:#status"
+         {% endif %}>
+    <div class="container"
+         style="max-width: 800px;">
+        <div class="status-timeline"
+             id="status-timeline"
+             role="feed"
+             aria-label="Status updates">
+            {# Child StatusItem components will be appended here via HTMX OOB swaps #}
+        </div>
+    </div>
+</section>

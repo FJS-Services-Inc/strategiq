@@ -94,47 +94,64 @@ async def analyze_url(
 @user_frontend.get("/status", response_class=HTMLResponse)
 async def get_status(request: Request):
     """
-    Returns new status messages since last poll (incremental updates)
-    First poll returns all messages + container, subsequent polls return
-    only new items with HTMX OOB swap
+    Returns new status messages since last poll using pure OOB swaps.
+    First poll returns the container + initial messages as OOB.
+    Subsequent polls return only new messages as OOB.
+    Uses Jinjax components for rendering.
     :param request:
     :return:
     """
     session_id = request.session.get("analysis_id")
     if not session_id:
-        return templates.TemplateResponse(
-            "status.html", {"request": request, "messages": [], "result": False}
-        )
+        return HTMLResponse(content="", status_code=200)
 
     all_messages = status_store.get(session_id, [])
     last_index = last_message_index.get(session_id, 0)
     result = ANALYSIS_COMPLETE_MESSAGE in all_messages
 
-    # First poll: return full container with all messages
-    if last_index == 0:
-        last_message_index[session_id] = len(all_messages)
-        return templates.TemplateResponse(
-            "status.html",
-            {"request": request, "messages": all_messages, "result": result},
-        )
+    # No new messages, return empty response
+    if last_index > 0 and last_index >= len(all_messages):
+        return HTMLResponse(content="", status_code=200)
 
-    # Subsequent polls: return only new messages with OOB swap
+    # Determine which messages to send
     new_messages = all_messages[last_index:]
     last_message_index[session_id] = len(all_messages)
 
     if not new_messages:
-        # No new messages, return empty response
         return HTMLResponse(content="", status_code=200)
 
-    # Render new items with OOB swap
+    # First poll: return container + messages with OOB
+    if last_index == 0:
+        # Render StatusTimeline container with OOB
+        container_html = catalog.render("StatusTimeline", use_oob=True)
+
+        # Render all initial StatusItem components with OOB
+        items_html = ""
+        for idx, message in enumerate(new_messages):
+            is_last = idx == len(new_messages) - 1
+            item = catalog.render(
+                "StatusItem",
+                message=message,
+                is_last=is_last,
+                result=result,
+                use_oob=True,
+            )
+            items_html += item
+
+        return HTMLResponse(
+            content=container_html + items_html, status_code=200
+        )
+
+    # Subsequent polls: return only new StatusItem components with OOB swap
     items_html = ""
     for idx, message in enumerate(new_messages):
         is_last = idx == len(new_messages) - 1
-        item = templates.get_template("status_item.html").render(
+        item = catalog.render(
+            "StatusItem",
             message=message,
             is_last=is_last,
             result=result,
-            request=request,
+            use_oob=True,
         )
         items_html += item
 

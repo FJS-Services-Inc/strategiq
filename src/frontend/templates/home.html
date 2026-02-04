@@ -108,7 +108,7 @@
              id="status"
              hx-get={{ url_for('get_status') }}
              hx-trigger="every 1s[!document.querySelector('#result-container')]"
-             hx-swap="innerHTML"
+             hx-swap="none"
              @htmx:after-request="
                const response = $event.detail.xhr.response.trim();
                if (response && response.length > 0) {
