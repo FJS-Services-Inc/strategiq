@@ -230,7 +230,9 @@ class TestPDFDownloadEndpoint:
         assert response.status_code == 200
         assert response.headers["content-type"] == "application/pdf"
         assert "attachment" in response.headers["content-disposition"]
-        assert "swot-analysis" in response.headers["content-disposition"]
+        # New filename format: swot-{company}-{date}.pdf
+        assert "swot-" in response.headers["content-disposition"]
+        assert ".pdf" in response.headers["content-disposition"]
 
         # Verify it's a valid PDF by reading the stream
         body_content = b""
@@ -281,7 +283,9 @@ class TestPDFDownloadEndpoint:
     async def test_download_pdf_filename_format(
         self, mock_session_id: str, sample_swot_analysis
     ):
-        """Test PDF filename follows expected format"""
+        """Test PDF filename follows expected format: swot-{company}-{date}.pdf"""
+        from datetime import datetime
+
         from backend.site.router import download_pdf
 
         # Create mock request
@@ -297,5 +301,10 @@ class TestPDFDownloadEndpoint:
 
         assert response.status_code == 200
         disposition = response.headers["content-disposition"]
-        # Format: swot-analysis-{session_id[:8]}.pdf
-        assert f"swot-analysis-{mock_session_id[:8]}.pdf" in disposition
+
+        # New format: swot-{primary_entity}-vs-{comparison[0]}-{date}.pdf
+        # Sample has primary_entity="Google", comparison_entities=["Microsoft", "Amazon"]
+        assert "swot-Google-vs-Microsoft" in disposition
+        assert "plus1" in disposition  # +1 more comparison (Amazon)
+        assert datetime.now().strftime("%Y-%m-%d") in disposition
+        assert ".pdf" in disposition

@@ -218,8 +218,35 @@ async def download_pdf(request: Request) -> StreamingResponse:
         # Cache the generated PDF
         pdf_cache.set(session_id, result, pdf_buffer)
 
-    # Prepare filename
-    filename = f"swot-analysis-{session_id[:8]}.pdf"
+    # Prepare filename with company names and date
+    import re
+    from datetime import datetime
+
+    # Sanitize company names for filename (remove special chars, limit length)
+    def sanitize_filename(text: str, max_length: int = 30) -> str:
+        # Remove special characters, keep alphanumeric, spaces, hyphens
+        text = re.sub(r"[^\w\s-]", "", text)
+        # Replace spaces with hyphens
+        text = re.sub(r"\s+", "-", text.strip())
+        # Limit length
+        return text[:max_length].rstrip("-")
+
+    # Build entity string
+    primary = sanitize_filename(result.primary_entity)
+    if result.comparison_entities:
+        # Include first comparison entity
+        comparison = sanitize_filename(result.comparison_entities[0])
+        entities_str = f"{primary}-vs-{comparison}"
+        if len(result.comparison_entities) > 1:
+            entities_str += f"-plus{len(result.comparison_entities) - 1}"
+    else:
+        entities_str = primary
+
+    # Add date
+    date_str = datetime.now().strftime("%Y-%m-%d")
+
+    # Build final filename
+    filename = f"swot-{entities_str}-{date_str}.pdf"
 
     # Return as streaming response (iterate over BytesIO in chunks)
     def iterfile():
@@ -230,7 +257,7 @@ async def download_pdf(request: Request) -> StreamingResponse:
         content=iterfile(),
         media_type="application/pdf",
         headers={
-            "Content-Disposition": f"attachment; filename={filename}",
+            "Content-Disposition": f'attachment; filename="{filename}"',
             "Cache-Control": "no-cache",
         },
     )
