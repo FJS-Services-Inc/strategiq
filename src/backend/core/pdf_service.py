@@ -38,12 +38,6 @@ NEUTRAL_100 = colors.HexColor("#F3F4F6")
 WHITE = colors.white
 
 
-def hex_to_rgb_tuple(hex_color: str) -> tuple[float, float, float]:
-    """Convert hex color to RGB tuple (0-1 range)"""
-    hex_color = hex_color.lstrip("#")
-    return tuple(int(hex_color[i : i + 2], 16) / 255 for i in (0, 2, 4))
-
-
 def compute_content_hash(analysis: SwotAnalysis) -> str:
     """
     Compute SHA-256 hash of SWOT analysis content for caching.
@@ -124,7 +118,7 @@ class SwotPDFGenerator:
         # Body text style
         self.styles.add(
             ParagraphStyle(
-                name="BodyText",
+                name="ReportBodyText",
                 parent=self.styles["Normal"],
                 fontSize=11,
                 textColor=NEUTRAL_700,
@@ -243,7 +237,7 @@ class SwotPDFGenerator:
 
         # Wrap summary in a table for better styling
         summary_para = Paragraph(
-            self.analysis.analysis, self.styles["BodyText"]
+            self.analysis.analysis, self.styles["ReportBodyText"]
         )
         summary_table = Table([[summary_para]], colWidths=[6.5 * inch])
         summary_table.setStyle(

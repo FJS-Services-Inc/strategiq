@@ -227,9 +227,13 @@ async def download_pdf(request: Request) -> StreamingResponse:
     # Prepare filename
     filename = f"swot-analysis-{session_id[:8]}.pdf"
 
-    # Return as streaming response
+    # Return as streaming response (iterate over BytesIO in chunks)
+    def iterfile():
+        pdf_buffer.seek(0)
+        yield from pdf_buffer
+
     return StreamingResponse(
-        content=pdf_buffer,
+        content=iterfile(),
         media_type="application/pdf",
         headers={
             "Content-Disposition": f"attachment; filename={filename}",
