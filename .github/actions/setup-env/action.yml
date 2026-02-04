@@ -1,0 +1,26 @@
+name: 'Setup Environment from Secrets'
+description: 'Dynamically create .env file from all repository secrets'
+
+inputs:
+  secrets:
+    description: 'JSON string of all secrets'
+    required: true
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Generate .env file
+      shell: bash
+      run: |
+        echo "TESTING=true" > .env
+
+        # Parse JSON secrets and write to .env
+        echo '${{ inputs.secrets }}' | jq -r 'to_entries[] | "\(.key)=\(.value)"' >> .env
+
+        echo "✅ Generated .env with $(wc -l < .env) environment variables"
+
+        # Validate .env was created
+        if [ ! -f .env ]; then
+          echo "❌ Failed to create .env file"
+          exit 1
+        fi
