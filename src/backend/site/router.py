@@ -81,14 +81,8 @@ async def analyze_url(
     running_tasks.add(task)
     task.add_done_callback(running_tasks.discard)
 
-    return templates.TemplateResponse(
-        "status.html",
-        context={
-            "request": request,
-            "messages": [ANALYZING_MESSAGE],
-            "result": False,
-        },
-    )
+    # Return empty response - HTMX polling will handle rendering via OOB swaps
+    return HTMLResponse(content="", status_code=200)
 
 
 @user_frontend.get("/status", response_class=HTMLResponse)
