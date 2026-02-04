@@ -30,7 +30,7 @@ services:
       - traefik.http.routers.pygentic_ai.rule=Host(`pygenticai.francissecada.com`)
       - traefik.http.routers.pygentic_ai.entrypoints=websecure
       - traefik.http.routers.pygentic_ai.tls.certresolver=letsencrypt
-      - traefik.http.services.pygentic_ai.loadbalancer.server.url=http://${DOCKER_HOST_IP:-192.168.99.76}:${PORT:-5051}
+      - traefik.http.services.pygentic_ai.loadbalancer.server.url=http://${DOCKER_HOST_IP:-192.168.1.62}:${PORT:-5051}
     networks:
       - proxy
 
