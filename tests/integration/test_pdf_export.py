@@ -5,6 +5,7 @@ Tests: PDF generation → Caching → Download
 """
 
 from io import BytesIO
+from unittest.mock import MagicMock
 
 import pytest
 from fastapi.testclient import TestClient
@@ -113,24 +114,87 @@ class TestPDFCaching:
 class TestPDFDownloadEndpoint:
     """Test PDF download endpoint"""
 
-    def test_download_pdf_without_result_returns_404(
+    def test_download_pdf_without_session_returns_404(self, test_client: TestClient):
+        """
+        Regression test: PDF download without session ID should return 404.
+
+        Bug: AttributeError: 'int' object has no attribute 'encode'
+        Root Cause: StreamingResponse used with raw bytes instead of Response
+        Fix: Use Response for error paths, not StreamingResponse
+
+        This tests the first error path (no session_id).
+        """
+        # Don't set any session cookie
+        response = test_client.get("/download-pdf")
+
+        assert response.status_code == 404
+        assert b"No analysis found" in response.content
+        # Verify response can be read without AttributeError
+        assert isinstance(response.content, bytes)
+        assert len(response.content) > 0
+
+    @pytest.mark.asyncio
+    async def test_download_pdf_without_result_returns_404(
+        self, mock_session_id: str
+    ):
+        """
+        Regression test: PDF download with session but no result should return 404.
+
+        Bug: AttributeError: 'int' object has no attribute 'encode'
+        Root Cause: StreamingResponse used with raw bytes instead of Response
+        Fix: Use Response for error paths, not StreamingResponse
+
+        This tests the second error path (session exists but result is None).
+        This is the exact error scenario from the production bug.
+        """
+        from backend.site.router import download_pdf
+
+        # Create mock request with session but no result
+        mock_request = MagicMock()
+        mock_session = MagicMock()
+        mock_session.get = MagicMock(return_value=mock_session_id)
+        mock_request.session = mock_session
+
+        # Clear result_store to simulate "analysis not complete"
+        result_store.clear()
+
+        # Call the endpoint handler directly
+        response = await download_pdf(mock_request)
+
+        # Should hit the "result is None" error path
+        assert response.status_code == 404
+        assert b"Analysis not complete" in response.body
+        # Verify response can be read without AttributeError
+        assert isinstance(response.body, bytes)
+        assert len(response.body) > 0
+
+    def test_download_pdf_error_paths_use_response_not_streaming(
         self, test_client: TestClient, mock_session_id: str
     ):
         """
-        PDF download should return 404 if no result available.
+        Regression test: Verify error paths return Response, not StreamingResponse.
 
-        Tests error handling for missing result.
+        This prevents the AttributeError when iterating over bytes in StreamingResponse.
+        Response handles bytes directly, StreamingResponse requires an iterator.
         """
+
+        # Test path 1: No session ID
+        response1 = test_client.get("/download-pdf")
+        assert response1.status_code == 404
+        # Response should be directly readable (not streamed)
+        assert isinstance(response1.content, bytes)
+
+        # Test path 2: Session ID but no result
         with test_client:
             test_client.cookies.set("analysis_id", mock_session_id)
+            response2 = test_client.get("/download-pdf")
+            assert response2.status_code == 404
+            # Response should be directly readable (not streamed)
+            assert isinstance(response2.content, bytes)
 
-            response = test_client.get("/download-pdf")
-
-            assert response.status_code == 404
-            assert b"Analysis not complete" in response.content
-
-    def test_download_pdf_returns_pdf_file(
-        self, test_client: TestClient, mock_session_id: str, sample_swot_analysis
+    @pytest.mark.asyncio
+    async def test_download_pdf_returns_pdf_file(
+        self, mock_session_id: str, sample_swot_analysis
     ):
         """
         Test PDF download returns valid PDF file.
@@ -139,57 +203,89 @@ class TestPDFDownloadEndpoint:
         Bug: AttributeError: 'int' object has no attribute 'encode'
         Fix: Use iterfile() generator for BytesIO chunks
         """
-        # Set up result
+        from backend.site.router import download_pdf
+
+        # Create mock request with session
+        mock_request = MagicMock()
+        mock_session = MagicMock()
+        mock_session.get = MagicMock(return_value=mock_session_id)
+        mock_request.session = mock_session
+
+        # Populate result_store with completed analysis
         result_store[mock_session_id] = sample_swot_analysis
 
-        with test_client:
-            test_client.cookies.set("analysis_id", mock_session_id)
+        # Call the endpoint handler directly
+        response = await download_pdf(mock_request)
 
-            response = test_client.get("/download-pdf")
+        assert response.status_code == 200
+        assert response.headers["content-type"] == "application/pdf"
+        assert "attachment" in response.headers["content-disposition"]
+        assert "swot-analysis" in response.headers["content-disposition"]
 
-            assert response.status_code == 200
-            assert response.headers["content-type"] == "application/pdf"
-            assert "attachment" in response.headers["content-disposition"]
-            assert "swot-analysis" in response.headers["content-disposition"]
+        # Verify it's a valid PDF by reading the stream
+        body_content = b""
+        async for chunk in response.body_iterator:
+            body_content += chunk
 
-            # Verify it's a valid PDF
-            content = response.content
-            assert content.startswith(b"%PDF")
-            assert len(content) > 1000  # PDF should have substantial content
+        assert body_content.startswith(b"%PDF")
+        assert len(body_content) > 1000  # PDF should have substantial content
 
-    def test_download_pdf_uses_cache(
-        self, test_client: TestClient, mock_session_id: str, sample_swot_analysis
+    @pytest.mark.asyncio
+    async def test_download_pdf_uses_cache(
+        self, mock_session_id: str, sample_swot_analysis
     ):
         """Test that PDF download uses cache when available"""
-        # Set up result
+        from backend.site.router import download_pdf
+
+        # Create mock request
+        mock_request = MagicMock()
+        mock_session = MagicMock()
+        mock_session.get = MagicMock(return_value=mock_session_id)
+        mock_request.session = mock_session
+
+        # Populate result_store
         result_store[mock_session_id] = sample_swot_analysis
 
-        with test_client:
-            test_client.cookies.set("analysis_id", mock_session_id)
+        # First request - generates PDF and caches
+        response1 = await download_pdf(mock_request)
+        assert response1.status_code == 200
 
-            # First request - generates PDF and caches
-            response1 = test_client.get("/download-pdf")
-            assert response1.status_code == 200
+        # Read first response body
+        body1 = b""
+        async for chunk in response1.body_iterator:
+            body1 += chunk
 
-            # Second request - should use cache
-            response2 = test_client.get("/download-pdf")
-            assert response2.status_code == 200
+        # Second request - should use cache
+        response2 = await download_pdf(mock_request)
+        assert response2.status_code == 200
 
-            # Both should return identical content
-            assert response1.content == response2.content
+        # Read second response body
+        body2 = b""
+        async for chunk in response2.body_iterator:
+            body2 += chunk
 
-    def test_download_pdf_filename_format(
-        self, test_client: TestClient, mock_session_id: str, sample_swot_analysis
+        # Both should return identical content
+        assert body1 == body2
+
+    @pytest.mark.asyncio
+    async def test_download_pdf_filename_format(
+        self, mock_session_id: str, sample_swot_analysis
     ):
         """Test PDF filename follows expected format"""
+        from backend.site.router import download_pdf
+
+        # Create mock request
+        mock_request = MagicMock()
+        mock_session = MagicMock()
+        mock_session.get = MagicMock(return_value=mock_session_id)
+        mock_request.session = mock_session
+
+        # Populate result_store
         result_store[mock_session_id] = sample_swot_analysis
 
-        with test_client:
-            test_client.cookies.set("analysis_id", mock_session_id)
+        response = await download_pdf(mock_request)
 
-            response = test_client.get("/download-pdf")
-
-            assert response.status_code == 200
-            disposition = response.headers["content-disposition"]
-            # Format: swot-analysis-{session_id[:8]}.pdf
-            assert f"swot-analysis-{mock_session_id[:8]}.pdf" in disposition
+        assert response.status_code == 200
+        disposition = response.headers["content-disposition"]
+        # Format: swot-analysis-{session_id[:8]}.pdf
+        assert f"swot-analysis-{mock_session_id[:8]}.pdf" in disposition
