@@ -11,6 +11,10 @@ from backend.core.pdf_cache import pdf_cache
 from backend.core.pdf_service import generate_swot_pdf
 from backend.logger import logger
 from backend.settings import app_settings
+from backend.settings.consts import (
+    MAX_COMPARISON_ENTITIES_LENGTH,
+    MAX_PRIMARY_ENTITY_LENGTH,
+)
 from backend.site.consts import (
     ANALYSIS_COMPLETE_MESSAGE,
     ANALYZING_MESSAGE,
@@ -45,12 +49,12 @@ class AnalysisInput(BaseModel):
     primary_entity: str = Field(
         ...,
         min_length=1,
-        max_length=500,
+        max_length=MAX_PRIMARY_ENTITY_LENGTH,
         description="Primary entity (company name or URL)",
     )
     comparison_entities: str = Field(
         default="",
-        max_length=2000,
+        max_length=MAX_COMPARISON_ENTITIES_LENGTH,
         description="Comma-separated comparison entities (optional)",
     )
 

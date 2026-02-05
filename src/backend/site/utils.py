@@ -7,6 +7,10 @@ from loguru import logger
 
 from backend.core.core import SwotAgentDeps, SwotAnalysis
 from backend.core.tools import run_agent
+from backend.settings.consts import (
+    STATUS_UPDATE_DELAY_MAX_SECONDS,
+    STATUS_UPDATE_DELAY_MIN_SECONDS,
+)
 from backend.site.consts import (
     ANALYSIS_COMPLETE_MESSAGE,
     result_store,
@@ -20,8 +24,11 @@ async def emulate_tool_completion(session_id: str, message: str) -> None:
 
     Uses asyncio.sleep to avoid blocking the event loop.
     """
-    # Sleep a random amount of time between 0 and 5 seconds (async)
-    await asyncio.sleep(random.randint(0, 5))
+    # Sleep a random amount of time (async)
+    delay = random.randint(
+        STATUS_UPDATE_DELAY_MIN_SECONDS, STATUS_UPDATE_DELAY_MAX_SECONDS
+    )
+    await asyncio.sleep(delay)
     status_store[session_id].append(message)
 
 

@@ -12,9 +12,10 @@ from typing import Any
 from backend.core.core import SwotAnalysis
 from backend.core.pdf_service import compute_content_hash
 from backend.logger import logger
+from backend.settings.consts import PDF_CACHE_TTL_SECONDS
 
 # Cache configuration
-CACHE_TTL_SECONDS = 300  # 5 minutes
+CACHE_TTL_SECONDS = PDF_CACHE_TTL_SECONDS  # Imported from settings
 CLEANUP_INTERVAL_SECONDS = 60  # Run cleanup every minute
 
 

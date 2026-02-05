@@ -9,6 +9,10 @@ from backend.core.consts import AI_MODEL
 from backend.core.core import SwotAgentDeps, SwotAnalysis, swot_agent
 from backend.core.utils import report_tool_usage
 from backend.logger import logger
+from backend.settings.consts import (
+    HTTP_CONNECT_TIMEOUT_SECONDS,
+    HTTP_REQUEST_TIMEOUT_SECONDS,
+)
 from backend.utils import get_val, set_event_loop, windows_sys_event_loop_check
 
 
@@ -25,8 +29,10 @@ async def fetch_website_content(
     :return: str
     """
     logger.info(f"Fetching website content for: {url}")
-    # Set reasonable timeouts: 10s connect, 30s total
-    timeout = httpx.Timeout(30.0, connect=10.0)
+    # Configure timeouts to prevent hanging on slow responses
+    timeout = httpx.Timeout(
+        HTTP_REQUEST_TIMEOUT_SECONDS, connect=HTTP_CONNECT_TIMEOUT_SECONDS
+    )
     async with httpx.AsyncClient(
         follow_redirects=True, timeout=timeout
     ) as http_client:
