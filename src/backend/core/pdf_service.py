@@ -298,7 +298,12 @@ class SwotPDFGenerator:
         # Header
         self._add_header(story)
 
+        # Executive Summary (placed first for prominence)
+        story.append(Spacer(1, 0.2 * inch))
+        self._add_executive_summary(story)
+
         # SWOT Categories
+        story.append(Spacer(1, 0.3 * inch))
         story.append(Paragraph("SWOT Analysis", self.styles["SectionHeader"]))
         story.append(Spacer(1, 0.15 * inch))
 
@@ -317,10 +322,6 @@ class SwotPDFGenerator:
         self._add_swot_section(
             story, "Threats", self.analysis.threats, SWOT_THREAT
         )
-
-        # Executive Summary
-        story.append(Spacer(1, 0.2 * inch))
-        self._add_executive_summary(story)
 
         # Build PDF
         doc.build(story)
