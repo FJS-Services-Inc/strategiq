@@ -1,6 +1,5 @@
 import asyncio
 import random
-import time
 from pprint import pformat
 from typing import Any
 
@@ -15,11 +14,14 @@ from backend.site.consts import (
 )
 
 
-def emulate_tool_completion(session_id: str, message: str) -> None:
-    """Pydantic AI doesn't provide a post-processing hook, so we need to emulate one."""
+async def emulate_tool_completion(session_id: str, message: str) -> None:
+    """
+    Emulate tool completion with random delay.
 
-    # Sleep a random amount of time between 0 and 5 seconds
-    time.sleep(random.randint(0, 5))
+    Uses asyncio.sleep to avoid blocking the event loop.
+    """
+    # Sleep a random amount of time between 0 and 5 seconds (async)
+    await asyncio.sleep(random.randint(0, 5))
     status_store[session_id].append(message)
 
 
@@ -49,13 +51,8 @@ async def update_status(session_id: str, message: Any) -> None:
         if message == ANALYSIS_COMPLETE_MESSAGE:
             status_store[session_id].append(message)
         else:
-            loop = asyncio.get_running_loop()
-            await loop.run_in_executor(
-                None,
-                emulate_tool_completion,
-                session_id,
-                message,
-            )
+            # Call async function directly (no need for run_in_executor)
+            await emulate_tool_completion(session_id, message)
 
     logger.info(
         f"Status messages for session {session_id}: {status_store[session_id]}",

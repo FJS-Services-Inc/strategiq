@@ -25,7 +25,11 @@ async def fetch_website_content(
     :return: str
     """
     logger.info(f"Fetching website content for: {url}")
-    async with httpx.AsyncClient(follow_redirects=True) as http_client:
+    # Set reasonable timeouts: 10s connect, 30s total
+    timeout = httpx.Timeout(30.0, connect=10.0)
+    async with httpx.AsyncClient(
+        follow_redirects=True, timeout=timeout
+    ) as http_client:
         try:
             response = await http_client.get(url)
             response.raise_for_status()
