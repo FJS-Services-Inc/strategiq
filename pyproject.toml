@@ -52,12 +52,17 @@ extend-exclude = '''
   | profiling
 )/
 '''
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
+
 [tool.isort]
 profile = "black"
 line_length = 80
 
 [tool.uv.sources]
 fastapi-debug-toolbar = { git = "https://github.com/fsecada01/fastapi-debug-toolbar.git", rev = "patch-2" }
+fastapi-service-kit = { git = "https://github.com/fsecada01/shared-packages.git", subdirectory = "packages/fastapi_service_kit", tag = "fastapi_service_kit-v0.1.0" }
 #multi_line_output = 3
 #include_trailing_comma = true
 #force_grid_wrap = 0
@@ -81,6 +86,7 @@ dependencies = [
     "celery>=5.4.0",
     "fastapi>=0.115.7",
     "fastapi-restful>=0.6.0",
+    "fastapi-service-kit>=0.1,<0.2",
     "fastcrud>=0.15.5",
     "flower>=2.0.1",
     "greenlet>=3.1.1",
@@ -123,5 +129,6 @@ dev = [
     "jupyterlab>=4.5.3",
     "jupyterlab-code-formatter>=3.0.2",
     "pre-commit>=4.5.1",
+    "pytest>=8.0",
     "ruff>=0.14.14",
 ]

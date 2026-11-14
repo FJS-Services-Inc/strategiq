@@ -2,6 +2,7 @@ import asyncio
 
 import httpx
 from bs4 import BeautifulSoup as soup
+from fastapi_service_kit import set_event_loop, windows_sys_event_loop_check
 from pydantic_ai import ModelRetry, RunContext
 from tavily import TavilyClient
 
@@ -9,7 +10,7 @@ from backend.core.consts import AI_MODEL
 from backend.core.core import SwotAgentDeps, SwotAnalysis, swot_agent
 from backend.core.utils import report_tool_usage
 from backend.logger import logger
-from backend.utils import get_val, set_event_loop, windows_sys_event_loop_check
+from backend.utils import get_val
 
 
 @swot_agent.tool(prepare=report_tool_usage)

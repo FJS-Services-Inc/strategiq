@@ -1,18 +1,20 @@
 import asyncio
-import inspect
-from collections.abc import AsyncGenerator
-from typing import Annotated
 
-from fastapi import Form
-from pydantic import BaseModel
+from fastapi_service_kit import (  # noqa: F401
+    as_form,
+    async_session_dependency,
+    check_db_exists,
+    create_db,
+    run_out_of_band,
+    sync_session_dependency,
+)
 from sqlalchemy import MetaData, event
-from sqlalchemy.ext.asyncio import AsyncEngine, create_async_engine
-from sqlalchemy.orm import merge_frozen_result, sessionmaker
+from sqlalchemy.ext.asyncio import create_async_engine
+from sqlalchemy.orm import sessionmaker
 from sqlalchemy.pool import NullPool
 from sqlmodel import Session, create_engine
 from sqlmodel.ext.asyncio.session import AsyncSession
 
-from backend.logger import logger
 from backend.utils import get_val
 
 # echo, create = True, True
@@ -24,130 +26,6 @@ db_url = get_val("PROJECT_DB_URL")
 
 schema = "pygentic_ai"
 meta = MetaData(schema=schema)
-
-
-def as_form(cls: type[BaseModel]):
-    """
-
-    :param cls:
-    :return:
-    """
-    new_params = [
-        inspect.Parameter(
-            field_name,
-            inspect.Parameter.POSITIONAL_ONLY,
-            default=model_field.default,
-            annotation=Annotated[
-                model_field.annotation,
-                *model_field.metadata,
-                Form(),
-            ],
-        )
-        for field_name, model_field in cls.model_fields.items()
-    ]
-
-    async def as_form_func(**data):
-        # logger.debug(pformat(data))
-        return cls(**data)
-
-    sig = inspect.signature(as_form_func)
-    sig = sig.replace(parameters=new_params)
-    as_form_func.__signature__ = sig  # type: ignore
-    cls.as_form = as_form_func
-
-    return cls
-
-
-async def get_async_session() -> AsyncGenerator[AsyncSession]:
-    """
-    Get async SQLA session via generator function
-    """
-    async with async_session_maker() as session_obj:
-        yield session_obj
-
-
-def get_sync_session():
-    """
-    Get SQLA session via generator function
-    """
-    with sessionmaker(db_url, expire_on_commit=False) as session:
-        yield session
-
-
-async def run_out_of_band(
-    async_sessionaker: sessionmaker,
-    session_inst: AsyncSession,
-    statement,
-    merge_results: bool = True,
-):
-    """
-
-    :param async_sessionaker:
-    :param session_inst:
-    :param statement:
-    :param merge_results:
-    :return:
-    """
-    async with async_sessionaker() as oob_session:
-        await oob_session.connection(
-            execution_options={"isolation_level": "AUTOCOMMIT"},
-        )
-
-    result = await oob_session.execute(statement)
-
-    if merge_results:
-        return (
-            await session_inst.run_sync(
-                merge_frozen_result,
-                statement,
-                result.freeze(),
-                load=False,
-            )
-        )()
-    else:
-        await result.close()
-
-
-async def check_db_exists(engine_inst):
-    """
-
-    :param engine_inst:
-    :return:
-    """
-    # async with Session(engine_inst) as conn:
-    async with engine_inst.connect() as conn:
-        from sqlalchemy import inspect  # noqa
-
-        tables = await conn.run_sync(
-            lambda sync_conn: inspect(sync_conn).get_table_names(),
-        )
-        logger.info(tables)
-        if not tables:
-            return False
-        return True
-
-
-async def create_db(
-    engine_inst: AsyncEngine,
-    create_bool: bool = False,
-):
-    """
-
-    :param engine_inst:
-    :param create_bool:
-    :return:
-    """
-    url = engine_inst.url
-    exists = await check_db_exists(engine_inst)
-    if not exists or create_bool:
-        from backend.db.base_model import Base  # noqa
-
-        async with engine_inst.begin() as conn:
-            await conn.run_sync(Base.metadata.create_all)
-
-            logger.info(f"Database {url.database} created")
-
-    return engine_inst
 
 
 def create_db_engine(
@@ -212,6 +90,16 @@ session_maker = sessionmaker(
     expire_on_commit=False,
 )
 
+sync_session_maker = sessionmaker(
+    bind=sync_engine,
+    class_=Session,
+    expire_on_commit=False,
+)
+
+# FastAPI dependencies (``Depends(get_async_session)``)
+get_async_session = async_session_dependency(async_session_maker)
+get_sync_session = sync_session_dependency(sync_session_maker)
+
 if __name__ == "__main__":
     import sys
 
@@ -220,4 +108,4 @@ if __name__ == "__main__":
     if sys.platform == "win32":
         asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
 
-    asyncio.run(create_db(engine_inst=engine, create_bool=True))
+    asyncio.run(create_db(engine, meta, force=True))
