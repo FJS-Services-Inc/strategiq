@@ -1,8 +1,7 @@
-import asyncio
 import os
-import sys
 
 from decouple import config
+from fastapi_service_kit import build_db_url
 
 
 class ContextManager:
@@ -65,8 +64,7 @@ def get_db_url(env: str = "dev"):
     else:
         return None
 
-    url = f"postgresql://{un}:{pw}@{host}:{port}/{db}"
-    return url
+    return build_db_url(user=un, password=pw, host=host, port=port, database=db)
 
 
 def get_val(val: str, default: str | int | bool | None = None, **kwargs):
@@ -94,24 +92,3 @@ def get_val(val: str, default: str | int | bool | None = None, **kwargs):
         )
 
     return val
-
-
-def windows_sys_event_loop_check():
-    """
-    A function that sets the event loop policy to a Windows-specific one.
-    This is a workaround to a known bug involving capturing an existing
-    asyncio event loop on non-Linux platforms.
-    """
-    if sys.platform == "win32":
-        asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
-
-
-def set_event_loop():
-    """
-    A utility function to capture the existing event loop if it's running.
-    If no event loop is running, then a new one is created and set.
-    """
-    try:
-        asyncio.get_running_loop()
-    except RuntimeError:
-        asyncio.set_event_loop(asyncio.new_event_loop())

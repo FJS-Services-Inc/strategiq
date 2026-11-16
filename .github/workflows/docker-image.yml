@@ -29,6 +29,23 @@ jobs:
         run: echo "sanitized_branch=$(echo '${{ steps.extract_branch.outputs.branch }}' | sed 's/\//-/g')" >> $GITHUB_OUTPUT
         id: sanitize_branch
       - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      # The image build fetches the PRIVATE fsecada01/shared-packages repo
+      # (git dependency), so it needs a short-lived GitHub App installation
+      # token with read-only contents access to that one repository.
+      # This repo is public: pull requests from forks do not receive
+      # secrets, so this step fails for them. The image build is only
+      # expected to run for same-repo branches.
+      - name: Create GitHub App token for shared-packages
+        id: app-token
+        uses: actions/create-github-app-token@fee1f7d63c2ff003460e3d139729b119787bc349 # v2.2.2
+        with:
+          app-id: ${{ secrets.SHARED_PACKAGES_APP_ID }}
+          private-key: ${{ secrets.SHARED_PACKAGES_APP_PRIVATE_KEY }}
+          owner: fsecada01
+          repositories: shared-packages
+          permission-contents: read
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
       - name: Set up Python ${{ matrix.python-version }}
@@ -44,3 +61,5 @@ jobs:
             s3docker.francissecada.com/pygentic_ai:${{ steps.sanitize_branch.outputs.sanitized_branch }}.${{ steps.date.outputs.date }}
             s3docker.francissecada.com/pygentic_ai:${{ steps.sanitize_branch.outputs.sanitized_branch }}-latest
           pull: true
+          secrets: |
+            gh_token=${{ steps.app-token.outputs.token }}
