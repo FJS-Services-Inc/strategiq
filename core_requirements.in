@@ -3,6 +3,7 @@ aiomysql
 celery
 fastapi
 fastapi-restful
+fastapi-service-kit @ git+https://github.com/fsecada01/shared-packages.git@fastapi_service_kit-v0.1.1#subdirectory=packages/fastapi_service_kit
 fastcrud
 flower
 greenlet
